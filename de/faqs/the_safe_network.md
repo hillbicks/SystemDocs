@@ -1,35 +1,38 @@
-# The SAFE Network
 
-These FAQs relate to additional details about the SAFE Network.
+# Das SAFE Netzwerk
 
-
-### What kind of research and validation has been carried out to affirm the SAFE Network will live up to the claims?
-
-With such a radical solution, validation is extremely important. MaidSafe's technology has been peer reviewed with papers published and presented at the Wireless World Research Forum and the IEEE Computer Society. During development, MaidSafe has engaged with Scotland's leading technical Universities; Stirling, Strathclyde, St Andrews and the University of Abertay.
-
-Furthermore, MaidSafe's founder, David Irvine, has showcased the company's technology at the Google Scalability conference and at the British Computer Society's (Scotland) 50th Anniversary Christmas lecture.
-
-A fully decentralised test network is now up and running, with 200 nodes spread across three continents.
-
-###The web as it is needs no gatekeeper, shouldn't your system be designed this way as well?
-
-We agree that the Internet should never have a gatekeeper and we don't intend to start, that is why all our code is Open Source and we have transferred ownership to all the people of the world. The SAFE Network is also completely free from human intervention (the weakest and most corruptible part of any system), relying totally on maths and logic.
+Diese FAQs beschäftigen sich mit weiteren Details des SAFE Netzwerkes.
 
 
-###What are the benefits of using the Safe Network?
+### Gibt es Forschung und Validierung, die durchgeführt wurde um sicherzustellen, dass das SAFE Netzwerk seine Aufgabe erfüllen wird?
 
-The benefits of using the SAFE Network are numerous and for end users these are as follows:
-* Private and secure communications
-* Secure storage of all data
-* Being control of your own data and personal information
-* Websites that go faster the more popular they get
+Validierung ist extrem wichtig mit solch einem radikalen Projekt. MaidSafes Technologie ist peer-reviewed worden, im Zuge von Publikationen auf dem Wireless World Research Forum und der IEEE Computer Society. Während der Entwicklung, hat MaidSafe mit Schottlands führenden technischen Universitäten Stirling, Strathclyde, St Andrews und der Universität vo Abertay zusammen gearbeitet.
+
+Des weiteren hat MaidSafes Gründer, David Irvine, die Technology auf der Google Scalability Konferenz und an der 50. Geburtstags Weihnachts-Vorlesung der British Computer Society (Schottland) vorgestellt.
+
+Momentan ist ein vollständig dezentralisiertes Testnetzwerk am laufen, dass aus 200 Nodes besteht, die über drei Kontinente verteilt sind.
 
 
-###Where can I download the SAFE Network software?
+###Das Internet benötigt keine Pförtner. Sollte das SAFE Netzwerk nicht auch auf diese Weise konstruiert sein?
 
-We plan beta launch at the end of this year/early 2015, at which point users will be able to start providing resource (earning safecoins) to the network and start using SAFE applications.
+Wir sind auch der Meinung, dass das Internet niemals einen Pförtner haben sollte und wir wollen dies so belassen. Deshalb ist all unser Code Open Source und wir haben die Eigentumsrechte auf alle Menschen der Welt abgetreten. Das SAFE Netzwerk ist also komplett frei von menschlicher intervention (die das schwächste und am einfachsten zu korrumpierende Element von jedem System darstellt) und basiert ausschliesslich auf Mathematik und Logik.
 
-When the network is launched a simple software download is all you require and we will inform users where to go nearer the time using our forum, blog and social media channels.
+
+###Was sind die Vorteile der Benutzung des Safe Netzwerkes?
+
+Es ergeben sich viele Vorteile durch Nutzung des SAFE Netzwerkes. Für den Endbenutzer sind es die folgenden:
+* Private und sichere Kommunikation
+* Sichere Speicherung von allen Daten
+* Kontrolle über die eigenen Daten und persönliche Information
+* Webseiten, die sich schneller aufbauen je beliebter sie werden
+
+
+
+###Wo kann ich die SAFE Netzwerk Software herunterladen?
+
+Wir planen den Beta Launch für Anfang 2015. An diesem Punkt werden Benutzer die Möglichkeit haben dem Netzwerk Ressourcen zur Verfügung zu stellen (Safecoins zu verdienen) und SAFE Apps zu benutzen.
+
+Wenn das Netzwerk gestartet ist, wird ein simpler Software download genügen um dem SAFE Netzwerk beizutreten. Wir werden Benutzer über Forum, Blog und Social Media Kanäle informieren wenn diese Zeit gekommen ist.
 
 
 ###Where is the information of who has which chunks of a given file stored?
@@ -38,20 +41,34 @@ As a user saves their data, or interacts with applications, their data is broken
 
 This data map is treated as any file on the network and is also run through the chunking and encryption process and then stored as encrypted chunks, spread randomly throughout the network. Only the correct combination of PIN, username and password will enable a file(s) to become readable.
 
-###What language are the SAFE Network apps written in?
 
-The API / libraries are written in C++, however, application developers will not be restricted as it is MaidSafe’s intention to make the network as accessible as possible.
+###Wo ist die Information gespeichert wer welches Chunk von einer bestimmten Datei gespeichert hat?
 
-Anyone will be able to write their own wrappers to add support for a new language.
+Wenn ein Benutzer seine Daten speichert, oder mit einer App interagiert, dann werden seine Daten aufgespalten, verschlüsselt und zufällig über das Netzwerk auf andere Vaults verteilt.
+Dieser Prozess ist irreversibel und deshalb wird während des Self-Encryption Prozesses eine Datenkarte für jede Datei angelegt, die die Identität eines jeden Chunks speichert und dadurch eine Rekonstitution ermöglicht.
 
-
-###Can MaidSafe clients host on different operating systems access the same vaults?
-
-Yes, the SAFE Network and client are completely supported cross-platform.
+Diese Datenkarte wird vom Netzwerk wie jede andere Datei behandelt, also auch durch den Self-Encryption Prozess geschleust und zufällig auf das Netzwerk verteilt. Nur unter Bereitstellung des korrekten PIN, Benutzernamens und Passwortes werden dateien wieder lesbar.
 
 
-###What kind of equipment will be required for dedicated farming?
 
-At this point we don’t know what type of equipment will offer the most efficient farming and only through testing of the live network will we know definitively. The farming algorithms within the network are designed to favour small commodity devices to avoid some of the centralising aspects experienced within the Bitcoin mining community.
 
-Farming is discussed quite frequently on our forum [www.maidsafe.org](http://www.maidsafe.org) and many of the community members are experimenting with single board computers that are powerful, yet have very low power consumption, well suited to being left on 24/7.
+###In welcher Programmiersprache werden Apps für das SAFE Netzwerk geschrieben?
+
+Die API / Libraries sind in C++ geschrieben. Allerdings werden Developer von Apps nicht darauf beschränkt sein. Es ist die Absicht von MaidSafe das Netzwerk so zugänglich wie möglich zu machen.
+
+Jedermann wird in der lage sein seine eigenen wrappers zu schreiben und damit Unterstützung für neue Programmiersprachen zu schaffen.
+
+
+
+
+###Können MaidSafe Clients auf verschiedenen Betriebssystemen auf die selben Vaults zugreifen?
+
+Ja, das SAFE Netzwerk und Client sind komplett cross-platform unterstützt.
+
+
+
+###Was für equipment wird benötigt um dediziert zu farmen?
+
+An diesem Punkt wissen wir noch nicht welches Equipment am effizientesten für das farming ist. Nut durch testen im live Netzwerk werden wir dies definitiv herausfinden. Die Farming Algorithmen innerhalb des Netzwerkes sind so gestaltet, dass Geräte mit kleinen Spezifikationen bevorzugt werden. Dies soll Zentralisierung vorzubeugen, wie sie in der Bitcoin Mining Community herrscht.
+
+Farming wird oft in unserem Forum diskutiert [www.maidsafe.org](http://www.maidsafe.org) und viele Community Mitglieder experimentieren mit Single-Board Computern, die leistungsstark sind, aber trotzdem wenig Strom verbrauchen und dadurch gut geeignet für den Dauerbetrieb sind.
