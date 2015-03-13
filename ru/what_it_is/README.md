@@ -1,7 +1,8 @@
-#What it is
-The SAFE Network is a secure and fully decentralised data management service. The network is made up from the unused computer resources provided by the individual network users.
+#Что это за сеть
 
-Each user of the SAFE Network provides a small part of their computer resources; hard-drive storage, CPU power, and bandwidth. This local resource is called a Vault. Each Vault is cryptographically secure and connects to other Vaults throughout the network.
+SAFE Network - это полностью распределенный, безопасный и надежный сервис управления данными. Сеть строится на основе незадействованных ресурсов, предоставляемых пользователями.
+
+Каждой пользователь сети предоставляет небольшую часть ресурсов своего компьютера: место на жестком диске, мощность процессора, и пропускную способность. Локальный ресурс пользователя в терминологии SAFE Network называется хранилищем (Vault). Каждое хранилище криптографически защищено и соединено с другими хранилищами по всей сети. 
 
 The user's data is encrypted and broken up into chunks. These chunks are then distributed around other Vaults in the network. At no point do any of the other Vaults know anything about the data they have been asked to store other than anonymous network address information.
 
