@@ -1,5 +1,5 @@
 # Safecoins
-Safecoins это валюта SAFE Network. They are a token-based scheme that is only used inside the SAFE Network.
+Safecoins это валюта SAFE Network. Это система денежных знаков, используемая только внутри SAFE Network.
 Safecoin's distribution is handled entirely by the network on
 a per use basis and approximately 4.3 billion coins will be produced during the network's life.
 
