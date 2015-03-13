@@ -2,9 +2,9 @@
 
 * [Введение](README.md)
 * [Что это за сеть?](what_it_is/README.md)
-   * [Данные в сети SAFE](what_it_is/data_on_the_safe_network.md)
-   * [Программы и приложения в сети SAFE](what_it_is/apps_and_programs_on_the_safe_network.md)
-   * [Доступ к сети SAFE](what_it_is/costs_of_using_the_safe_network.md)
+   * [Данные в SAFE Network](what_it_is/data_on_the_safe_network.md)
+   * [Программы и приложения в SAFE Network](what_it_is/apps_and_programs_on_the_safe_network.md)
+   * [Доступ к SAFE Network](what_it_is/costs_of_using_the_safe_network.md)
    * [Хранилища](what_it_is/vaults.md)
    * [Safecoins](what_it_is/safecoins.md)
    * [Кошельки](what_it_is/wallets.md)
