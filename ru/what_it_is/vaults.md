@@ -8,6 +8,7 @@ Another function, or persona, of a Vault is to manage other Vaults. As chunks of
 
 Хранилища ничего не знают о данных, которые они запрашивают на хранение (информация может быть расшифрована только клиентом), и, так как эти данные на самом деле лишь кусочек чего-то целого, невозможно понять, частью чего они являются, например, документа или сообщения.
 
-Каждому хранилищу, For every Vault that holds data there are another thirty one Vaults holding the same data. This means that if a Vault goes offline or a data chunk becomes corrupted, that data is not lost. Each Vault automatically finds another Vault to store the data.
+Для каждого кусочка данных существует еще тридцать одно хранилище, которое хранит этот же кусочек. Следовательно, при выключении хранилища или повреждении этого кусочка данных, информация не потеряется. Каждое хранилище автоматически находит еще одно, куда в таком случае скопируется кусочек.
 
+Пользователь SAFE Network не может непосредственно увидеть хранилище. Вместо него он видит лишь виртуальный диск на своем компьютере. С помощью постоянного "общения" между хранилищами, пользователь мгновенно получает доступ к данным с виртуального диска.
 Vaults are not visible to the users of the SAFE Network. Instead the user only sees a virtual mounted drive on their computer. With the Vaults constantly talking to, and monitoring each other, a user accesses data instantaneously from the mounted drive.
