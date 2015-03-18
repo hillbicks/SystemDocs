@@ -1,37 +1,45 @@
-# Safecoins
+#Safecoins
 
-### What gives safecoin value?
+###Was gibt Safecoins Wert?
 
-Safecoin has value because it has utility. Users can earn safecoin by [farming](http://www.maidsafe.net/SystemDocs/how_to_use_it/farmers.html) safecoin and use it to buy more storage, and access applications and services on the network. It will also be possible to purchase safecoin via exchanges, as the network launches, and this will also provide safecoin with a direct fiat valuation.
+Safecoins besitzten Wert, da sie Nutzen haben. Benutzer könne Safecoins durch  
+[farming](http://www.maidsafe.net/SystemDocs/how_to_use_it/farmers.html) verdienen und diese dazu benutzen Speicherplatz und Zugang zu Apps und Diensten auf dem Netzwerk zu erhalten.
+Es wird auch möglich sein Safecoins auf Tauschbörsen zu kaufen, sobald das Netzwerk gestartet ist. Der Preis von Safecoins wird über diese Tauschbörsen festgelegt.
 
-The underlying network also provides safecoin with additional value in a less obvious way, via the transaction mechanism within the network (the SAFE Network’s version of the block chain). Capable of processing millions of transactions per second and able to confirm transactions at network speed, the currency is instantly redeemable, secure and anonymous on wallets that are easy to use and built in to the network. These features are well suited to buying not only network services, but also products being sold on the network by merchants.
+Über den Transaktions-Mechanismus (die SAFE Netzwerk Variante einer Blockchain), gibt das Netzwerk den Safecoins zusätzlich Wert, auf eine weniger offensichtliche Art und Weise.
+Es können Millionen von Safecoin Transaktionen per Sekunde durchgeführt werden, diese erfolgen mit Netzwerk Geschwindigkeit, Safecoin ist sofort einlösbar, sicher und anonym. Es wird in Wallets gehalten, die Teil des Netzwerkes sind. Diese Eigenschaften sind ideal um nicht nur Netzwerkdienste, sondern auch Produkte zu erwerben, die in dem Netzwerk von Händlern angeboten werden.
 
-For more information about this FAQ, refer to the full answer on [maidsafe.org](https://www.maidsafe.org/t/what-gives-safecoin-value-and-differentiates-it-from-altcoins/411).
+Auf [maidsafe.org](https://www.maidsafe.org/t/what-gives-safecoin-value-and-differentiates-it-from-altcoins/411) können weitere Informationen zu diesem Thema gefunden werden.
 
-### How is safecoin valued?
 
-While the number of users on the SAFE Network is increasing there is a virtuous circle:
 
-* More safecoin will be held in new wallets, as most users will be Farmers by default.
-* This will increase liquidity and distribute wealth, providing almost all users with at least a few safecoin in their wallet.
-* Users may exchange their safecoin for network services, or for cash (or another digital currency) using an exchange.
+###Wie wird der Wert von Safecoins festgelegt?
 
-The ratio of safecoin being saved (left in new wallets) versus the ratio being issued to Farmers will produce a value point.
+Mit steigender Anzahl von Nutzern des SAFE Netzwerkes, ergibt sich folgende Dynamik:
 
-The volume of supply and demand will grow with the network, which tends to create an increasingly stable currency that increases in value over time. Value grows because it is linked to its usefulness (incentive to hold, which also increases over time), and the increasing number of users of the network (people wanting to hold it).
+* Mehr Safecoin wird in Wallets gehalten, da die meisten neuen Nutzer zunächst Farmer sind
+* Dies wird Liquidität erhöhen und Vermögen verteilen, so dass alle Benutzer zumindes ein paar Safecoins besitzen
+* Benutzer können Safecoin für Netzwerkdienste verwendes, es in Bargeld (oder eine andere digitale Währung) über Tauschbörsen tauschen
 
-Over time this virtuous circle becomes stronger (as the volume increases) because the number of users is growing. The incentive to hold and use safecoin will also increase due to the addition of applications and services. Speculation will disrupt this of course, but the network provides a real value anchor that will help to dampen this impact.
+Die Anzahl von Safecoins, die gespart werden (in neuen Wallets verbleiben) verglichen mit der Rate, die an Farmer ausgegeben wird, wird den Preispunkt bestimmen.
 
-For more information about this FAQ, refer to the full answer on [maidsafe.org](https://www.maidsafe.org/t/what-gives-safecoin-value-and-differentiates-it-from-altcoins/411).
+Das Volumen von Angebot und Nachfrage wird zusammen mit dem Netzwerk wachsen, was zu steigender Stabilität und steigendem Preis der Währung führt. Der Wert wird steigen, da er an den Nutzen (der Anreiz zu halten, der auch mit der Zeit steigt) der Währung gebunden ist,
+sowie die steigende Anzahl der Benutzer des Netzwerkes (die ihre Safecoins halten möchten).
 
-###Where do I trade my MaidSafe coins?
+Mit der Zeit wird sich diese Dynamik verstärken (da das Volumen wächst), die die Anzahl der Benutzer wächst. Der Anreiz, die Safecoins zu halten bzw. zu nutzen wird sich auch die Apps, die dann verfügbar werden, verstärken. Spekulation wird diese Dynamik natürlich beeinflussen, aber das Netzwerk besitzt einen echten Wert, der in ihm verankert ist und die Effekte der Spekulation abschwächen wird.
 
-It is possible to buy MaidSafeCoins from the following third party exchanges.
+Für weitere Informationen über diese FAQs, können die vollständigen Antworten auf  
+[maidsafe.org](https://www.maidsafe.org/t/what-gives-safecoin-value-and-differentiates-it-from-altcoins/411) eingesehen werden.
+
+
+
+###Wo kann ich Safecoins handeln?
+
+Es ist möglich, Safecoins von den folgenden Tauschbörsen zu kaufen:
 
 * [https://masterxchange.com/mark...](https://masterxchange.com/market.php?currency=maid)
 * [https://poloniex.com/exchange/....](https://poloniex.com/exchange/btc_maid)
 
-###Is the entire amount of safecoins going to be released when the SAFE Network goes live?
+###Wird der gesamte Betrag der Safecoins ausgegeben, sobald das Netzwerk gestartet wird?
 
-No. The remaining safecoins will be generated by the network gradually and at a speed that is determined by how much the network is used.
-
+Nein. Die ausbleibenden Safecoins werden schrittweise von dem Netzwerk generiert. Die Rate basiert dabei darauf, wie stark das Netzwerk genutzt wird.
