@@ -1,5 +1,7 @@
 # Safecoins
-Safecoins это валюта SAFE Network. Это система денежных знаков, используемая только внутри SAFE Network. Распределение safecoins целиком проводится сетью, основываясь на их использовании, и ориентировочно около 4.3 миллиардов safecoins будет выпущено на протяжении жизни сети.
+Safecoins это валюта SAFE Network. Это система денежных знаков, используемая только внутри SAFE Network. Распределение safecoins целиком и полностью проводится сетью, основываясь на их использовании, и планируется выпуск 4.3 миллиардов safecoins, которые будут находится в постоянном обороте.
+
+Так как потребление информации бесплатно, некоторые сервисы могут требовать safecoins, например за приобретение дополнительного места в хранилище, или за доступ к приложениям. Все safecoins хранятся в кошельке (wallet) пользователя.
 
 While consuming data is free of charge, many of the services will require safecoins, such as buying additional storage space, or access to network applications. All safecoins are saved in a user's wallet.
 
