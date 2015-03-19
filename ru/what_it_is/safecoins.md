@@ -1,12 +1,11 @@
 # Safecoins
 Safecoins это валюта SAFE Network. Это система денежных знаков, используемая только внутри SAFE Network. Распределение safecoins целиком и полностью проводится сетью, основываясь на их использовании, и планируется выпуск 4.3 миллиардов safecoins, которые будут находится в постоянном обороте.
 
-Так как потребление информации бесплатно, некоторые сервисы могут требовать safecoins, например за приобретение дополнительного места в хранилище, или за доступ к приложениям. Все safecoins хранятся в кошельке (wallet) пользователя.
+Так как потребление информации бесплатно, некоторые сервисы могут требовать safecoins, например, за приобретение дополнительного места в хранилище или за доступ к приложениям. Все safecoins хранятся в кошельке (wallet) пользователя.
 
-While consuming data is free of charge, many of the services will require safecoins, such as buying additional storage space, or access to network applications. All safecoins are saved in a user's wallet.
+Получить safecoins можно через (а) фарминг, (б) участие в модернизации исходного кода, (в) создание или (г) приобретение приложений.
 
-Safecoin can be obtained through (a) farming,(b) assisting with the maintenance of the underlying code, (c) creating applications or (d) by purchasing them.
-
+a) Фарминг (дословно "фермерство") это процесс предоставления пользователями в сеть своих ресурсов (место на диске, процессора и пропускной способности).
 a) Farming is a process whereby users provide resource
 (storage space, CPU and bandwidth) to the network. When each user creates their credentials, they will set up a safecoin wallet via their SAFE Network client and this wallet identity
 will be cryptographically linked to their account. The network will allocate safecoins to a user based on how much resource they provide.
