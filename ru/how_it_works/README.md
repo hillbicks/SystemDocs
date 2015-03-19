@@ -6,6 +6,7 @@
 
 Хранилище к тому же может хранить и динамические данные, например, общение через приложение VoIP.
 
+Прежде чем распределить данные по сети, они шифруются. Процесс самошифрования включает в себя разделение данных на маленькие кусочки и их последующее шифрование с помощью личной информации пользователя и самих данных. Это значит, что если кто-то захочет просмотреть данные, ему нужно будет знать личную информацию пользователя и специфику этих данных. Но эта информация не хранится в чужих системах или серверах.
 
 Before the data is stored on the SAFE Network it is automatically encrypted. The self-encryption process involves breaking up the data into small chunks and then encrypting those chunks with the user's login details and the data itself. This means that if anyone wanted to see the data they would need the user's secure login details and have knowledge about the specific chunk of data. None of this information is held on 3rd party systems or servers.
 
