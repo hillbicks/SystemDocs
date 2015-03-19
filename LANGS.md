@@ -3,3 +3,4 @@
 * [French](fr/)
 * [Dutch](nl/)
 * [Russian](ru/)
+* [Spanish](es/)
