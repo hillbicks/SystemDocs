@@ -44,21 +44,20 @@ Die Schnittstelle wird mit den folgenden Dateien geliefert:
 
 _**Generelle Hilfsmittel**_
 * [Utils](https://github.com/maidsafe/MaidSafe-Common/wiki/Utils) - Eine vielfältige Mischung aus Hilfsmitteln, wie ein Hex Konverter, Zufallszahlengenerator, etc.
-* [Key Value Buffer](https://github.com/maidsafe/MaidSafe-Common/wiki/Key-Value-Buffer) - Eine gepuffertes  PlatteA buffered disk writing system with caching ability.
-* [Node Id](https://github.com/maidsafe/MaidSafe-Common/wiki/Node-Id) - Utilities to handle 512 bit addresses as used throughout MaidSafe libraries.
+* [Key Value Buffer](https://github.com/maidsafe/MaidSafe-Common/wiki/Key-Value-Buffer) - Eine gepuffertes, schreibendes Festplattensystem mit einer Caching Fähigkeit.
+* [Node Id](https://github.com/maidsafe/MaidSafe-Common/wiki/Node-Id) - Hilfsmittel um 512 bit Adressen zu nutzen wie sie in den SAFE Bibiliotheken vorkommen.
 
-_**Cryptographic Helpers**_
-* [Crypto Utils](https://github.com/maidsafe/MaidSafe-Common/wiki/Crypto-Utils) - Symmetric encryption, Hash wrappers, secure password wrapper, N+P key sharing (based on Shamir's algorithm)
-* [Asymmetric Encryption](https://github.com/maidsafe/MaidSafe-Common/wiki/Asymmetric-Encryption) - Wrapper for asymmetric encryption methods (including safe encrypt), currently supporting RSA.
-
-_**Debug helpers**_
+_**Krpytographische Helfer**_
+* [Krypto Hilfsmittel](https://github.com/maidsafe/MaidSafe-Common/wiki/Crypto-Utils) - Symetrische Verschlüsselung, Hash wrapper, sicherer Passwort Wrapper, N+P Schlüsselteilung (basierend auf Shamir's Algorithmus)
+* [Asymmetrische Verschlüsselung](https://github.com/maidsafe/MaidSafe-Common/wiki/Asymmetric-Encryption) - Wrapper für asymetrische Verschlüsselungsmethoden (inklusive SAFE Verschlüsselung), momentan unterstützt durch RSA.
+*
+_**Debug Helfer**_
 * [Test Runner](https://github.com/maidsafe/MaidSafe/wiki/Running-Tests)
-* [Logging](https://github.com/maidsafe/MaidSafe/wiki/Logging-Options)
+* [Protokollierung](https://github.com/maidsafe/MaidSafe/wiki/Logging-Options)
 
 ## NetWork_Viewer
 
-[NetWork Viewer](http://visualiser.maidsafe.net:8080/auth) is a UI tool presented by MaidSafe to visualize the MaidSafe-Routing network. It can help you understanding how the network works and debugging routing algorithms.
-
+[NetWork Viewer](http://visualiser.maidsafe.net:8080/auth) ist ein UI Tool von Maidsafe um das Maidsafe-Routing Netzwerk zu visualisieren. Es kann dabei helfen zu verstehen wie das Netzwerk funktioniert und Routing Algorithmen zu debuggen.
 
 
 [boost_circular_buffer]: http://www.boost.org/doc/libs/release/doc/html/circular_buffer.html
