@@ -5,12 +5,9 @@ Safecoins это валюта SAFE Network. Это система денежны
 
 Получить safecoins можно через (а) фарминг, (б) участие в модернизации исходного кода, (в) создание или (г) приобретение приложений.
 
-a) Фарминг (дословно "фермерство") это процесс предоставления пользователями в сеть своих ресурсов (место на диске, процессора и пропускной способности). Пользователь с помощью клиента SAFE Network создает свой кошелек, который будет криптографически привязан к аккаунту. Сеть будет распределять safecoins между пользователями в зависимости от того, сколько ресурсов они предоставляют
+a) Фарминг (дословно "фермерство") - это процесс предоставления пользователями в сеть своих ресурсов (место на диске, мощность процессора и пропускной способности). Пользователь с помощью клиента SAFE Network создает свой кошелек, который будет криптографически привязан к аккаунту. Сеть будет распределять safecoins между пользователями в зависимости от того, сколько ресурсов они предоставляют.
 
-
-b) It is also possible for core developers to earn safecoin
-by fixing bugs and developing new features
-for the underlying network.
+б) Разработчики ядра сети могут зарабатывать safecoins при устранении неполадок либо разработке новых функций сети.
 
 c) People or companies building applications on the SAFE Network will also be able to earn safecoins. As they create and release new applications, they will code their SAFE wallet address into their application. Based on how much the
 application is used, the network will pay safecoins to the safecoin wallet address of the app creator. This provides a built in revenue stream for app developers, one that is directly proportional to how successful their application is.
