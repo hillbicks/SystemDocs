@@ -10,16 +10,16 @@
 
 Ообычно пользователь подключается к сети через роутер. Он использует протокол Reliable UDP (RUDP) (*рус. надежный UDP* ). RUDP более мощный, нежели UDP, так как потерянные пакеты отправляются заново и могут проходить через роутеры NAT в отличии от TCP. Использование RUDP в SAFE Network позволяет данным передвигаться через роутеры без риска потери или перехвата.
 
-Typically the user connects to the network through a router. The router uses Reliable UDP (RUDP) protocol to connect to the network. RUDP is a more robust protocol than UDP as lost packets are retransmitted and are capable of traversing NAT routers, unlike TCP. The use of RUDP on the SAFE Network enables data to travel through a router without being corrupted or intercepted.
-
 Все хранилища соединены между собой, осуществляя хранение и управление данными. У каждого хранилища есть Менеджер хранения данных (Data holder managers persona), который постоянно проверяет хранилище и выставляет ему рейтинг на основании следующих критериев:
 
-* **Доступность** - как часто хранилище on или off
+* **Доступность** - как часто хранилище доступно (онлайн)
 * **Объем** - как много места в хранилище
 * **Мощность ЦПУ** - какова мощность процессора
 * **Пропускная способность** - скорость доступа к хранилищу
 
-As demand and resources on the SAFE Network change, the Vaults adapt and continually balance the load of the network. This adjustment process is done automatically by the Vaults themselves. As the SAFE Network is completely autonomous, it can react quickly and without the need for any human intervention.
+Так как спрос и ресурсы в SAFE Network постоянно изменяются, хранилища должны уметь адаптироваться и уравнивать загруженность сети. Этот процесс производится самими хранилищами автоматически. Поскольку SAFE Network полностью автономна, процесс пройдет быстро без необходимости вмешательства человека.
+
+Когда пользователь предоставляет места больше, чем он использует SAFE Network, сеть его награждает safecoins, которые необходимы для получения доступа к услугам в сети. Пользователь видит, сколько safecoins он имеет в своем кошельке. Кошелек автоматически настраивается в процессе установки клиента SAFE и регистрации.
 
 When a user provides more storage space than the amount they use on the SAFE Network, they are awarded safecoins at random by the network. Safecoins are required to access services on the network. The user can see how many safecoins they have by looking at their wallet. The wallet is automatically set up and configured as part of the MaidSafe client installation and sign up process.
 
