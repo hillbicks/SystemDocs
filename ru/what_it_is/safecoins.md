@@ -9,6 +9,8 @@ a) Фарминг (дословно "фермерство") - это проце�
 
 б) Разработчики ядра сети могут зарабатывать safecoins при устранении неполадок либо разработке новых функций сети.
 
+в) Люди или компании, создающие приложения в SAFE Network, также будут иметь возможность зарабатывать safecoins. Когда они создадут и выпустят новое приложение, они привяжут адрес своего кошелька к этому приложению. В зависимости от того, как часто используется приложение, сеть будет распределять safecoins по кошелькам разработчиков данного приложения. 
+
 c) People or companies building applications on the SAFE Network will also be able to earn safecoins. As they create and release new applications, they will code their SAFE wallet address into their application. Based on how much the
 application is used, the network will pay safecoins to the safecoin wallet address of the app creator. This provides a built in revenue stream for app developers, one that is directly proportional to how successful their application is.
 
