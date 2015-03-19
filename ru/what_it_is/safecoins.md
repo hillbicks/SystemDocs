@@ -5,7 +5,7 @@ Safecoins это валюта SAFE Network. Это система денежны
 
 Получить safecoins можно через (а) фарминг, (б) участие в модернизации исходного кода, (в) создание или (г) приобретение приложений.
 
-a) Фарминг (дословно "фермерство") это процесс предоставления пользователями в сеть своих ресурсов (место на диске, процессора и пропускной способности).
+a) Фарминг (дословно "фермерство") это процесс предоставления пользователями в сеть своих ресурсов (место на диске, процессора и пропускной способности). Пользователь с помощью клиента SAFE Network создает свой кошелек, который будет криптографически привязан к аккаунту. 
 a) Farming is a process whereby users provide resource
 (storage space, CPU and bandwidth) to the network. When each user creates their credentials, they will set up a safecoin wallet via their SAFE Network client and this wallet identity
 will be cryptographically linked to their account. The network will allocate safecoins to a user based on how much resource they provide.
