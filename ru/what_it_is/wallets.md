@@ -1,4 +1,7 @@
-# Wallets
+# Кошельки (Wallets)
+Кошелек - это виртуальное место хранения safecoins, содержащее цифровую запись о safecoins, принадлежащих пользователю. Когда он предоставляет больше ресурсов (или разработчик приложения выпускает новое приложение), баланс кошелька соответственно увеличивается.
+
+
 Wallets are virtual storage locations for safecoins. The user's wallet contains a digital record of the safecoins owned by a user. As a user provides more storage or an App Builder provides more applications, their wallet balance will increase as additional resources are provided.
 
 An App Builder is a user that creates applications that can be used on the SAFE Network.
