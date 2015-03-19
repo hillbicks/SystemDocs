@@ -1,5 +1,6 @@
-# How it works
+# Как она работает
 
+Когда пользователь скачивает и устанавливает клиент SAFE, происходит настройка хранилища на его компьютере. 
 When a user downloads and installs the MaidSafe client, a Vault is configured on their computer.
 
 After joining and signing in to the SAFE Network, the user can see a new virtual mounted drive on their system. Selecting this drive displays their static data that has been encrypted and distributed around other Vaults.
