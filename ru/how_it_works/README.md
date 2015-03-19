@@ -12,12 +12,12 @@
 
 Typically the user connects to the network through a router. The router uses Reliable UDP (RUDP) protocol to connect to the network. RUDP is a more robust protocol than UDP as lost packets are retransmitted and are capable of traversing NAT routers, unlike TCP. The use of RUDP on the SAFE Network enables data to travel through a router without being corrupted or intercepted.
 
-The user's Vault connects to other Vaults as part of the storage and management of data. The Vaults are constantly checked and ranked (by the Data holder managers personna) using the following criteria:
+Все хранилища соединены между собой, осуществляя хранение и управление данными. У каждого хранилища есть Менеджер хранения данных (Data holder managers persona), который постоянно проверяет хранилище и выставляет ему рейтинг на основании следующих критериев:
 
-* **Availability** - how often the Vault is on or off
-* **Storage** - how much storage space is in the Vault
-* **CPU** - how much CPU resource of the Vault
-* **Bandwidth** - how fast or slow the access is to the Vault
+* **Доступность** - как часто хранилище on или off
+* **Объем** - как много места в хранилище
+* **Мощность ЦПУ** - какова мощность процессора
+* **Пропускная способность** - скорость доступа к хранилищу
 
 As demand and resources on the SAFE Network change, the Vaults adapt and continually balance the load of the network. This adjustment process is done automatically by the Vaults themselves. As the SAFE Network is completely autonomous, it can react quickly and without the need for any human intervention.
 
