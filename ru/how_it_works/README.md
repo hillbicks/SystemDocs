@@ -8,7 +8,7 @@
 
 Прежде чем распределить данные по сети, они шифруются. Процесс самошифрования включает в себя разделение данных на маленькие кусочки и их последующее шифрование с помощью личной информации пользователя и самих данных. Это значит, что если кто-то захочет просмотреть данные, ему нужно будет знать личную информацию пользователя и специфику этих данных. Но эта информация не хранится в чужих системах или серверах.
 
-Before the data is stored on the SAFE Network it is automatically encrypted. The self-encryption process involves breaking up the data into small chunks and then encrypting those chunks with the user's login details and the data itself. This means that if anyone wanted to see the data they would need the user's secure login details and have knowledge about the specific chunk of data. None of this information is held on 3rd party systems or servers.
+Ообычно пользователь подключается к сети через роутер. Роутер использует протокол Reliable UDP (RUDP) (*рус. надежный UDP* ). RUDP более мощный, чем UDP, так как потерянные пакеты отправляются заново и они способны пересекать роутера NAT в отличии от TCP.
 
 Typically the user connects to the network through a router. The router uses Reliable UDP (RUDP) protocol to connect to the network. RUDP is a more robust protocol than UDP as lost packets are retransmitted and are capable of traversing NAT routers, unlike TCP. The use of RUDP on the SAFE Network enables data to travel through a router without being corrupted or intercepted.
 
