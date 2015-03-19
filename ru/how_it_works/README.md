@@ -19,10 +19,8 @@
 
 Так как спрос и ресурсы в SAFE Network постоянно изменяются, хранилища должны уметь адаптироваться и уравнивать загруженность сети. Этот процесс производится самими хранилищами автоматически. Поскольку SAFE Network полностью автономна, процесс пройдет быстро без необходимости вмешательства человека.
 
-Когда пользователь предоставляет места больше, чем он использует SAFE Network, сеть его награждает safecoins, которые необходимы для получения доступа к услугам в сети. Пользователь видит, сколько safecoins он имеет в своем кошельке. Кошелек автоматически настраивается в процессе установки клиента SAFE и регистрации.
+Когда пользователь предоставляет больше памяти, чем он использует сам в SAFE Network, сеть награждает его safecoins, которые необходимы для получения услуг в сети. Пользователь видит, сколько safecoins у него есть в своем кошельке. Кошелек автоматически настраивается в процессе установки клиента SAFE и регистрации.
 
-When a user provides more storage space than the amount they use on the SAFE Network, they are awarded safecoins at random by the network. Safecoins are required to access services on the network. The user can see how many safecoins they have by looking at their wallet. The wallet is automatically set up and configured as part of the MaidSafe client installation and sign up process.
-
-App Builders earn safecoins when they create apps and programs for the SAFE Network. As the apps are used, the App Builder earns safecoins.
+Разработчики приложений зарабатывают safecoins, когда создают свои программы для SAFE Network. Если приложение пользуется успехом, его разработчики получают safecoins.
 
 Core Developers can also be awarded safecoins by contributing to the SAFE Network codebase.
