@@ -23,4 +23,4 @@
 
 Разработчики приложений зарабатывают safecoins, когда создают свои программы для SAFE Network. Если приложение пользуется успехом, его разработчики получают safecoins.
 
-Core Developers can also be awarded safecoins by contributing to the SAFE Network codebase.
+Разработчики ядра сети тоже получают safecoins за участие в улучшении кода ядра.
