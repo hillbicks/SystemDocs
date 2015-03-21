@@ -1,18 +1,18 @@
 # Descripción de la red SAFE
 
-Este libro está escrito para cualquiera que desee conocer más sobre la red **SAFE (Secure Access For Everyone)** de Maidsafe. Este libro explica los detalles y beneficios del uso de esta red. Están cubiertas la siguientes areas: 
+Este libro está escrito para cualquier persona que quiera conocer más acerca de la **red SAFE (Secure Access For Everyone, o en español, Acceso seguro para todos)** de MaidSafe. El libro explica los detalles y beneficios de utilizar esta red. Se incluyen los siguientes temas:
 
-* **Que es**<br />
+* **¿Qué es esto?**<br />
 Proporciona una visión general de la red SAFE.
 
-* **Como funciona**<br />
+* **¿Cómo funciona?**<br />
 Proporciona una visión general de los componentes y procesos de la red.
 
-* **Como usarlo**<br />
-Proporciona información de como interactuar con la red y los roles de los diferentes usuarios.
+* **¿Cómo se utiliza?**<br />
+Proporciona información sobre la interacción con la red y los roles de los diferentes usuarios.
 
-* **Como involucrarse**<br />
-Proporciona información de como involucrarse.
+* **Involúcrese**<br />
+Proporciona información que indica a dónde dirigirse para participar en el proyecto.
 
 * **FAQs**<br />
-Si no puedes encontrar la información que estás buscando, la lista FAQ proporciona preguntas y respuestas comunes.
+Si no encontra lo que busca, la sección FAQs reúne las preguntas y respuestas más comunes.
