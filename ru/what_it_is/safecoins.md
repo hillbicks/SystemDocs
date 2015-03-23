@@ -1,29 +1,21 @@
 # Safecoins
-Safecoins это валюта SAFE Network. Это система денежных знаков, используемая только внутри SAFE Network. Распределение safecoins целиком проводится сетью, основываясь на их использовании, и ориентировочно около 4.3 миллиардов safecoins будет выпущено на протяжении жизни сети.
+Safecoins это валюта SAFE Network. Это система денежных знаков, используемая только внутри SAFE Network. Распределение safecoins целиком и полностью проводится сетью, основываясь на их использовании, и планируется выпуск 4.3 миллиардов safecoins, которые будут находится в постоянном обороте.
 
-While consuming data is free of charge, many of the services will require safecoins, such as buying additional storage space, or access to network applications. All safecoins are saved in a user's wallet.
+Так как потребление информации бесплатно, некоторые сервисы могут требовать safecoins, например, за приобретение дополнительного места в хранилище или за доступ к приложениям. Все safecoins хранятся в кошельке (wallet) пользователя.
 
-Safecoin can be obtained through (a) farming,(b) assisting with the maintenance of the underlying code, (c) creating applications or (d) by purchasing them.
+Получить safecoins можно через (а) фарминг, (б) участие в модернизации исходного кода, (в) создание приложений или (г) покупку.
 
-a) Farming is a process whereby users provide resource
-(storage space, CPU and bandwidth) to the network. When each user creates their credentials, they will set up a safecoin wallet via their SAFE Network client and this wallet identity
-will be cryptographically linked to their account. The network will allocate safecoins to a user based on how much resource they provide.
+a) Фарминг (*с англ. "фермерство"*) - это процесс предоставления пользователями в сеть своих ресурсов (места на диске, мощности процессора и пропускной способности). Пользователь с помощью клиента SAFE Network создает свой кошелек, который криптографически привязан к аккаунту. Сеть распределяет safecoins между пользователями в зависимости от того, сколько ресурсов они предоставляют.
 
-b) It is also possible for core developers to earn safecoin
-by fixing bugs and developing new features
-for the underlying network.
+б) Разработчики ядра сети могут зарабатывать safecoins при устранении неполадок либо разработке новых функций сети.
 
-c) People or companies building applications on the SAFE Network will also be able to earn safecoins. As they create and release new applications, they will code their SAFE wallet address into their application. Based on how much the
-application is used, the network will pay safecoins to the safecoin wallet address of the app creator. This provides a built in revenue stream for app developers, one that is directly proportional to how successful their application is.
+в) Люди или компании, создающие приложения в SAFE Network, также имеют возможность зарабатывать safecoins. Когда они создают и выпускают новое приложение, они привязывают адрес своего кошелька к этому приложению. В зависимости от того, как часто оно используется, сеть распределяет safecoins по кошелькам разработчиков данного приложения. Таким образом, формируется поток доходов, прямопропорциональный популярности приложения.
 
-d) It will also be possible to buy safecoin. It is anticipated that these purchases will be made from decentralised peer to peer exchanges that will be built by third party developers. These exchanges will serve as platforms, enabling a buyer and seller to trade directly.
+г) Также safecoins можно купить. Ожидается, что покупки можно будет производить в распределнных пиринговых обменных пунтках, которые будут созданы сторонними разработчиками. Эти обменные пункты будут служить платформами для прямой торговли между покупателями и продавцами.
 
-Transfers of safecoins between users is managed automatically by Transaction managers. The Transaction managers are Vault personas whose priority is to ensure that safecoins are digitally signed and are never deleted or corrupted.
+Переводом safecoins занимаются Менеджеры транзакций. Это объекты хранилища, чья прямая обязанность проверять, что safecoins имеют цифровую подпись, а так же никогда не удаляются и не повреждаются.
 
-As there can be multiple Transaction managers coordinating different safecoin transactions at the same time, an unrestricted number of transactions can take place at network speed.
+Так как при обработке нескольких транзакций одновременно в хранилище могут работать несколько Менеджеров транзацкий, количество транзакций ограничено и зависит от скорости сети.
 
-A safecoin is a piece of digital information. The only historical data held with a safecoin is the current and previous owner's details. These details are used for verification purposes. This means that safecoins can be thought of as digital cash, leaving no audit trail.
-
-
-
+Safecoin - это частичка цифровой информации. Единственная информация, хранящаяся вместе с safecoin это данные о текущем и предыдущем владельцах. Эта информация используется с целью подтверждения. Это значит, о safecoins можно говорить как о цифровых наличных без бухгалтерского учета.
 
