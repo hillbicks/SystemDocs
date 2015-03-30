@@ -1,18 +1,21 @@
-## Drive Overview
+## Drive Überblick
 
-The MaidSafe-Drive library presents a user-mode interface to the kernel-mode modules Eldos' [Callback File System](https://www.eldos.com/cbfs/), [Fuse](http://fuse.sourceforge.net/) and [OSXFuse](http://osxfuse.github.io/) available for Windows, Linux and Mac platforms respectively. In each case a virtual drive can be mounted and presented as a native drive on the system. Filesystem operations performed on the drive are filtered to relevant callback functions the user-mode code has registered to handle. Directories/files are encrypted using the facilities present in [Encrypt](https://github.com/maidsafe/MaidSafe-Encrypt/wiki), while they are stored/retrieved directly to/form the network via [Network-Filesystem](https://github.com/maidsafe/MaidSafe-Network-Filesystem/wiki), [Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) and [RUDP](https://github.com/maidsafe/MaidSafe-RUDP/wiki). The space available/used on the drive is derived from the values a client reports it's Vault's to have offered to/used on the network.
+Die MaidSafe-Drive library stellt ein user-mode Interface zu den kernel-mode Modulen Eldos'
+[Callback File System](https://www.eldos.com/cbfs/), [Fuse](http://fuse.sourceforge.net/) und [OSXFuse](http://osxfuse.github.io/) dar, die für die Windows, Linux und Mac Plattformen bereitstehen. In jedem dieser Fälle kann ein virtuelles Laufwerk eingebunden werden, dass dann als natives Laufwerk auf dem System präsentiert wird. Dateisystem Operationen auf diesem Laufwerk werden zu relevanten callback Funktionen gefiltert, die vom user-mode code behandelt werden. Verzeichnisse bzw. Dateien sind verschlüsselt durch die Funktionen in [Encrypt](https://github.com/maidsafe/MaidSafe-Encrypt/wiki), während sie direkt im Netzwerk gespeichert/abgerufen werden durch das [Network-Filesystem](https://github.com/maidsafe/MaidSafe-Network-Filesystem/wiki), [Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) und [RUDP](https://github.com/maidsafe/MaidSafe-RUDP/wiki). Der Platz auf dem Laufwerk, der vorhanden/genutzt ist, wird abgeleitet von Werten, die ein Client berichtet sein Vault angeboten/benutzt zu haben im Netzwerk.
+
+
+
+
 
 ### Details
 
-The MaidSafe-Drive API includes the following files:
+Das MaidSafe-Drive API beinhaltet folgende Dateien:
 
-* [drive_api.h](https://github.com/maidsafe/MaidSafe-Drive/blob/master/include/maidsafe/drive/drive_api.h) defines the base class with shared interface to the platform specific derived classes defined in the header files outlined below.
-* [win_drive.h](https://github.com/maidsafe/MaidSafe-Drive/blob/master/include/maidsafe/drive/win_drive.h) includes user-mode code specific to Windows and [Callback File System](https://www.eldos.com/cbfs/).
-* [unix_drive.h](https://github.com/maidsafe/MaidSafe-Drive/blob/master/include/maidsafe/drive/unix_drive.h) includes user-mode code specific to Linux and [Fuse](http://fuse.sourceforge.net/).
-* [config.h](https://github.com/maidsafe/MaidSafe-Drive/blob/master/include/maidsafe/drive/config.h) provides convenient typdef's and constants.
+* [drive_api.h](https://github.com/maidsafe/MaidSafe-Drive/blob/master/include/maidsafe/drive/drive_api.h) definiert die Grundklasse mit gemeinsamen Interface zu den plattformspezifischen, abgeleiteten Klassen, die in den header Dateien nachfolgend beschrieben sind.
+*
+ [win_drive.h](https://github.com/maidsafe/MaidSafe-Drive/blob/master/include/maidsafe/drive/win_drive.h) beinhaltet user-mode Code spezifisch für Windows und [Callback File System](https://www.eldos.com/cbfs/).
+* [unix_drive.h](https://github.com/maidsafe/MaidSafe-Drive/blob/master/include/maidsafe/drive/unix_drive.h) beinhaltet user-mode Code spezifisch für Linux und [Fuse](http://fuse.sourceforge.net/).
+*
+[config.h](https://github.com/maidsafe/MaidSafe-Drive/blob/master/include/maidsafe/drive/config.h) stellt praktische typedefs und Konstanten zur Verfügung.
 
-Further details describing the class interfaces, etc., can be found within the files and also in the supporting material available to the library.
-
-
-
-
+Weitere Details, die die Klassen Interfaces usw. beschreiben, können in den Dateien und auch in dem weiterführenden Material zu der Library gefunden werden.
