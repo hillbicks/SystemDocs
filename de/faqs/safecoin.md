@@ -2,7 +2,7 @@
 
 ###Was gibt Safecoins Wert?
 
-Safecoins besitzten Wert, da sie Nutzen haben. Benutzer könne Safecoins durch  
+Safecoins besitzten Wert, da sie Nutzen haben. Benutzer könne Safecoins durch
 [farming](http://www.maidsafe.net/SystemDocs/how_to_use_it/farmers.html) verdienen und diese dazu benutzen Speicherplatz und Zugang zu Apps und Diensten auf dem Netzwerk zu erhalten.
 Es wird auch möglich sein Safecoins auf Tauschbörsen zu kaufen, sobald das Netzwerk gestartet ist. Der Preis von Safecoins wird über diese Tauschbörsen festgelegt.
 
@@ -28,7 +28,7 @@ sowie die steigende Anzahl der Benutzer des Netzwerkes (die ihre Safecoins halte
 
 Mit der Zeit wird sich diese Dynamik verstärken (da das Volumen wächst), die die Anzahl der Benutzer wächst. Der Anreiz, die Safecoins zu halten bzw. zu nutzen wird sich auch die Apps, die dann verfügbar werden, verstärken. Spekulation wird diese Dynamik natürlich beeinflussen, aber das Netzwerk besitzt einen echten Wert, der in ihm verankert ist und die Effekte der Spekulation abschwächen wird.
 
-Für weitere Informationen über diese FAQs, können die vollständigen Antworten auf  
+Für weitere Informationen über diese FAQs, können die vollständigen Antworten auf
 [maidsafe.org](https://www.maidsafe.org/t/what-gives-safecoin-value-and-differentiates-it-from-altcoins/411) eingesehen werden.
 
 

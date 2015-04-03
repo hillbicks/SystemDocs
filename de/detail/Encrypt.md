@@ -1,4 +1,4 @@
-### Overview
+### Überblick
 
 MaidSafe-Encrypt implementiert Funktionen, die sich auf die Selbstverschlüsselung von Dateien und Ordnern beziehen.
 
@@ -32,12 +32,10 @@ Im Fall von Verzeichnissen, können die Inhalte (eine Kollektion von DataMap und
 
 ### Details
 
-[self_encryptor.h](https://github.com/maidsafe/MaidSafe-Encrypt/blob/master/include/maidsafe/encrypt/self_encryptor.h) provides free functions for the encryption and decryption of `DataMap`s.  It also declares the `SelfEncryptor` class which is used in the encryption/decryption of files.
-
 
 [self_encryptor.h](https://github.com/maidsafe/MaidSafe-Encrypt/blob/master/include/maidsafe/encrypt/self_encryptor.h) stellt freie Funktionen für die Verschlüsselung und Entschlüsselung von DataMaps zur Verfügung. Es definiert auch die `SelfEncryptor` Klasse, die beim Verschlüsseln/Entschlüsseln von Dateien verwendet wird.
 
-The `SelfEncryptor` Klasse ist designed um kompatibel mit den Typen von calls zu sein, die zu erwarten sind wenn Encrypt unter einem virtuellen Dateisystem (VFS) wie [FUSE](http://fuse.sourceforge.net/) benutzt wird. Es ist designed um eine throwaway Klasse zu sein; eine neue Instanz wird konstruiert wenn ein Datei handle im VFS geöffnet ist und wird zerstört wenn das handle abgelegt wird. Als solches ist die Klasse [conditionally thread safe](http://en.wikipedia.org/wiki/Thread_safety#Levels_of_thread_safety).
+Die `SelfEncryptor` Klasse ist designed um kompatibel mit den Typen von calls zu sein, die zu erwarten sind wenn Encrypt unter einem virtuellen Dateisystem (VFS) wie [FUSE](http://fuse.sourceforge.net/) benutzt wird. Es ist designed um eine throwaway Klasse zu sein; eine neue Instanz wird konstruiert wenn ein Datei handle im VFS geöffnet ist und wird zerstört wenn das handle abgelegt wird. Als solches ist die Klasse [conditionally thread safe](http://en.wikipedia.org/wiki/Thread_safety#Levels_of_thread_safety).
 
 Der Konstruktor benötigt einen pointer zu einer `DataMap`, Zugang zu dem DHT über ein non-const ref zu einem `nfs::ClientMaidNfs` und Zugang zu einem Puffer für temporäre chunks über ein non-const ref zu einem `data_store::PermanentStore`. Desweiteren kann die Anzahl and threads die zu benutzen sind für die Verschlüsselung/Entschlüsselung bereitgestellt werden.
 
