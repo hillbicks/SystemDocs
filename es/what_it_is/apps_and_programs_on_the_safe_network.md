@@ -1,6 +1,6 @@
 #Aplicaciones y programas en la red SAFE
 
-La red SAFE sirve también como plataforma para aplicaciones y programas que pueden ser utilizadas por los usuarios de la red.
+La red SAFE sirve también como plataforma para aplicaciones y programas que pueden ser utilizados por los demás usuarios.
 
 Estos son algunos ejemplos de los tipos de aplicación que podremos encontrar en la red SAFE.
 
@@ -9,11 +9,10 @@ Estos son algunos ejemplos de los tipos de aplicación que podremos encontrar en
 * Sitios Web
 * VoIP
 * Redes sociales
-* Procesado de cualquier tipo de datos de cualquier programa
 * Bases de datos distribuidas
 * Firma de documentos o contratos
-* Cualquier otro servicio que existe en internet
+* Cualquier otro servicio que existe en Internet
 
-Las aplicaciones y programas contienen llaves criptográficas seguras que permiten, de forma automática, firmar inicios de sesión o como prueba de pertenencia de cualquier servicio de la red.
+Las aplicaciones y programas contienen llaves criptográficas seguras que permiten, de forma automática, firmar solicitudes de inicios de sesión o como prueba de pertenencia de cualquier servicio de la red.
 
-Por ejemplo, un sitio Web en el que se necesite darse de alta puede presentar un botón para realizarlo. Una vez pulsado, el sistema realiza una firma de forma automática y así permitirá su acceso en el futuro.
+Por ejemplo, un sitio web con registro de usuarios puede presentar un botón para registrarse, y simplemente con presionar el botón, el sistema realiza una firma de forma automática y así permitirá su acceso en el futuro.

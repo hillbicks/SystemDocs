@@ -1,40 +1,34 @@
-## RUDP Overview
+## RUDP Überblick
+RUDP (Reliable UDP) implementiert pseudo Verbindungen mittels UDP um viele der Vorteile eines Verbindungsbasierenden Protokolls wie TCP zu erreichen, dabei aber [NAT Traversal](https://de.wikipedia.org/wiki/Network_Address_Translation#NAT-Traversal) zu ermöglichen welches TCP nicht kann. Darüber hinaus werden alle Daten zwischen den beiden Endpunkten verschlüsselt indem ein sicherer und verifizierbarer RSA Public-Key Austausch Mechanismus genutzt wird. Das bildet einen Teil von [PKI](https://de.wikipedia.org/wiki/Public-Key-Infrastruktur) welches vom SAFE Netzwerk bereitgestellt wird.
 
-RUDP (Reliable UDP) implements psuedo-connections using UDP to achieve many of the benefits of a connection-based protocol like TCP, but crucially allows [NAT traversal](https://en.wikipedia.org/wiki/Network_address_translation#Type_of_NAT_and_NAT_traversal.2C_role_of_port_preservation_for_TCP) where TCP cannot. Furthermore, all data is encrypted between both endpoints using a secure, verifiable RSA public key exchange mechanism.  This forms part of the [PKI](http://en.wikipedia.org/wiki/Public-key_infrastructure) which is provided by the SAFE Network.
+Die Schnittstellen der Bibliothek wird mit den folgenden Dateien zur Verfügung gestellt:
 
-The library's interface is provided in the following files:
+* [managed_connections.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/managed_connections.h) - Das ist die Haupt API und wird weiter unten in mehr Details beschrieben
+* [parameters.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/parameters.h) - stellt Variablen für die Bibliotheken Konfiguration
+* [return_codes.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/return_codes.h) - Die Nutzung von return codes wird in Zukunft vom Fehlerbehandlungs Mechanismus in  [MaidSafe-Common](https://github.com/maidsafe/MaidSafe-Common/wiki) bereitgestellt.
+* [nat_type.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/nat_type.h) - eine Aufzählung der relevanten  [NAT](https://de.wikipedia.org/wiki/Network_address_translation) Typen die die Bibliothek identifizieren muss.
 
-* [managed_connections.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/managed_connections.h) - this is the main API and is discussed in more detail below
-* [parameters.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/parameters.h) - provides library configuration variables
-* [return_codes.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/return_codes.h) - In the future, the use of return codes will be replaced with the error-handling mechanisms provided in the [MaidSafe-Common](https://github.com/maidsafe/MaidSafe-Common/wiki).
-* [nat_type.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/nat_type.h) - an enumeration of the relevant [NAT](https://en.wikipedia.org/wiki/Network_address_translation) types the library needs to identify
-
-The library makes heavy use of [Boost.Asio](http://www.boost.org/doc/libs/1_55_0/doc/html/boost_asio.html), both for network-related operations and asynchronous operations. It also depends on the MaidSafe libraries [Common](https://github.com/maidsafe/MaidSafe-Common/wiki), [Private](https://github.com/maidsafe/MaidSafe-Vault-Manager/wiki), and [Passport](https://github.com/maidsafe/MaidSafe-Passport/wiki).
+Die Bibliothek macht starken Gebrauch von  [Boost.Asio](http://www.boost.org/doc/libs/1_55_0/doc/html/boost_asio.html), sowohl für Netzwerk bezogene Operationen als auch asynchrone Operationen. Es ist ausserdem abhängig von den Maidsafe Bibliotheken [Common](https://github.com/maidsafe/MaidSafe-Common/wiki), [Private](https://github.com/maidsafe/MaidSafe-Vault-Manager/wiki), and [Passport](https://github.com/maidsafe/MaidSafe-Passport/wiki).
 
 
-### Background
+### Hintergrund
 
-Two RUDP nodes maintain a psuedo-connection or "managed connection" by continually sending small keepalive control messages between each other.  The connection can be closed by either peer by sending a shutdown control message, hence under normal circumstances peers become aware very quickly of a closed connection.  Should a fixed number of keepalives fail to be received in a row for a given connection, the node considers the connection to be dead.  This is a slower mechanism than using the shutdown message, however, it should be far less common since it is caused by the peer process terminating unexpectedly, or by the peer's network connection dropping unexpectedly for example.
+Zwei RUDP Nodes halten eine pseudo Verbindung oder "managed Verbindung" aufrecht, indem kontinuierlich kleine keepalive Kontrolnachrichten zwischen ihnen gesendet werden. Die Verbindung kann von jeder Seite geschlossen werden indem eine Abschaltungskontrollnachricht gesendet wird, daher bekommen Peers unter normalen Umständen sehr schnell mit wenn eine Verbindung geschlossen wurde. Sollte eine feste Anzahl von keepalives einer Verbindung  hintereinander nicht empfangen werden so sieht der Node diese Verbindung als geschlossen an. Das ist ein langsamerer Mechanismus als die Abschalt Nachricht, sie sollte jedoch viel seltener vorkommen da sie durch ein unerwartetes Abschalten des Peer Prozesses oder durch unerwarteten Verbindungsverlust der Netzwerkverbindung ausgelöst wird.
 
-For each connection, a node has an `EndpointPair` associated with itself and another for the peer.  The `EndpointPair` contains the "local" endpoint (IP/Port as seen inside or behind the router) and the "external" endpoint (IP/Port as seen outside the router).  External endpoints are preferred, internals are used in case the external fails and the two peers are both behind a router which disallows hairpinning.
+Für jede Verbindung hat eine Node einen `EndpointPair` der der Node und dem anderen Peer zugeordnet ist. Der `EndpointPair` enthält den "lokalen" Endpunkt (IP/Port wie er hinter dem Router aussieht) und dem "externen" Endpunkt (IP/Port wie er von ausserhalb des Routers aussieht). Externe Endpunkte werden bevorzugt, interne werden benutzt wenn die externen fehlschlagen und die beiden Peers beide hinter einem Router sind der kein hairpinning erlaubt.
 
-A connection cannot be established between two peers which are both behind routers providing [Symmetric NAT](https://en.wikipedia.org/wiki/Network_address_translation#Methods_of_port_translation).  The MaidSafe [Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) library handles this by providing a proxy node for each such "hidden" node, and as such the RUDP library doesn't attempt to resolve this issue.
-
+Eine Verbindung zwischen zwei Peers die sich beide hinter Routern mit [Symmetrischem NAT](https://en.wikipedia.org/wiki/Network_address_translation#Methods_of_port_translation) befinden kann nicht hergestellt werden. Die [SAFE Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) Bibliothek handhabt dies indem ein proxy Node für solchen "versteckten" Nodes zur Verfgung gestellt wird, von daher versucht die RUDP Bibliothek gar nicht erst dieses Problem zu lösen.
 
 ### Details
 
-[managed_connections.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/managed_connections.h) defines three functors; `MessageReceivedFunctor`, `ConnectionLostFunctor`, and `MessageSentFunctor`.  The first two must be provided in the `ManagedConnections::Bootstrap` function, can be called many times by RUDP and are self-explanatory.
+[managed_connections.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/managed_connections.h) definiert drei Funktoren: `MessageReceivedFunctor`, `ConnectionLostFunctor`, und `MessageSentFunctor`. Die ersten beiden müssen in der `ManagedConnections::Bootstrap` Funktion bereitgestellt werden, können immer wieder von RUDP aufgerufen werden und sind selbsterklärend.
 
-The `MessageSentFunctor` will be invoked exactly once per call to `ManagedConnections::Send`.  It indicates that the associated message has been received by the target peer, (not just enqueued for sending, but actually received), or else has failed.  It is anticipated (but not required) that a separate instance of `MessageSentFunctor` will be passed in each call to `Send`.
+Der `MessageSentFunctor` wird genau einmal pro Aufruf von `ManagedConnections::Send` aufgerufen. Das zeigt an das die dazugehörige Nachricht vom Ziel Peer empfangen wurde (nicht nur zum Senden eingereiht, sondern tatsächlich empfangen) oder es fehlgeschlagen ist. Es wird davon ausgegangen (aber nicht angefordert) das eine separate Instanz von `MessageSentFunctor` jedem Aufruf zum Senden übergeben wird.
 
-Internally, a `ManagedConnections` class maintains several (up to `Parameters::max_transports`) transport objects, each with its own actual network socket.  This socket is used to maintain several, (currently up to 50) (see [transport.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/src/maidsafe/rudp/transport.h)), `Transport::kMaxConnections`) psuedo-connections.  Therefore, it is likely that having very few `ManagedConnections` objects will provide optimal performance.
+Intern hält eine `ManagedConnections` Klasse diverse (bis zu `Parameters::max_transports`) Transport Objektve aufrecht, jedes mit seinem eigenen Netzwerk Socket. Dieser Socket wird benutzt um diverse (momentan bis zu 50) (siehe [transport.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/src/maidsafe/rudp/transport.h)) `Transport::kMaxConnections`) pseudo Verbindungen aufrecht zu erhalten. Daher ist es wahrscheinlich das eine geringe Anzahl von `ManagedConnections` Objekten eine optimale Performance bieten werden.
 
-Bootstrapping a `ManagedConnections` object can be a slow process, as connections are attempted to the various candidate endpoints until one succeeds.
+Bootstrapping eines `ManagedConnections` Objektes kann ein langsamer Prozess sein, da versucht wird Verbindungen zu zahlreichen potentiellen Endpunkten aufzubauen bis eine erfolgreich ist.
 
-`ManagedConnections::kResiliencePort()` provides a network-wide known port which can be used in a disaster-recovery situation.  Every `ManagedConnections` instance attempts to open this port locally.  After network segmentation for example, nodes can try to rejoin by attempting to connect to other local nodes, or to direct-connected nodes using this known port.
+`ManagedConnections::kResiliencePort()` bietet einen de gesamten Netzwerk bekannten Port der im Falle einer DisasterRecovery genutzt werden kann. Jede `ManagedConnections` Instanz versucht diesen Port lokal zu öffnen. Nach einer Netzwerk Segmentierung können die Nodes beispielsweise versuchen sich zu anderen lokalen Nodes zu verbinden, oder um verbundene Nodes mit Hilfe dieses Ports anzuweisen.
 
-Further details of the individual functions can be found in the [managed_connections.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/managed_connections.h) file itself.
-
-
-
-
+Weitere Details zu den einzelnen Funktionen sind in der [managed_connections.h](https://github.com/maidsafe/MaidSafe-RUDP/blob/master/include/maidsafe/rudp/managed_connections.h) Datei selbst zu finden.

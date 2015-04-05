@@ -1,22 +1,22 @@
 #Acceso a la red SAFE
-El cliente Maidsafe es un programa utilizado para introducir nuestras claves y acceder a la red SAFE. Una vez inicializado el programa cliente Maidsafe pedirá los siguientes datos.
+El cliente Maidsafe es un programa utilizado para iniciar sesión y acceder a la red SAFE. Una vez inicializado el cliente Maidsafe, se pedirán los siguientes datos.
 
 * Clave
 * PIN
 * Password
 
-Con estos datos la red SAFE autentifica al usuario dentro de la red SAFE y desencripta su atlas de datos lo cual le permite el acceso a la totalidad de sus datos igualmente encriptados.
+Con estos datos, la red SAFE autentifica al usuario dentro de la red y desencripta un mapa de sus datos, lo cual le permite el acceso a la totalidad de sus datos igualmente encriptados.
 
-El cliente Maidsafe es un pequeño programa multiplataforma (Windows, Mac y Linux) que, por los bajos recursos necesarios, no modifica el rendimiento del equipo. Posteriormente a la autentificación, a traves de dicho cliente, ya no será necesario nuevos password o cualquier otro tipo de identificación para acceder a datos compartidos o aplicaciones dentro de la red SAFE.
+El cliente Maidsafe es un pequeño programa multiplataforma (Windows, Mac y Linux) que, por los bajos recursos que utiliza, no modifica el rendimiento del equipo. Posteriormente a la autentificación, a traves de dicho cliente, ya no será necesario nuevas contraseñas o cualquier otro tipo de identificación para acceder a datos compartidos o aplicaciones dentro de la red SAFE.
 
-Ningún password o rastro se guarda ni por el cliente Maidsafe ni en la red. Ningún detalle sobre el usuario o sus datos se guardan en el ordenador usado para acceder a la red SAFE. Esto permite el acceso a la red SAFE desde cualquier ordenador que simplemente posea el cliente Maidsafe.
+Ninguna contraseña o datos de indentificación de la sesión es guardada ni por el cliente Maidsafe ni en la red SAFE. Esto significa que ningún dato del usuario o su sesión permanecen en la PC que se haya utilizado para acceder a la red. Un mismo usuario puede iniciar sesión desde cualquier PC que tenga instalado el cliente MaidSafe.
 
-De la misma manera que el cliente Maidsafe, el usuario necesita safecoin para acceder a la red. Safecoin es el token que sirve como moneda dentro de la red SAFE.
+Así como el cliente Maidsafe, el usuario también necesita safecoin para acceder a la red. Safecoin es el token que sirve como moneda dentro de la red SAFE.
 
 Se pueden ganar safecoin de las siguientes maneras:
 
-* Donando recursos sobrantes a la red SAFE (espacio disco, CPU, ancho de banda)
+* Donando recursos sobrantes a la red SAFE (espacio de disco duro, potencia del CPU, ancho de banda)
 * Creando aplicaciones para la red SAFE
-* Contribuyendo al desarrollo del codigo base de la red SAFE.
+* Contribuyendo al desarrollo del código núcleo de la red SAFE.
 
-Se espera que, poco despues del lanzamiento al público de la red SAFE, sea posible comprar safecoin a traves de exchanges descentralizados que existirán dentro de dicha red.
+Se espera que, poco después del lanzamiento al público de la red SAFE, sea posible comprar safecoin a traves de exchanges descentralizados que existirán dentro de dicha red.

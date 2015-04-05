@@ -1,138 +1,143 @@
-## Routing Overview
-
-Routing is a Distributed Hash Table library based on [Kademlia](http://en.wikipedia.org/wiki/Kademlia)-like routing tables. Routing specifies the network structure and determines the path between pair of nodes in the network by using the local information at each intermediate node.
-Each routing node locally stores routing information about the nodes it is directly connected to. Moreover, every node has partial knowledge of the local information of its close nodes (neighbouring ID space).
-The information stored at every node, contributes to message passing infrastructure of routing. Exchanging information in routing typically involves traversing a number of intermediate nodes.  The communication between each pair of nodes is performed by employing [MaidSafe-RUDP](https://github.com/maidsafe/MaidSafe-RUDP/wiki). An acknowledgement/retransmission  mechanism is also provided to ensure reliable message delivery.
-Ability to offer an efficient platform for message exchange between peers, makes routing an ideal overlay network component of any P2P system.
+## Routing Überblick
 
 
-Routing offers the following features:
-* Joining network
+
+Routing ist eine verteile Hash Table Bibliothek die auf einer [Kademlia](http://de.wikipedia.org/wiki/Kademlia) ähnlichen Routing Tabelle besteht. Routing spezifiziert die Netzwerk Struktur legt den Pfad zwischen Paaren von Nodes im Netzwerk fest, indem lokale Informationen jeder Zwischen Node genutzt werden.
+Jede Routing Node speichert routing Informationen über die Nodes zu denen es direkt verbunden ist. Ausserdem hat jede Node partielles Wissen über die lokalen Informationen seiner nächsten Nodes (benachbarter ID Raum).
+Die Informationen die in jedem Node gespeichert sind tragen zur Nachrichten Durchreichung Infrastruktur vom Routing bei. Der Austausch von Informationen im Routing beinhaltet typischerweise das Durchqueren von intermediären Nodes. Die Kommunikation zwischen jedem Nodepaar wird durch die Bereitstellung von [MaidSafe-RUDP](https://github.com/maidsafe/MaidSafe-RUDP/wiki) erledigt. Ein Mechanismus zur Bestätigung/erneuten Übertragung um zuverlässige Nachrichtenzustellung zu garantieren wird ebenfalls bereitgestellt. Die Möglichkeit Die Fähigkeit eine effiziente Plattform für den Nachichtenaustausch zwischen Peers anzubieten, macht Routing eine ideale Overlay Netzwerk Komponente eines jeden Peer-2-Peer Netzwerks.
+
+Routing bietet die folgenden Feature:
+
+* Dem Netzwerk beitreten
 * NAT traversal
-* Modes of operation
-* Reliable direct and group messaging
-* Proximity evaluation
-* Node identification via PKI provided by MaidSafe-Passport
-* Caching mechanism
-* Churn handling
-* Routing table and group matrix
+* Betriebsmodi
+* Zuverlässige direkte und Gruppen Nachrichten
+* Evaluierung der Entfernung
+* Node Identifikation mittels PKI bereitgestellt durch SAFE-Passport
+* Caching Mechanismus
+* Churn Handhabung
+* Routing Tabelle und Gruppen Matrix
 
-The library's interface is provided in the following files:
-* [routing_api.h](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/routing_api.h) - this is the main API and is discussed in more detail below
-* [api_config.h](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/api_config.h) - provides declaration of types which may be used to utilise the library
-* [node_info.h](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/node_info.h) - provides information about a node
-* [parameters.h](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/parameters.h) - provides library configuration variables
+
+Die Schnittstellen der Bibliothek werden in den folgenden Dateien zur Verfügung gestellt:
+* [routing_api.h](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/routing_api.h) - das ist die Haupt API und wird weiter unten mehr beschrieben.
+* [api_config.h](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/api_config.h) - stellt die Erklärung der Typen bereit welche die Bibliothek benutzen.
+* [node_info.h](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/node_info.h) - stellt Informationen über die Node bereit.
+* [parameters.h](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/parameters.h) - stellt Konfigurationsvariablen der Bibliotheken bereit.
 * [return_codes.h](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/return_codes.h)
 
-### Synopsis
+### Übersicht
 
-### Joining the Network
-A node may join the network as
-1. a normal node when a network already exists,
-2. as a zero state node, where the node is one of the first two nodes creating the network.
+### Dem Netzwerk beitreten
+Eine Node kann dem Netzwerk beitreten als:
+1. Eine normale Node wenn das Netzwerk bereits existiert.
+2. Als eine Null Zustand Node, wenn die Node eine von zwei der ersten Nodes ist die das Netzwerk erstellen.
 
-####Joining as a Normal Node
+####Als normale Node dem Netzwerk beitreten
 
-To join an existing network, a node must be provided with a list of end-points of a number of nodes which are already part of the network. The node attempts to connect to any end-point from the list. Once a connect attempt succeeds, the joining node locates and connects to its [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest nodes.  Connecting to the [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest nodes is vital to reliable operation of a node. The rest of the routing table is mainly populated by random nodes in the network to allow uniform access to different parts of the network.
+Um einem existierenden Netzwerk beizutreten muss eine Node mit einer Liste von Endpunkten der Nodes versorgt werden, die bereits Teil des Netzwerks sind. Die Node versucht sich zu einem der Endpunkte aus der Liste zu verbinden. Sobald ein Verbindungsversuch erfolgreich war, ermittelt die verbindende Node die Node die ihr am nächsten ist und verbindet sich zu ihr [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc). Die Verbindung zur nächsten Node [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) ist entscheidend für einen verlässlichen Betrieb der Node. Der Rest der Rating Tabelle ist hauptsächlich mit zufälligen Nodes des Netzwerks gefüllt um einheitlichen Zugang zu verschiedenen Teilen des Netzwerk zu gewährleisten.
 
-####Joining as a Zero State Node
 
-The initial setting up of the network, which is called zero state, involves two nodes. These two nodes are provided with the end-points of each other and by connecting to each other form the network. The zero state nodes are identical to any other nodes in the network and may leave/join the network similar to other nodes.
+####Als Null Zustand Node beitreten
+
+Der initiale Aufbau des Netzwerk, welcher Null Zustand genannt wird, beinhaltet zwei Nodes. Diese beiden Nodes werden mit Endpunkten voneinander versorgt und bilden durch die gegenseitige Verbindung das Netzwerk. Die Null Zustand sind identisch zu allen anderen Nodes im Netzwerk und können das Netzwerk zu jeder verlassen und wieder beitreten.
+
 
 ###NAT Traversal
 
-An objective of Routing has been enabling communication between each pair of nodes in the network, regardless of their network configuration settings. Routing in combination with [MaidSafe-RUDP](https://github.com/maidsafe/MaidSafe-RUDP/wiki) performs [hole punching](http://www.brynosaurus.com/pub/net/p2pnat/) to enable direct connection between each pair of nodes.
-Hole punching is achievable as long as both nodes are not behind symmetric routers. If both nodes are behind symmetric routers, routing enables communication between two nodes by choosing a third node acting as proxy between the two nodes behind symmetric routers.
+Ein Ziel von Routing ist es die Kommunikation zwischen jedem Paar von Nodes im Netzwerk zu ermöglichen, unabhängig von deren Netzwerk Konfigurationen. Routing in Kombination mit [MaidSafe-RUDP](https://github.com/maidsafe/MaidSafe-RUDP/wiki) vollzieht [hole punching](http://www.brynosaurus.com/pub/net/p2pnat/) um die direkte Verbindung zwischen jedem Nodepaar zu ermöglichen. Hole punching ist verfügbar solange beide Nodes sich nicht hinter symmetrischen Router befinden. Wenn sich beide Nodes hinter einem symmetrischen Router befinden ermöglicht Routing die Kommunikation zwischen den beiden Nodes indem eine dritte Node als Proxy zwischen den beiden Nodes gewählt wird.
 
 
-###Modes of Operation
+###Betriebsmodi
 ####Non-Client
 
-A non-client node is a full routing node that contributes to the operation and maintenance of the network. Non-client nodes are part of DHT and are active in routing decision making.
-Non-client nodes can :
-* Send requests to any non-client nodes
-* Send requests to only connected client nodes
-* Receive incoming requests from any node in network
+Eine non-client Node ist eine volle Routing Node das zum Betrieb und Aufrechterhalten des Netzwerk beträgt. Non-client Nodes sind Teil von DHT und aktiv bei den Routing Entscheidungen die getroffen werden.
+Non-client Nodes können:
+* Anfragen zu jedem non-client Node senden
+* Anfragen zu nur verbundenen Client Nodes senden
+* Eingehende Anfragen von jeder Node im Netzwerk empfangen.
 
 ####Client
 
-In contrast to non-client nodes, a client node does not contribute to the routing network infrastructure.
-Client nodes are light weight routing nodes using minimal network resources.
-These nodes gain access to the entire network by establishing connection to [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) nodes closest to its own ID.
-A client node can :
-* Send requests to any non-client nodes
-* Send requests to clients with same ID
-* Receive incoming requests only from connected non-client nodes
+Im Gegensatz zu Non-client Nodes, trägt eine Client Node nicht zur Routing Netzwerk Infrastruktur bei.
+Client Nodes sind leichte Routing Nodes die minimale Netzwerk Ressourcen verbrauchen. Diese Nodes erhalten Zugang zum gesamten Netzwerk indem Verbindungen zur Nodes erstellt werden die der eigenen ID am nächsten sind [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc).
 
-###Reliable Direct and Group Messaging
-
-Routing offers two types of communication; direct and group.
-
-####Direct Messaging
-
-In direct messaging the destination is a known node in the network and is the final recipient of the message.
-
-####Group Messaging
-
-A group is comprised of a number of nodes which are closest to a given ID. The number of group
-members is defined by [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc).
-
-In group communication, the destination of a message is a group of nodes which are closest to the destination. A node having destination as its ID will not be part of a group communication.
+Eine Client Node kann:
+* Anfragen an jede Non-client Node senden
+* Anfragen an Clients mit der gleichen ID senden
+* Eingehende Anfragen werden nur von verbundenen Non-client Nodes empfangen.
 
 
-###Routing Table and Group Matrix
-Routing table is the main component of the routing library. Routing table stores information about a number of nodes in the network in order to perform routing decisions to deliver messages. Each entry of the routing table corresponds to a direct connection from the routing node to that node.
-Each node in the network has an ID of 512 bits. The distance between each pair of nodes in the network is calculated by XORing the pair.
-A reliable and efficient routing operation in the network requires that each node i) to be aware of the nodes in its close proximity and, ii) to have access to different parts of the network. Routing table stores information about:
-* [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest nodes
-* Randomly chosen nodes in the network
-* Any other node which finds the current node as one of its [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest nodes
+###Verlässliche direkte und Gruppen Nachrichten
 
-The above information stored in routing table is enough in the majority of cases to enable correct decision makings. However, it might be found insufficient to make accurate decisions when two nodes are having different views regarding closeness to each other or another node. To handle these situations, the routing table is equipped with a group matrix.
-The idea behind group matrix is to provide nodes with more knowledge of the area of the network and where they reside. This is realised by making each node partially aware of nodes in the routing table of its closest neighbours. A group matrix of a node contains:
-* (i) The node’s [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest nodes
-* (ii) Other nodes considering the node as one of their [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest
-* (iii) Closest nodes of each entry in (i) & (ii)
+Routing bietet zwei Arten der Kommunikation; direkt und gruppe.
 
-Up to date information in the routing table and group matrix are necessary to make correct decisions. Therefore, routing offers some services; to quickly reflect any updates in the routing table of a node, and  the routing table or group matrix of any nodes which should be made aware of the updates.
+####Direkte Nachrichten
+
+Beim direkten Nachrichten senden ist das Ziel eine bekannte Node im Netzwerk und ist der finale Empfänger der Nachricht.
 
 
-###Proximity Evaluation
+####Gruppen Nachricht
 
-Most operations in the network are performed on the group of nodes which are in closest proximity of a given ID. Routing table along with group matrix, facilitates nodes with sufficient knowledge of the part of network (where they belong) to accurately identify other peer nodes who share the same group IDs.
-The node which is part of a group will always be aware of other nodes in the group. Based on this knowledge, routing api provides methods to work out:
-* If a node is closest to a given ID
-* If a node is part of a given group
-* New and old group members nodes after a churn event
+Eien Gruppe besteht aus einer Zahl von Nodes welche am nächsten an einer bestimmten ID sind. Die Anzahl der Gruppenmitglieder ist durch [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) definiert.
 
-Based on average network distance/population, it also provides methods to estimate if a node is close enough to a given ID.
-
-###Churn Handling
-
-In a P2P network, joining and leaving are common events. Peer turnover, often referred to as churn rate, is efficiently handled by the routing library. For example, a node joining or leaving the network is reflected in the routing tables of its close nodes within a few seconds.
-
-###Matrix Change (Churn Event)
-
-In the routing network, data is usually stored at a logical group ID. This means that data is stored at the nodes which are among the first [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest to a given group ID.
-Any churn in the network may result in moving a node near or far from a group ID in that segment of the network. This means that many of the logical groups reconfigure by having new members in the group and losing some old members of the group.
-
-In event of:
-
-1. Node(s) disappearing from a logical group : New node(s) will become closer to the group ID and will become among [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest to the group ID. After this, all group messages sent to the group ID, will be received by new node(s) as well. It is the responsibility of other remaining nodes of that group to quickly replicate data to the new node(s).
-2. Node(s) appearing in the logical group : Some of the group member nodes will move far from the group ID and will not remain under [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest to the group ID. Further to this, these Node(s) will not receive any group message destined to the group ID. These Node(s) should delete data which they are no longer responsible for.
+Bei der Gruppen Kommunikation ist das Ziel einer Nachricht eine Gruppe von Nodes welche dem Ziel am nächsten sind. Eine Node die als Ziel seine ID hat wird nicht Teil der Gruppen Kommunikation sein.
 
 
-To reliably keep data alive and accessible in this dynamic group, all responsible nodes should replicate data as soon as they become aware of the network churn. Routing provides MatrixChange class to detect such churn quickly and to reliably workout if data replication is required for any new node appearing in the group. Nodes close to a segment of network will notice churn event by observing a change in their group matrix. If group matrix changes on any churn, routing creates MatrixChange object, containing a list of new and old group matrix nodes. This class provides helper function to evaluate any given group ID to work out if node receiving the churn event:
+###Routing Tabelle und Gruppen Matrix
+Die Routing Tabelle ist die Hauptkomponente der Routing Bibliothek. Sie speichert Informationen über eine Anzahl von Nodes im Netzwerk um Routing Entscheidungen für das Zustellen von Nachrichten zu treffen. Jeder Eintrag der Routing Tabelle entspricht einer direkten Verbindung von einer Routing Node zu dieser Node. Jede Node im Netzwerk hat eine ID aus 512 bits.Die Entfernung zwischen jedem Nodepaar wird mit Hilfe von XOR errechnet.
+Ein zuverlässiger und effizienter Routing Betrieb im Netzwerk setzt voraus das jede Node a) von Nodes weiss die sich in unmittelbarer Nähe befinden und b) einen direkten Zugang zu verschiedenen Teilen des Netzwerk hat. Die Routing Tabelle speichert Informationen über:
 
-* Is still part of the group and responsible for data stored at the group.
-* Is not part of the group any more and needs to delete stored data related to the group.
-* Needs to replicate data to a new node.
+* [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) nächsten Nodes
+* Zufällig ausgewählte Nodes im Netzwerk
+* Jede andere Node die diese Node als eine ihrer nächsten Nodes findet [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc)
+
+Die oben aufgeführten Information die in der Routing Tabelle gespeichert werden sind genug für den Grossteil der Fälle um eine richtige Entscheidung treffen zu können. Es mag jedoch ungenuegend sein wenn zwei Nodes unterschiedliche Ansichten über die Nähe zueinander oder zu einer dritten Node haben. Um diese Situationen handhaben zu können ist die Routing Tabelle mit einer Gruppenmatrix ausgestattet.
+Die Idee hinter der Gruppenmatrix ist es den Nodes mehr Wissen über den Bereich des Netzwerk bereitzustellen und wo sie sich darin befinden. Das wird erreicht indem jede Node partiell über die Nodes in seiner Nähe aus der Routing Tabelle unterrichtet wird. Eine Gruppenmatrix einer Node besteht aus:
+* (i) Die nächsten Nodes  [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) der Node
+* (ii) Andere Nodes die diese Node als eine ihrer nächsten betrachten. [Parameters::closest_nodes_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc)
+* (iii) Nächste Node jedes Eintrages  in (i) & (ii)
+
+Aktuelle Informationen in der Routing Tabelle und der Gruppenmatrix sind notwendig um korrekt Entscheidungen zu treffen. Daher bietet Routing einige Dienste an; um Updates in der Routing Tabelle einer Node schnell darstellen zu können und die Routing Tabelle und Gruppenmatrix jeglicher Node auf die Änderungen aufmerksam zu machen.
+
+
+###Umgebungs Berechnung
+
+Die meisten Vorgänge im Netzwerk werden in der Gruppen von Nodes ausgeführt die sich in unmittelbarer Nähe der gegeben ID befinden. Die Routing Tabelle versorgt die Nodes, zusammen mit der Gruppenmatrix, mit ausreichend Wissen über den Teil des Netzwerk (zu dem sie gehören) um die Peer Nodes die die gleiche Gruppen ID haben akurat zu identifizieren.
+
+Die Node die Teil einer Gruppe ist, ist sich über andere Nodes in der Gruppe bewusst. Basierend auf diesem Wissen stellt die Routing API Methoden bereit um herauszufinden:
+
+* Ob eine Node am nächsten zu einer gegebenen ID ist
+* Ob eine Node Teil einer gegebenen Gruppe ist.
+* Alte und neue Mitglieder einer Gruppe nach einem Churn Ereigniss
+*
+
+Basierend auf der durschnittlichen Netzwerkentfernung/Population stellt es ausserdem Methoden zur Verfügung um einzuschätzen ob eine Node nah genug zu einer bestimmten ID ist.
+
+###Churn Handhabung
+
+Beitreten und verlassen eines P2P Netzwerkes sind normale Ereignisse. Peer Fluktuation, oft auch churn rate (Abwanderungsquote) genannt, wird effizient von der Routing Bibliothek gehandhabt. Z.b. wird das Beitreten oder Verlassen einer Node des Netzwerk innerhalb weniger Sekunden in der Routing Tabelle der umliegenen Nodes dargestellt.
+
+###Matrix Veränderung (Churn Ereigniss)
+
+Im Routing Netzwerk werden Daten in der Regel an einer logischen Gruppen ID gespeichert. Das bedeutet das Daten auf den Nodes gespeichert werden die am nächsten  [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) zu einer gegebenen Gruppen ID sind. Jede Abwanderung im Netzwerk kann dazu führen das eine Node nah oder fern von der Gruppen ID im Netzwerk verschoben wird. Das bedeutet das viele der logischen Gruppen neu konfiguriert werden indem sie neue Mitglieder in der Gruppe haben oder alte Mitglieder verlieren.
+
+Im Falle von:
+
+1. Nodes verschwinden aus einer logischen  Gruppe: Neue Node(s) werden die alten basierend auf ihrer Entfernung zur Gruppen ID ersetzen und werden zur neuen [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) nahen Gruppe. Danach werden alle Nachrichten die dieser Gruppen ID gesendet werden auch von den neuen Nodes empfagen. Es ist die Verantwortung der anderen verbleibenden Nodes der Gruppe die Daten schnell auf die neuen Nodes zu replizieren.
+2. Nodes erscheinen in der logischen Gruppe: Manche der Nodes die Mitglied der Gruppe sind werden sich weit von der Gruppen ID entfernen und werden nicht in der Nähe [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) der Gruppen ID verbleiben. Ausserdem werden diese Nodes keinen Gruppennachrichten mehr erhalten die für die Gruppen ID vorgesehen sind. Diese Nodes sollten die Daten löschen für die sie nicht länger verantwortlich sind.
+
+
+Um Daten in dieser dynamischen Gruppe verlässlich am Leben und verfügbar zu halten, sollten alle verantwortlichen Nodes Daten replizieren sobald sie vom Netzwerk Churn erfahren. Routing stellt die MatrixChange Klasse zur Verfügung um solche Abwanderungen schnell und zuverlässig erkennen zu können ob Datenreplikation für eine neue Node in der Gruppe notwendig ist. Nodes die sich nahe am Segment des Netzwerk befinden werden ein Abwanderungsevent durch Beobachtung der Gruppenmatrix mitbekommen. Wenn Gruppenmatrix Veränderungen bei jeder Abwanderung erfolgen erstellt ein MatrixChange Objekt die eine Liste der alten und neuen Nodes der Gruppenmatrix enthält. Diese Klasse bietet Helfer Funktionalitäten um jede Gruppen ID zu evaluieren um herauszufinden ob die Node die das Abwanderungsereigniss empfängt:
+
+* Ist immer noch Teil der Gruppe und verantwortlich für die Daten die in der Gruppe gespeichert werden.
+* Ist nicht mehr Teil der Gruppe und muss Daten die zur Gruppe gehören löschen.
+* Muss Daten zu einer neuen Node replizieren.
 
 ```C++
   CheckHoldersResult CheckHolders(const NodeId& target) const;
 ```
-
-CheckHoldersResult provides list of the new and old holders of the group and proximity_status of the node receiving the churn event wrt the given group ID.
+CheckHoldersResult stellt eine Liste der alten und neuen Halter der Gruppe und proximity_status der Node im Hinblick auf die gegebene Gruppen ID zur Verfügung.
 
 
 ```C++
@@ -146,26 +151,24 @@ struct CheckHoldersResult {
 
 
 
-###Caching Mechanism
+###Caching Mechanismus
 
-To enable fast access to popular contents, routing offers some services to allow caching data on intermediate nodes or to read cached data from intermediate nodes if data is available. The functionality is simply achievable by setting a flag in the routing message. If the type of message is a request, the cache in each intermediate node to the final destination is checked for data. If data is available in cache, the intermediate node will serve the request and a reply is sent to the sender. If the type of message is a response, data is stored at each intermediate node from destination to source.
+Um schnellen Zugang zu beliebten Inhalten zu ermöglichen, bietet Routing Möglichkeiten die es möglich machen Daten auf intermediären Nodes zwischenzuspeichern oder Daten von intermediären Nodes zu lesen wenn die Daten dort verfügbar sind. Die Funktionalität wird durch das Setzen eines Markers in der Routing Nachricht erreicht. Wenn der Nachrichtentyp eine Anfrage ist, wird der Cache in jeder intermediären Node auf dem Weg zun finalen Node nach den Daten gefragt. Wenn die Daten im Cache sind wird die intermediäre Node die Anfrage beantworten und die Antwort zum Sender schicken. Wenn der Nachrichtentyp eine Antwort ist, werden die Daten auf jeder intermediären Node vom Ziel zur Quelle gespeichert.
+
+###Rückrufe
+
+Eine effiziente Plattform zum Austausch von Nachrichten zwischen Peers anzubieten macht Routing zu einer idealen Kommunikations Komponente eines jeden P2P Systems. Um eine einfache und loose gekoppelte Nutzung der Routing Komponenten zu ermöglichen bietet Routing den Host Komponenten eine Anzahl von Rückruf Funktionalitäten. Manche dieser Rückrufe sind zwingend erforderlich und werden von der Host Applikation zur Verfügung gestellt. Andere Rückrufe sind zusätzliche Feature und optional für die Host Applikation.
+
+Rückruf Funktionen von Routing:
+* **MessageReceivedFunctor** : Wird aufgerufen wenn eine Nodelevel Anfragenachricht empfangen wird. Nodelevel Anfragenachrichten ist eine eingehende Nachricht die für den Applikationslayer bestimmt ist und den Routingnode nutzt.
+
+* **NetworkStatusFunctor** : Wird aufgerufen wenn eine neue Verbindung aufgebaut wird oder ein Verbindungsabbruch auftritt. Es zeigt die prozentuale Gesundheit einer Nodeverbindung an in Bezug auf andere valide Peernodes im Netzwerk oder kann alternativ als Routing Tabelle Gesundheit bezeichnet werden.
+
+* **MatrixChangedFunctor** : Jedes Abwanderungsereignis das in einer Veränderung der Gruppenmatrix der Node resultiert löst einen einen Aufruf dieses Funktor aus.
+
+* **RequestPublicKeyFunctor** : Als Teil des Verbindungsprozess zu einem Nicht-Client Peer muss Routing der öffentliche Schlüssel des Peer zur Verfügung gestellt werden. Das wird durch die PKI Infrastruktur erreicht. Der Rückruf stellt einen anderen Rückruf zur Verfügung (GivePublicKeyFunctor) welcher mit dem validen öffentlichen Schlüssel des verbindenden Non-Client Peer aufgerufen werden sollte.
 
 
-###Callbacks
+* **HaveCacheDataFunctor** & **StoreCacheDataFunctor** : Werden aufgerufen um nach zwischengespeicherten Daten auf einer Zwischennode zu gucken, oder um diese dort zu speichern.
 
-Offering an efficient platform to exchange messages between peers makes routing an ideal communication component of any P2P system. To allow simple and loosely coupled utilisation of the routing components, routing provides a number of callback functions to the host components. Some of these callbacks are mandatory and be provided by the host application. Other callbacks are additional features and are optional for host application.
-
-Routing's callback functions:
-
-* **MessageReceivedFunctor** : Is called when a a node-level request message is received. Node-level request message is an incoming message destined for the application layer using the routing node.
-
-* **NetworkStatusFunctor** : Is called when a new connection is established or a connection drop happens. It show the percentage health in terms of node's connection to other valid peer nodes in the network or alternatively can be referred to as routing table health.
-
-* **MatrixChangedFunctor** : Any churn event, resulting in change to nodes's group matrix triggers a call to this functor.
-
-* **RequestPublicKeyFunctor** : As a part of the connection process to a non-client peer, routing needs to be provided with the public key of the peer. This is achieved by PKI infrastructure. The callback provides another callback (GivePublicKeyFunctor) which should be called with the valid public key of the connecting non-client peer
-
-* **HaveCacheDataFunctor** & **StoreCacheDataFunctor** : Are called to look for cached data or store data in cache of an intermediate node
-
-* **NewBootstrapEndpointFunctor** : Is called whenever a routing node connects to a peer whose endpoints are capable of bootstrapping a node. Since the network is very dynamic, this is important information for reconnecting to the routing network. A list of these endpoints must be supplied to routing to reconnect to the network.
-
+* **NewBootstrapEndpointFunctor** : Wird jedes Mal aufgerufen wenn eine Routing Node sich zu einem Peer verbindet dessen Endpunkte in der Lage sind eine Node urzuladen (bootstrap). Da das Netzwerk sehr dynamisch ist, ist das eine sehr wichtige Information für das erneute Verbinden zum Routing Netzwerk. Eine Liste dieser Endpunkte muss Routing bereitgestellt werden um ein Wiederverbinden zum Netzwerk zu ermöglichen.
