@@ -1,27 +1,31 @@
 # Proof of resource
-Proof of resource enables the network to validate actions or services using a mathematically verifiable mechanism.
+Proof of resource (подтверджение ресурса) позволяет сети подтверждать действия или услуги с помощью математического механизма проверки.
 
-This process measures a Vaults ability to store and retrieve data chunks. This depends on the following user's computer criteria:
+Этот процесс оценивает способность хранилища хранить и возвращать кусочки данных, что зависит от следующих параметров:
 
-* CPU speed
-* Bandwidth availability
-* Disk space
-* On-line time
+* Скорость ЦПУ
+* Пропускная способность
+* Дисковое пространство
+* Время нахождения онлайн
 
-This allows the proof to be a useful, measurable and an immediately verifiable entity. Proof of resource is a very efficient mechanism with zero transaction fees.
+Это позволяет механизму быть полезной сущностью, которая мгновенно проверяет необходимые параметры. Proof of resource - очень эффективный механизм без каких-либо комиссионных взносов.
 
-Proof of resource in the SAFE Network uses a mechanism similar to a [zero knowledge proof](http://en.wikipedia.org/wiki/Zero-knowledge_proof). In this case the checking mechanism does not require to know the content of any data to be checked, but must know the data is in fact held and held in a manner that is accurate.
+Proof of resource в SAFE Network использует механизм, похожий на [доказательство с нулевым разглашением](https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%BE_%D1%81_%D0%BD%D1%83%D0%BB%D0%B5%D0%B2%D1%8B%D0%BC_%D1%80%D0%B0%D0%B7%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC). В этом случае механизму проверки нет необходимости знать содержание данных, которые он проверяет, но он должен знать, что эти данные хранятся правильно.
 
-The proof of resource follows a series of steps.
+In this case the checking mechanism does not require to know the content of any data to be checked, but must know the data is in fact held and held in a manner that is accurate.
 
-1. A checking group of Vaults creates a random string
-2. This random string is sent encrypted to all holders of the data
-3. The data holder takes this string, appends it to the original data, and hashes the result
-4. The result is collected and decrypted by the checking group and compared
-5. If any Vault returns a different result then it is believed compromised and de-ranked
+Proof of resource состоит из серии шагов.
+
+1. Проверяемая группа хранилищ создает произвольную строку
+2. Эта строка шифруется и отправляется всем владельцам какого-либо файла
+3. Владелец принимает строку, добавляет ее к исходным данным, и хеширует результат
+4. Резльутаты собираются и дешифруются проверяемой группой, затем сраниваются
+5. Если какое-либо хранилище возвращает отличающийся от всех результат, это означает, что оно находится под угрозой, поэтому его рейтинг понижается.
+
+Этот механизм срабатывает на GET запросах и во время передачи данных. Он не детерминирован и меняется от использования к использованию. Считается, что он безопасен и использует нулевое разглашение, не укрывает содержимое (так как любой может потребовать свои данные), но следит за тем, чтобы зараженные данные не передавались по сети.
 
 This mechanism is triggered on Get requests and during account transfers. It is non-deterministic and randomised by use by users. It is considered to be secure and uses zero knowledge, not to conceal content (as anyone can ask for any data), but to ensure any data which is contaminated is not required to be transferred.
 
-Here is an overview of the proof of resource process.
+Краткий обзор механизма proof of resource.
 
 ![Proof of resource figure](./img/por-diagram.png)

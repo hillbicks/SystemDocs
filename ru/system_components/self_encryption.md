@@ -1,18 +1,17 @@
-# Security - Self encryption
-Security of a user's data is critical in the SAFE Network and this is, in part, provided by the self encryption process. The SAFE Network requires that data be unrecognisable as data and resistant to decryption, even in the event of an encryption algorithm being compromised.
+#Безопасность - самошифрование
 
-Self encryption is used to mix up and encrypt data before it is sent out to the SAFE Network. This process is automatic and happens instantaneously.
+Безопасность пользователя является крайне важной в SAFE Network, и она частично обеспечивается процессом самошифрования. SAFE Network требует, чтобы данные нельзя было распознать как данные, а так же чтобы они были устойчивы к дешифрованию, даже если алгоритм шифрования стал известен.
 
-As data is saved to a user's virtual hard-drive, it is broken up into a minimum of three chunks, [hashed](http://en.wikipedia.org/wiki/Hash_function) and then encrypted. To further obfuscate the data, every chunk is passed through an [XOR](http://en.wikipedia.org/wiki/Exclusive_or) function using the hashes of other chunks.
-Each chunk is then broken in thirty two pieces and key value pairs are added to a table on the users computer called a data map. The data map contains the locations of each chunk that makes up the file. The data map, with hashes before and after encryption, is used when retrieving and decoding the user's data, as the encryption process is non reversible.
+Самошифрование перемешивает и шифрует данные перед отправкой их в сеть. Этот процесс происходит автоматически и мгновенно.
 
-This entire process takes place on the client so that data is always encrypted on the network and only users with the correct credentials can decrypt the file. This also means that passwords can never be stolen from the network as they never pass beyond the users computer.
-For additional security the data map is also run through the self encryption process.
+Данные сохраняются на виртуальный жесткий диск пользователя, делятся как минимум на три кусочка, которые [хешируются](https://ru.wikipedia.org/wiki/Хеширование) и затем шифруются. Чтобы "спрятать" данные еще больше, каждый кусочек проходит через процедуру [XOR](https://ru.wikipedia.org/wiki/%D0%A1%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BF%D0%BE_%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8E_2), используя хеши других. Далее каждый кусочек разбивается на тридцать два маленьких кусочка. Пары хеш-ключей добавляются в таблицу на компьютере пользователя, известную как карта данных (datamap). Карта данных хранит информацию о местоположении каждого кусочка, которые вместе образуют файл. Карта данных с хешированием перед и после шифрования, используется при получении и декодировании данных, так как процесс шифрования необратим.
 
-The SAFE Network uses [data deduplication](http://en.wikipedia.org/wiki/Data_deduplication) to ensure that space is used efficiently when storing multiple copies of data which have been uniquely encrypted. The network is able to distinguish identical pieces of data by comparing the hashes of each chunk. As is described in [2.2.2](http://maidsafe.net/SystemDocs/system_components/guaranteed_vault_identification.html), vaults also use hashes to identify themselves.
+Весь описанный выше процесс происходит в клиенте, поэтому в сети данные всегда зашифрованы, и только пользователи, имеющие полномочия, могут расшифровать файл. Еще это означает, что злоумышленник не сможет извлечь пароли из сети, так как они не выходят за пределы компьютера. Для дополнительной безопасности карта данных тоже проходит процесс самошифрования.
 
-[Click here to see a video explaining the self encryption process](https://www.youtube.com/watch?v=Jnvwv4z17b4)
+SAFE Network использует [дедупликацию данных](https://ru.wikipedia.org/wiki/%D0%94%D0%B5%D0%B4%D1%83%D0%BF%D0%BB%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8F_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85) чтобы удостовериться в том, что память используется эффективно в процессе хранения множеств копий данных, каждая из которых зашифрована уникально. Сеть распознает идентичные кусочки данных, сравнивая их хеши. Как описано в [2.2.2](http://maidsafe.net/SystemDocs/system_components/guaranteed_vault_identification.html), хранилища тоже используют хеши для самоидентификации.
 
-Here is an overview of the self encryption process.
+[Нажмите сюда для просмотра видео о самошифровании](https://www.youtube.com/watch?v=Jnvwv4z17b4)
 
-![Self encryption figure](./img/self-encryption.png)
+Обзор о процессе самошифрования здесь.
+
+[Self encryption figure](./img/self-encryption.png)

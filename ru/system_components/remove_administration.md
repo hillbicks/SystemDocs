@@ -1,7 +1,7 @@
-# Remove administration
+# Отсутствие администраторов
 
-The SAFE Network is autonomous and therefore no administrators are required to manage and maintain data, or the network itself. Each Vault constantly adapts to its local environment and ongoing data integrity checks detect corruption and mutation within data chunks, by checking the hash of each chunk.
+SAFE Network автономна, следовательно ей не нужны сетевые администраторы для управления данными или самой сетью. Каждое хранилище постоянно адаптируется к своему местному окружению и непрерывные проверки целостности данных обнаруживают поломки и изменения кусочков данных с помощью проверки хешей.
 
-The network automatically maintains four live copies of each piece of data, but also up to 16 dead copies, as offline machines are likely to re-join the network at some point in the future.
+Сеть автоматически  сохраняет не только четыре "живых" копии каждого кусочка данных, но и до 16 "мертвых" копий, так как компьютеры, уходящие в оффлайн, скорее всего однажды вернутся в сеть.
 
-Data is also stored at random across the 2^512 address space by the network. This automatically distributes the load evenly across the network, which is a task traditionally undertaken by network administrators.
+Также данные хранятся произвольно в 2^512 адресном пространстве. Сеть автоматически распределяет нагрузку равномерно, что традиционно является задачей сетевых администраторов.

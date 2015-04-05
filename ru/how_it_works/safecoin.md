@@ -1,10 +1,10 @@
 #Safecoins
 
-Safecoins can be earned, traded or purchased. The value of safecoins will be determined by market, through the combination of supply and demand. 
+Safecoins can be earned, traded or purchased. The value of safecoins will be determined by market, through the combination of supply and demand.
 
 ## Market price
 The number of safecoins in circulation will increase based on network use. Almost all early safecoin holders will be farmers with this supply of resource creating both liquidity
-and distribution of wealth. It is anticipated that almost all users will possess at least a few safecoins in their wallet. 
+and distribution of wealth. It is anticipated that almost all users will possess at least a few safecoins in their wallet.
 
 Users may trade their safecoin for services on the network, or for cash (or another digital currency) using an exchange.
 The ratio of safecoin being saved (left in new wallets) versus the ratio being issued to Farmers will produce a price point. This point will be the market value of safecoin
@@ -15,7 +15,7 @@ Safecoins are used to access services on the SAFE Network. This encourages const
 
 ![](safecoin resources.png)
 
-## Farming rates 
+## Farming rates
 
 Farming is a process whereby users provide resource
 (storage space, CPU and bandwidth) to the network.
@@ -53,7 +53,7 @@ a blockchain to manage ownership of coins. Conversely,
 the SAFE Network’s Transaction Managers
 are unchained, meaning that only the past
 and current coin owner is known. It is helpful to
-think of safecoin as digital cash in this respect. 
+think of safecoin as digital cash in this respect.
 
 One of the major problems any virtual currency
 or coin must overcome is the ability
