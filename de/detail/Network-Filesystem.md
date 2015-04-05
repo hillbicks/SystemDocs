@@ -1,27 +1,27 @@
 ## Netzwerk Dateisystem Überblick
 
-The Maidsafe-Network-Filesystem, NFS, is a policy-based library implementing a RESTful API. Specifically, the main NFS class template accepts template parameters, themselves class types, either template or otherwise, that define the network operations put, get, delete and post. The design scales over various parameters and simplifies the logic required to package up messages for distribution, via [Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki), on behalf of a client or [Vault](https://github.com/maidsafe/MaidSafe-Vault/wiki) persona.
+Das SAFE Netzwerk Dateisystem, NFS, ist eine policy basierende Bibliothek die eine RESTful API anwendet. Genau genommen akzeptiert das Haupt-NFS-Klassen-Template Templateparameter, die selbst Klassentypen sind, egal ob ein Template oder nicht, die die Netzwerk Operationen put, get, delete und post definieren. Das Design ist über verschiedene Parameter skaliert  und vereinfacht die Logik die notwendig ist um Nachrichten für die Verteilung zu paketieren. Das geschieht via [Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki), im Auftrag eines Client oder einer [Vault](https://github.com/maidsafe/MaidSafe-Vault/wiki) persona.
 
 ### Details
 
-The API covers a number of files defining the main NetworkFileSystem class template, the policy classes and various support/helper structures and functions. The full list of files, along with a brief explanation of each, is given below. Note that files named with the following scheme *-inl.h implement non-specialised member functions, member templates and function templates declared in the corresponding *.h file and are not included in the list.
+Die API deckt eine Anzahl an Dateien ab die das Haupt NetzwerkDateiSystem Klasse Template definieren, die Policy Klassen und zahlreiche Support/Hilfs Strukturen und Funktionen. Die komplette Liste an Dateien, zusammen mit einer kurzen Beschreibung der einzelnen ist unten aufgelistet. Dabei ist zu beachten das Dateien die dem Schema *inl.h folgen nicht spezialisierte Mitglieder Funktionen, Mitglieder Templates und Funktionstemplates implementieren, die in den korrespondieren .h Dateien deklariert und nicht in der Liste aufgeführt sind.
 
-* [maid_node_nfs](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/client/maid_node_nfs.h) defines the NetworkFileSystem class template whose template arguments determine the put, get, delete and post policies an instantiated object will use for network operations.
-* data_policies.h includes a DataPolicy class template used by clients and the various persona's defined in [Vault](https://github.com/maidsafe/MaidSafe-Vault/wiki).
-* client_post_policies.h used by a client for network communication.
-* client_utils.h contains some utility functions and classes available to a client.
-* structured_data.h provides the class interface for holding structured data versions.
-* [message.h](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/vault/messages.h) defines the generic Message class whose packaged content is sent to a recipient node on the network responsible, either directly or indirectly, for it's content. Note that it may require a number of hops for a message to reach it's destination, the details of which are taken care of in the DHT implementation provided by [Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki).
-* reply.h defines the Reply class, that is initialised to provide information on the outcome of an network operation.
-* person_id.h defines a struct containing a recipient nodes' identity on the network as well as the target persona of a message.
-* [data_getter.h](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/client/data_getter.h) defines a class used to retrieve public keys of various types stored on the network, see [Passport](https://github.com/maidsafe/MaidSafe-Passport/wiki) for the key types available.
-* [pmid_registration.h](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/vault/pmid_registration.h) contains a class whose members allow the authenticated registration of a [Vault](https://github.com/maidsafe/MaidSafe-Vault/wiki).
-* [types.h](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/types.h) includes convenient type definitions and enum's used for messaging.
-* [utils.h](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/utils.h) includes utility functions and classes used by the library.
+* [maid_node_nfs](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/client/maid_node_nfs.h) definiert das Netzwerk Dateisystem Klassen Template dessen Template Argumente put, get, delete und post policies festlegen das ein instantiiertes Objekt für die Netzwerk Operationen benutzen wird.
+* data_policies.h beinhaltet ein DataPolicy Klassentemplate das von Clients und den diversen Persona benutzt wird die in [Vault](https://github.com/maidsafe/MaidSafe-Vault/wiki) definiert sind.
+* client_post_policies.h wird vom Client für die Netzwerk Kommunikation benutzt.
+* client_utils.h enthält einige Hilfsmittel Funktion und Klassen die die für den Client verfügbar sind.
+* structured_data.h stellt die Klassenschnittstelle zur Verfügung um strukturierte Datenversionen vorzuhalten.
+* [message.h](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/vault/messages.h)definiert die generischen Nachrichten Klasse dessen packetierter Inhalt zur empfangenden Node im Netzwerk gesendet wird, die direkt oder indirekt für den Inhalt verantwortlich ist. Beachte das es möglicherweise eine Anzahl an Hops erfordert damit eine Nachricht ihr Ziel erreicht. Die Details dazu finden sich in der DHT Implementierung die von [Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) bereitgestellt wird.
+* reply.h definiert die Antworten Klassen die initialisiert wird um Informationen über den Ausgang der Netzwerk Operationen zur Verfügung stellt.
+* person_id.h definiert eine Struktur die die Identität der Empfängernode im Netzwerk enthält, sowie die Zielpersona einer Nachricht.
+* [data_getter.h](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/client/data_getter.h) definiert eine Klasse die genutzt wird um die öffentlichen Schlüssel verschiedener Typen abzufragen die im Netzwerk gespeichert sind. Siehe [Passport](https://github.com/maidsafe/MaidSafe-Passport/wiki) für die verfügbaren Schlüsseltypen die verfügbar sind.
+* [pmid_registration.h](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/vault/pmid_registration.h) enthält eine Klasse dessen Mitglieder die authentifizierte Registrierung eines [Vault](https://github.com/maidsafe/MaidSafe-Vault/wiki) erlauben.
+* [types.h](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/types.h) enthält geeignete Typen Definitionen und Aufzählungstypen die zum Datentransfer genutzt werden.
+* [utils.h](https://github.com/maidsafe/MaidSafe-Network-Filesystem/blob/master/include/maidsafe/nfs/utils.h) enthlt Hilfsmittel Funktionen und Klassen die von der Bibliothek benutzt werden.
 
-### Application
+### Applikation
 
-LifeStuff client transactions/communications are packaged via a ClientMaidNfs object, as outlined below.
+LifeStuff Client Transaktionen/Kommunikationen sind mit Hilfe des ClientMaidNfs Objektes packetiert, wie unten beschrieben.
 
 ```C++
 typedef PutDataPolicy<Maid, Persona::kClientMaid> Put;
@@ -31,10 +31,9 @@ typedef ClientPostPolicy<Maid, Persona::kClientMaid> Post;
 
 typedef NetworkFileSystem<Put, Get, Delete, Post> ClientMaidNfs;
 ```
+Hier ist der ClientMaidNfs als eine Instanz des Netzwerk Dateisystem definiert, mit den Policies PutDataPolicy, GetDataPolicy, DeleteDataPolicy und ClientPostPolicy, alle Klassentemplates, von denen jeder Template Argumente annimmt um eine Identität zu signieren und den Persona Typ des Objektes, in diesem Fall Maid und Persona::kClientMaid.
 
-Here, the ClientMaidNfs is defined as an instance of NetworkFileSystem, with policies PutDataPolicy, GetDataPolicy, DeleteDataPolicy and ClientPostPolicy, all class templates, each taking template arguments for a signing identity and the persona type of the object, a Maid and Persona::kClientMaid, respectively, in this case.
-
-The NetworkFileSystem class template and defined policy classes exposed by this library are also used to compose the various vault persona Nfs objects required by [Vault's](https://github.com/maidsafe/MaidSafe-Vault/wiki).
+Das NetzwerkDateisystem Klassentemplate und definierte Policy Klassen die von dieser Bibliothek offengelegt sind, werden auch genutzt aus denen die verschiedenen Vault Persona Nfs Objekte zusammengestellt werden die von  [Vault](https://github.com/maidsafe/MaidSafe-Vault/wiki) gebraucht werden.
 
 
 [0]: https://github.com/maidsafe/MaidSafe-Routing/wiki
