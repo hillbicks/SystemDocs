@@ -1,14 +1,15 @@
-# Guaranteed Vault identification
-Vault identification is essential if Vaults are to be responsible in a measured way for resource management.
+# Достоверная идентификация хранилища
 
-Without identification any Vault could impersonate another. There are known methods to identify digital identities, such as a certificate authority (such as Verisign) or in some cases a web of trust. As this network has no servers, no human involvement and is completely trust less, these options are not suitable.
+Идентификация хранилища существенно важна, так как оно ответственно за управление ресурсами.
 
-The Vault identification process involves creating two key pairs. One key pair is a revocation key and is used only to create and invalidate a real key.
+Без идентификации любое хранилище может выдать себя за другое. Существуют известные методы определения цифровых "личностей", такие как центры сертификации (например, Verisign) или в некоторых случаях Web of Trust. Поскольку в этой сети нет серверов и человеческого вмешательства, без идентификации она полностью ненадежна, поэтому такой вариант совершенно не подходит.
 
-The real key pair is created and the public key is signed by the revocation private key and this packet (public key plus signature) is stored on the network as a Vault Identification key type. This Hash is then used as the Vault identity.
+Процесс идентификации хранилища включает в себя создание двух пар ключей. Одна пара называется ключами аннулирования, потому что она создается только для аннулирования реального ключа.
 
-The SAFE Network can retrieve this identification packet on request from any Vault. The only way to alter this packet is by a message signed by the same ID as the one that signed the packet.
+Также создается настоящая пара ключей, и открытый ключ подписывается ключом аннулирования, и пакет (открытый ключ + подпись) хранится в сети в виде ключа Идентификации Хранилища (Vault Identification key). Этот хеш затем используется как "личность" хранилища.
 
-This process allows Vaults to identify themselves by advertising the hash of the identification packet that they created and stored.
+SAFE Network может вернуть этот пакет по просьбе любого хранилища. Единственный способ изменить его - использовать сообщение, подписанное тем же ID, что и пакет.
 
-As only the creator has the private key paired with the public key contained in the identification packet then we can assume this is the correct Vault. All messages are encrypted with this ID, so fraudulent Vaults would not be able to decrypt such messages, including connect requests which are required to join the network.
+Этот процесс позволяет хранилищам идентифицировать себя через объявление хеша идентификационного пакета, которые они создают и хранят.
+
+Так как только создатель знает хранящиеся в идентификационном пакете ключи, можно сделать вывод, что это правильное хранилище. Все сообщения шифруются этим ID, поэтому мошенники не смогут расшифровать такие сообщения, а также запросы подключения, требуемые для присоединения к сети.
