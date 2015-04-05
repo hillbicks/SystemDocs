@@ -53,14 +53,7 @@ Das SAFE Netzwerk hält automatisch ein Minimum von vier live Kopien für jedes 
 Ja, alle Applikationen oder Web Services, die heute im Internet existieren, können durch das SAFE Netzwerk dezentralisiert werden.
 
 
-###How does the SAFE Network deal with Sybil attacks?
 
-The SAFE Network requires all requests be processed by at least two groups of Vaults.
-The MaidSafe client passes a request to its four Data managers, who verify the request based on the client’s signature. The request in then passed to a deterministically selected group of four other Vaults which also verify the request based on its signature.
-
-By deterministically selecting the second group of Data managers, this attack no longer holds true for the SAFE Network, since it is not possible for the attacker to gain control over a Vault by simply surrounding it.
-
-To circumvent this, the attacker would require the ability to surround specific Vaults in the SAFE Network. This cannot be achieved, as it would require being able to effectively generate different values which, when hashed with SHA-512, result in close hashes around one particular point.
 
 
 ###Wie geht das SAFE Netzwerk mit Sybil Attacken um?

@@ -35,11 +35,7 @@ Wir planen den Beta Launch für Anfang 2015. An diesem Punkt werden Benutzer die
 Wenn das Netzwerk gestartet ist, wird ein simpler Software download genügen um dem SAFE Netzwerk beizutreten. Wir werden Benutzer über Forum, Blog und Social Media Kanäle informieren wenn diese Zeit gekommen ist.
 
 
-###Where is the information of who has which chunks of a given file stored?
 
-As a user saves their data, or interacts with applications, their data is broken up, encrypted and then distributed randomly throughout the network to other vaults. This process is irreversible and therefore during the chunking and encryption process a data map is created for each file recording the identity of each of the files chunks that enable the file to be reconstituted.
-
-This data map is treated as any file on the network and is also run through the chunking and encryption process and then stored as encrypted chunks, spread randomly throughout the network. Only the correct combination of PIN, username and password will enable a file(s) to become readable.
 
 
 ###Wo ist die Information gespeichert wer welches Chunk von einer bestimmten Datei gespeichert hat?
