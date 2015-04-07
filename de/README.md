@@ -17,3 +17,5 @@ Bietet Informationen wo man sich weiter einbringen kann.
 
 * **FAQs**<br />
 If you could not find the information you are looking for, the FAQs list common questions and answers. Wenn Du noch weitere Informationen benötigst, findest Du hier eine Liste der häufig gestellten Fragen.
+
+Bitte beachte das dieses Buch von Communitymitgliedern übersetzt wurde. Es kann daher Übersetzungsfehler enthalten. Sollten Dir Fehler jedweder Art auffallen, so lass es die Community bitte wissen. Du findest sie unter https://forum.safenetwork.io/

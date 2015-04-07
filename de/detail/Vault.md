@@ -1,56 +1,59 @@
-## Vault Overview
+## Vault Überblick
 
-The MaidSafe Network consists of software processes (nodes), referred to as vaults. These vaults perform many functions on the network and these functional components are referred to as personas. The underlying network, when linked with [MaidSafe-Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki), is an XOR network and as such a node may express closeness or responsibility to any other node or element on the network, if the node is in relative close proximity to the target. In this summary the phrase **NAE** (Network Addressable Element) is used to refer to anything with a network address including data.
+Das SAFE Netzwerk besteht aus Softwareprozessen (Nodes), auch Vaults genannt. Diese Vaults verrichten viele Funktionen im Netzwerk und diese funktionalen Komponenten werden auch Personas genannt. Das unterliegende Netzwerk, wenn es mit [MaidSafe-Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) verlinkt wird, ist ein XOR Netzwerk und als solches können Nodes Nähe oder Verantwortung zu jeder anderen Node oder Element im Netzwerk ausdrücken, sofern die Node sich in relativer Nähe zum Ziel befindet. In dieser Zusammenfassung wird der Begriff **NAE** (Network Addressable Element/Netzwerk adressierbares Element) genutzt das sich auf alles mit einer Netzwerkadresse bezieht, inklusive Daten.
 
-The vaults rely on [MaidSafe-Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) to calculate responsibilities for NAE via the relevant [API calls](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/routing_api.h) such as
+Die Vaults sind auf [MaidSafe-Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) angewiesen um Verantwortlichkeiten für NAE mittels der relevanten [API calls](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/routing_api.h) zu berechnen, wie zum Beispiel
+
 ```C++
 GroupRangeStatus IsNodeIdInGroupRange(const NodeId& group_id, const NodeId& node_id) const;
 GroupRangeStatus IsNodeIdInGroupRange(const NodeId& group_id) const;
 bool EstimateInGroup(const NodeId& sender_id, const NodeId& info_id) const;
 ```
-These calls allow us to calculate the network from the perspective of any NAE we may be responsible for. It cannot be stressed enough that the ONLY way to determine responsibility for an NAE is to see the network from the perspective on the NAE. If we sort the vector of nodes we know about and their close nodes (referred to as the group matrix) and we do not appear in the first K (replication count) nodes then we are not responsible for the NAE. This is a fundamental issue and the importance of this cannot be emphasised enough.
+Diese Aufrufe erlauben es uns das Netzwerk von der Perspektive jedes NAE für das wir verantwortlich sein könnten, zu berechnen. Es kann nicht oft genug erwähnt werden das der EINZIGE Weg um Verantwortlichkeit für einen NAE zu bestimmen der ist, das Netzwerk aus der Perspektive des NAE zu sehen. Wenn wir die Vektoren der Nodes sortieren von denen wir wissen und deren nächsten Nodes (als Gruppenmatrix bezeichnet) und wir nicht in den ersten K (Replikationszählung) Nodes sind, dann sind wir nicht für das NAE verantwortlich. Das ist ein fundamentaler Sachverhalt und die Wichtigkeit hiervon kann nicht oft genug betont werden.
+Da das Netzwerk in Bezug auf Abwanderung und Vault Fähigkeiten sehr wechselhaft ist, muss das Vault Netzwerk individuelle Vaults messen und reporten und am wichtigsten, sicherstellen das alle Personas der Vaults ihre Aufgaben für das NAE für das sie verantwortlich sind auch ausführen. Um das zu ermöglichen wird das [Matrix change (Churn Event)](https://github.com/maidsafe/MaidSafe-Routing/wiki/Documentation#matrix-change-churn-event) Feature von Routing verwendet. Im Falle einer Abwanderung in einem gegebenen Netzwerksegment wird ein Matrix Change Event von Routing erstellt und dem Vault übergeben. Diese Obejkt enthält die Liste der alten und neuen Nodes in der Gruppenmatrix. Basierend auf dieser Information stellt es Helferfunktionen bereit, um bestimmte Informationen die sich auf jedes gegebene NAE beziehen, abzuleiten.
+Für den Fall das die Node die das Abwanderungsevent erhält zu den ersten K Nodes gehört die am nächsten zur mitgelieferten NAE ist: Wenn ja, welche neuen Node(s) brauchen Informationen die in Verbindung zur mitgelieferten NAE stehen. Wenn nein, lösche alle gespeicherten Informationen die in Verbindung zur gegebenen NAE stehen.
 
-As the network is very fluid in terms of churn and vault capabilities the vault network must measure and report on individual vaults and importantly ensure all the personas of any vault are performing their tasks for the NAE they are responsible for. To facilitate this, Routing’s [Matrix change (Churn Event)](https://github.com/maidsafe/MaidSafe-Routing/wiki/Documentation#matrix-change-churn-event) feature is used. In the event of any churn around a given network segment, a Matrix change object is created by Routing and passed on to Vault. This object contains list of old and new nodes in group matrix. Based on this information, it provides helper function to derive certain information related to any given NAE.
-If the node getting churn event is among first k nodes closest to provided NAE. If yes, which new node(s) need information related to the provided NAE. If not, delete any information stored related to the given NAE.
+Abwanderung, Duplizierung von Daten und Sicherstellung das alle Mitglieder einer Gruppe zustimmen, wird von einer Kombination aus Synchronisation, dem Akkumulator und Gruppennachricht gehandhabt. Das ist ein komplexe Reihe von Regeln die eine signifikante Aufmerksamkeit von Randfällen benötigen.
 
-Churn, duplication of data and ensuring all members of a group agree is handled by a combination of synchronisation, the accumulator and group messages. This is a complex set of rules that requires significant attention to edge cases.
 
-# Terms and Conventions Used
-**_Please be aware that these terms are extensively used and this document is rendered unreadable without these being completely understood._**
+#Begrifflichkeiten die genutzt werden
+**_Bitte beachte das diese Begrifflichkeiten ausgiebig genutzt werden und dieses Dokument unlesbar machen, wenn diese nicht komplett verstanden sind._**
 
-* Sy - [Sync](#sync), this function synchronises data between nodes in the same group (closely connected).
-* Sr - [Sync](#sync), this function synchronises result of message between nodes in the same group (closely connected).
-* So - Send On, this function send the message on to the next persona.
-* Ac - Accumulate, This function accumulates messages from previous personas (the personas sending the message to the current persona).
-* Fw - Firewall, this function ensures duplicate messages are prevented from progressing and answers such messages with the calculated response (such as success:error:synchronising etc. and may include a message containing data)
-* Uf - Update Firewall, this function will update the firewall with the newly calculated return code and optional message.
-* **Bold** represents Indirect Network Addressable Entities INAE
-* _Italic_ represents Direct Network Addressable Entities DNAE
-* ->>>> represents a group message (no callback)
-* -> represents a direct message (no callback)
-* =>>>> represents a group message (with callback)
-* => represents a direct message (with callback)
+* Sy - [Sync](#sync), diese Funktion synchronisiert Daten zwischen Nodes in der gleichen Gruppe (eng verbunden).
+* Sr - [Sync](#sync), diese Funktion synchronisiert Resultate von Nachrichten zwischen Nodes in der gleichen Gruppe (eng verbunden).
+* So - Send on/Senden bei, diese Funktion sendet die Nachricht weiter zur nächsten Persona.
+* Ac - Accumulate/Akkumulieren, diese Funktion akkumuliert Nachrichten von vorherigen Personas (die Personas die die Nachricht zur aktuellen Persona senden).
+* Fw - Firewall, diese Funktion stellt sicher das doppelte Nachrichten nicht verarbeitet werden und beantwortet diese Nachrichten mit einer kalkulierten Antwort. (wie z.B. erfolgreich:fehler:synchronisieren etc. und kann eine Nachricht inkludieren die Daten enthält)
+* Uf - Update Firewall, diese Funktion wird die Firewall mit dem neu berechneten Rückgabewert und der optionalen Nachrichten auf den neuesten Stand bringen.
+* **Fett** repräsentiert  Indirect Network Addressable Entities (Indirekte Netzwerk Adressierbare Einheiten) INAE
+* _Kursiv_ repräsentiert Direct Network Addressable Entities (Direkt Netzwerk Adressierbare Einheiten ) DNAE
+* ->>>> repräsentiert eine Gruppe Nachricht (kein Rückruf)
+* -> repräsentiert eine direkte Nachricht (kein Rückruf)
+* =>>>> repräsentiert eine Gruppennachricht(mit Rückruf)
+* => repräsentiert eine direkte Nachricht (mit Rückruf)
 
-### Maidsafe Identities
-The MaidSafe Network consists of many data types as well as many identity types. These identities are described in [MaidSafe-Passport](https://github.com/maidsafe/MaidSafe-Passport/wiki). The personas are particularly focussed on 4 of these identities and ensures the appropriate entities satisfy the requirements enforced by these identities.
+### SAFE Netzwerk Identitäten
+Das SAFE Netzwerk besteht aus vielen Datentypen sowie aus vielen Identitätstypen. Diese Typen werden in [MaidSafe-Passport](https://github.com/maidsafe/MaidSafe-Passport/wiki) beschrieben. Die Personas sind besonders fokussiert auf 4 dieser Identitäten und stellen sicher das angebrachte Einheiten die erzwungen Anforderungen dieser Identitäten erfüllen.
 
-* MAID (MaidSafe Anonymous ID) - The client identity to manipulate non structured data. A client can have one of these.
-* PMID (Proxy Maidsafe ID) - The client identity to safely store non structured data. A client can have many of these.
-* MPID (Maidsafe Public ID)- The client identity to allow public id's (public network names, such as a persons name or nickname) to communicate securely. A client can have many of these.
-* MSID (Maidsafe Share ID) - The client identity to manager groups of MPID's to privately share data (structured and non structured). A client can have many of these. This type of identity has no NAE holder for security purposes.
+* SAFE (SAFE Netzwerk Anonyme ID) - Die Client Identität um unstrukturierte Daten zu manipulieren. Ein Client kann eine solche haben.
+* PMID (Proxy Maidsafe ID) - Die Client Identität um unstrukturierte Daten sicher zu speichern. Ein Client kann mehrere davon haben.
+* MPID (Maidsafe Public ID) - Die Client Identität um öffentlichen IDs erlauben (öffentliche Netzwerknamen, wie z.b. der Name einer Person oder Nickname) sichere Kommunikation zu ermöglichen. Ein Client kann mehrere davon haben.
+* MSID (Maidsafe Share ID) - Die Client Identität um Gruppen von MPID's zu verwalten um Daten vertraulich zu teilen (strukturiert und unstrukturiert). Ein Client kann mehrere davon haben. Dieser Identitätentype hat aus Sicherheitsgründen keine NAE Halter.
+
+
 
 ### Vault Personas
-The personas employed by MaidSafe vaults fall into two distinct categories, namely Data Management and Node Management. These categories define the actions and grouping of the nodes and their knowledge of the surroundings and messages.
-* Data Management nodes are responsible for NAE specifically data, usually pointers to data.
-* Node Management personas are responsible for an entity persona (node) and manages the actions and requests by that entity persona.
+Die Personas die von SAFE Vaults beutzt werden, fallen in zwei eindeutige Kategorien, nämlich Datenmanagement und Nodemanagement. Diese Kategorien definieren die Aktionen und Gruppierung der Nodes und deren Wissen der Umgebu und Nachrichten.
+* Datamanagement Nodes sind verantwortlich für NAE spezifische Daten, normalerweise Pointer für Daten.
+* Nodemanagement personas sind verantwortlich für eine Einheiten Persona (Node) and verwaltet die Aktionen und Anfragen von dieser Einheiten Persona.
 
-Incoming messages are [demultiplexed](https://github.com/maidsafe/MaidSafe-Vault/blob/master/src/maidsafe/vault/demultiplexer.h) to identify the persona and data type they are destined for. The message is then directed to that persona.
+Eingehende Nachrichten werden [demultiplext](https://github.com/maidsafe/MaidSafe-Vault/blob/master/src/maidsafe/vault/demultiplexer.h) um die Persona und den Datentyp für den sie gedacht sind zu identifizieren. Die Nachricht wird dann zu dieser Persona geleitet.
 
-# Generalised Data Management
+# Generelles Datenmanagement
 ___
-###Unversioned Data
+###Nicht versionierte Daten
 
-Storing a piece of data onto the network requires coordination and collaboration by several Personas. A chunk of data from user data is created at MaidNode and is managed by DataManagers. DataManagers ensures that several copies of data are stored and available at distant PmidNodes all the time. The following diagram shows a very basic flow of data storage process on the network.
+Datenteile im Netzwerk zu speichern erfordert Koordination und Zusammenarbeit von mehreren Personas. Ein Datenteil von den Daten eines Benutzers wird am SAFENode erstellt und wird von den DatenManagern verwaltet. DatenManager stellen sicher das verschiedene Kopien der Daten gespeichert werden und auf entfernten PmidNodes jederzeit verfügbar sind. Das folgende Diagramm zeigt einen Basisablauf des Datenspeicherprozess im Netzwerk.
 
 ![UnversionedData](./img/UnversionedData.png)
 
@@ -72,20 +75,23 @@ Storing a piece of data onto the network requires coordination and collaboration
 ####`Get<Data>`
 |  _MaidNode_ [So]=>>>> | [Ac, Fw] **DataManager** [So]=> * (# of live PmidNodes)|[Ac, Fw] _PmidNode_ |
 
-##Anatomy of a Manager Persona with Non-Versioned Data
-All personas follow a very similar pattern, they accumulate, firewall, handle and send on messages, and synchronise their results, whereupon agreement they record the result of an operation in a database. The results or values stored per operation differ with differing personas, but little else does.
 
-In practice, it is a priori assumed that nodes on the network are untrustworthy, however, cooperating/collaborating nodes are essential to the continued stability and health of the network. To ensure both conditions are met when receiving from an INAE, the group of nodes, under the guise of a known specific persona, surrounding the target element become responsible for validating the request. Synchronisation between the group allows each to accumulate one another's result to a predetermined number sufficient to satisfy the request. The process inherently detects message tampering or would-be hackers and with a ranking mechanism in place serial offenders are forced into network isolation.
+##Anatomie einer Manager Persona mit nicht versionierten Daten.
 
-When receiving from a DNAE each persona accumulates on a single message only. This is possible since a connection exists between the nodes and that both routing and rUDP have confirmed the other nodes identity in a cryptographically secure manner.
+Alle Personas folgen einem ähnlichen Muster, sie akkumulieren, firewall, handhaben und senden bei Nachrichten und synchronisieren ihre Ergebnisse woraufhin nach Zustimmung die Ergebnisse einer Operation in einer Datenbank aufgezeichnet werden. Die Resultate oder Werte die pro Operation gespeichert werden weichen bei anderen Personas ab, sonst aber nur sehr wenig.
 
-The variety of non-data messages are handled distinctly by each persona.
+In der Praxis wird von vornherein davon ausgegangen das Nodes im Netzwerk nicht vertrauenswuerdig sind, jedoch sind kooperierende/zusammenarbeitende Nodes essentiell für die kontinuirliche Stabilität und Gesundheit des Netzwerk. Um sicherzustellen das beide Bedinungen erfüllt sind wenn sie etwas von einer INAE empfangen, wird die Gruppe von Nodes, unter dem Deckmantel einer spezifischen Persona, die das Zielelement umgibt, für die Validierung der Anfrage verantwortlich. Synchronisation zwischen den Gruppen erlaubt jeder das Resultat des anderen aufgrund einer vorherbestimmten Nummer zu akkumulieren um die Anfrage zu erfüllen. Der Prozess erkennt von sich aus Nachrichtenverfälschung oder Möchtegern-Hacker und mit einem Ranking Mechanismus werden Serientäter in eine Netzwerkisolation gezwungen.
+
+Wenn von einer DNAE empfangen wird, akkumuliert jede Persona nur auf einer einzelnen Nachricht. Das wird ermöglicht da eine Verbindung zwischen den Nodes existiert und das sowohl Routing als auch rUDP die Identität der anderen Node bestätigt auf eine kryptographische sichere Art bestätigt haben.
+
+Die Vielfalt von Nicht-Daten Nachrichten wird eindeutig von jeder Persona gehandhabt.
 
 ___
 
-###Versioned Data
-Storing a piece of versioned data such as a directory version onto the network is handled by different personas based on the privacy settings of the directory defined by the user. Privacy settings include private, public and shared versioned data. Different Identities are employed based on the privacy settings associated with the directories. Though different versioned data is created and forwarded by different personas, all of it is managed and stored onto the VersionManager.
-The following diagram shows a very basic flow of the versioned data storage process on the network based on different privacy settings.
+###Versionierte Daten
+
+Speichern eines versionierten Datenteils wie z.b. ein Verzeichnisversion wird von unterschiedlichen Personas gehandelt, basierend auf den Privatssphäreneinstellungen des Verzeichnis das der Nutzer vorgenommen hat. Privatssphäreneinstellungen umfassen private, öffentliche und geteilte versionierte Daten. Verschiedene Identitäten werden tätig, basierend auf den Privatssphäreneinstellungen die mit den Verzeichnissen verbunden sind. Auch wenn unterschiedlich versionierte Daten erstellt und von unterschiedlichen Personas weitergeleitet werden, so wird alles durch den VersionManager gespeichert und verwaltet.
+Das folgende Diagramm zeigt einen grundlegenden Ablauf des versionierten Datenspeicherprozesses im Netzwerk, basierend auf den Privatssphäreneinstellungen.
 
 ![VersionedData](./img/VersionedData.png)
 
@@ -104,12 +110,12 @@ The following diagram shows a very basic flow of the versioned data storage proc
 * `Delete<Data>` |  _MaidNode_ [So]=>>>> |[Ac, Fw] **MaidManager** [So, Sy]->>>> | [Ac, Fw] **DataManager** [So, Sy]->>>> * 4| [Ac, Fw] **PmidManager** [So, Sy] =>|[Ac, Fw]_PmidNode_ | +
 * |  _MaidNode_ [So]=>>>> | [Ac, Fw, Sy, Uf] **VersionManager** |
 
-##Anatomy of a Manager Persona with Versioned Data
+##Anatomie einer Manager Persona mit versionierten Daten
 
-These VM personas all must agree on the request as it is received. To accomplish this, the VM personas keep accumulating the messages received from previous personas. Once the expected limit is reached the request is synced with other VM personas in the group. Any VM persona receiving expected number of sync messages attempts to perform the request. Performing the request will be followed by returning the result of the action to the accumulator and calling reply functors associated to the requests from previous personas. Again `Get` simply attempts to return the self-calculated answer for speed, but all mutating calls require agreement with all the VersionManager personas involved in the call. This is a crucial difference with the non-versioned data managers. This difference is due to these personas being the ultimate answer to the request and sync is used for agreement rather than self-calculating the answer and leaving this up to the requester to agree on.
+Diese VM Personas müssen alle der Anfrage zustimmen wenn sie empfangen wird. Um das zu erreichen akkumulieren die VM Personas die empfangenen Nachrichten von vorherigen Personas. Sobald das erwartete Limit erreicht ist, wird die Anfrage mit anderen VM Personas in der Gruppe synchronisiert. Jede VM Persona die die erwartete Anzahl an Syncnachrichten erhält  versucht die Anfrage auszuführen. Die Anfrage auszuführen ist gefolgt von der Rückführung des Resultats der Aktion zum Akkumulator und dem Aufruf von Antwort Funktoren die Anfragen von vorherigen Personas zugeordnet sind. Wieder versucht `Get` lediglich die selbst errechnete Antwort zurückzuliefern um schnell zu sein, aber alle mutierten Aufrufe verlangen Zustimmung von allen VersionManager Personas die im Aufruf involviert sind. Das ist ein entscheidender Unterschied zu den nicht versionierten DataManagern. Der Unterschied kommt weil diese Personas die endgültige Antwort auf die Anfrage sind und Synchronisation für Zustimmung genutzt wird, anstatt die Antwort selbst zu errechnen und es dem Anfrager zu überlassen dem zuzustimmen.
 
 
-## Generalised Communications Management
+## Generelles Kommunikations Management
 | Node Management      | Node      |
 | ----------------------|----------:|
 | [**MpidManager**](#mpidmanager)    | [_MpidNode_](#mpidnode)  |
@@ -117,57 +123,58 @@ These VM personas all must agree on the request as it is received. To accomplish
 
 
 ---
-### Data Management Personas
-Data management personas are responsible for maintaining links between NAE keys and the addresses of the NAE that contains the content of the key in question. These vaults personas can be considered as managers of pointers to data as well as data lifetime and replication management, with the ability to withstand network churn.
+##Daten Management Personas
+Daten Management Personas sind dafür verantwortlich Verbindungen zwischen NAE Schlüsseln und Adressen NAE zu verwalten die den Inhalt des fraglichen Schlüssel beinhalten. Diese Vault Personas können als Manager von Pointern zu Daten gesehen werden sowie Datenlebenszeit und Replikations Management, mit der Fähigkeit Netzwerkabwanderung zu widerstehen.
 
-###Data Manager<a id="datamanager"></a>
-The **DataManager** persona manages pointers to non versioned data, such as file contents, network keys as defined in [passport](https://github.com/maidsafe/MaidSafe-Passport/wiki) and any other 'static' data elements.
+###Daten Manager<a id="datamanager"></a>
+Die **Datenmanager** Persona verwaltet Pointer zu nicht versionierten Daten, wie Dateiinhalt, Netzwerkschlüssel wie definiert in [passport](https://github.com/maidsafe/MaidSafe-Passport/wiki) und alle anderen 'statischen' Datenelements.
 
-### Container Structure
+### Container Struktur
 Uses a unique ManagerDb
+Verwendet eine eindeutige ManagerDb
 
-* Key : data key + type
-* Value : DataManagerValue object (serialised)
+* Schlüssel : Datenschlüssel + Typ
+* Wert: DataManagerWert Objekt (in serieller Reihenfolge erstellt)
 
-### Messages In
-* `Put<Data>` This message is received from a MaidManager group (of K)and is accumulated. The database is checked for the existence of the key. If it exists then the subscriber count is incremented. If no record exists then each of the Data Managers of this group closes to the NAE being stored selects a connected node as a PmidNode to store on (if the message has a Data Holder hint then the closest of the data managers of this NAE attempts to store there). To store a chunk a `PUT<Data>`(key, content) message is sent to the PmidManagers responsible for the selected PmidNode.
+### Nachrichten Eingang
+* `Put<Data>` Die Nachricht ist von einer SAFEManager Gruppe (von K) empfangen worden und wird akkumuliert. Die Datenbank wird auf die Existenz des Schlüssels überprüft. Wenn er existiert wird der Teilnehmer Zähler erhöht.
+Wenn kein Eintrag existiert, dann wird jeder DataManager dieser Gruppe der am nächsten zum NAE ist der gespeichert wird, eine verbunden Node als PmidNode zum Speichern auswählen (wenn die Nachricht einen Datenhalter Hinweis hat, dann wird der nächste der DatenManager von diesen NAE versuchen hier zu speichern). Um einen Datenteil zu speichern wird eine PUT<Data>`(Schlüssel, Inhalt) Nachricht zum PmidManager gesendet der für die selektierte PmidNode verantwortlich ist.
 * * | **MaidManager** ->>>> | [Ac, Fw]**DataManager**[So, Sy]->>>>|
 
-* `Delete<Data>` This message is received from a MaidManagers group (of K)and is accumulated. The database is checked for the existence of the key. If it exists then the subscriber count is decremented. When the count reaches zero (if it ever does) then a Delete<data>(key) is sent to all PmidManagers to delete the data.
+* `Delete<Data>` Die Nachricht ist von einer SAFEManager Gruppe (von K) und wird akkumuliert. Die Datenbank wird auf die Existenz des Schlüssels überprüft. Wenn er existiert wird der Teilnehmer Zähler verringert. Wenn der Zähler Null erreicht (falls das jemals passiert) dann wird ein Delete<data>(key) zu allen PmidManagern gesendet um alle Daten zu löschen.
 * * | **MaidManager** ->>>> | [Ac, Fw] **DataManager** [So, Sy]->>>>|
 
-* `Get<Data>` This message is not accumulated, only fire-walled. This message can come from any persona, although should not reach this persona very frequently due to caching. If this message does reach here then the DataManager sends a GET<Data> direct to a PmidNode and retrieves the data, sending it back via the reply_functor passed by [routing](https://github.com/maidsafe/MaidSafe-Routing/wiki).
+* `Get<Data>` Diese Nachricht wird nicht akkumuliert, nur "fire-walled". Diese Nachricht kann von jeder Persona kommen, sollte diese Persona jedoch aufgrund von caching nicht allzu häufig erreichen. Wenn die Nachricht hier ankommt, dann sendet der DataManager ein GET<Data> direkt zur PmidNode und erhält die Daten und es mittels reply_functor zurücksendet übergeben von [routing](https://github.com/maidsafe/MaidSafe-Routing/wiki).
+
 * * |  _MaidNode_ ->>>> | [Ac, Fw] **DataManager** | (firewall)
-* `Node Status Change`
+* `Node Status Veränderung`
 | **PmidManager** ->|[Ac, Fw] **DataManager** [So, Sy]->>>> |
 
 
-### Messages Out
-* `Put<Data>` When a data element is first stored or a DataManager requires to add another PmidNode to store data (due to PmidNodes failing, switching off otherwise losing data) this Nfs call is made to store the data.
+### Nachrichten Ausgang
+* `Put<Data>` Wenn ein Datenelement zum ersten gespeichert wird oder ein DataManager verlangt das ein anderen PmidNode die Daten speichert (weil PmidNodes ausfallen, ausgeschaltet werden oder anders Daten verlieren) wird dieser Nfs Aufruf gemacht um Daten zu speichern.
 * * | **DataManager** [So, Sy, Uf]->>>> | **PmidManager** |
 
-* `Delete<Data>` When the subscriber count approaches zero or the PmidNode is deemed to not be responsible for a data element any longer this Nfs call is made.
+* `Delete<Data>` Wenn der Teilnehmerzähler sich Null nähert oder die PmidNode als nicht länger verantwortlich für ein Datenelement angesehen wird, wird dieser Nfs Aufruf getätigt.
 * * | **DataManager** [So, Sy, Uf]->>>> | **PmidManager** ->|
 
-* `Get<Data>` In response to recieving a Get<data> this node will attempt to retrieve the data from any live PmidNode and will send the data back to the requester via the Routing reply_functor provided with the request.
+* `Get<Data>` Als Antwort zum Empfang eines Get<data> wird diese Node versuchen die Daten von irgendeiner Live PmidNode abzuholen und wird Daten mit Hilfe der Routing reply_functor zurück zum Anforderer schicken die mit der Anfrage geliefert wurde.
 * * | **DataManager** => * live PmidNodes| _PmidNode_ |
 
-### Data Integrity Checks
-In response to a churn event, (detected from Node Status Change as below) the DataManager will create a random peice of data and send this to each PmidNode with a request to append this data and hash the data again and respond with the new value. This allows the DataManager to evaluate that all PmidNodes hold the same data (not corrupted or lost).
+### Datenintegritätschecks
+Als Antwort auf ein Abwanderungsereignis (erkannt durch einen Nodestatus Veränderung, siehe unten), wird der DatenManger ein zufälliges Datenstück erstellen und dieses an jede PmidNode senden mit der Aufforderung diese Daten anzufügen und die Daten noch einmal zu hashen und mit dem neuen Wert zu antworten. Das erlaubt dem DataManager zu evaluieren das alle PmidNodes die selben Daten vorhalten (nicht korrumpiert oder verloren)
 * * | **DataManager** [So, Sr]=>>>> * 4| **PmidManager** ->| _PmidNode_ |
 
 
 ### Version Manager<a id="versionmanager"></a>
-The **VersionManager**, manages versioned data. This currently includes data that can be defined in [StructuredDataVersions](https://github.com/maidsafe/MaidSafe-Private/blob/master/include/maidsafe/data_types/structured_data_versions.h). Private data directories, private shared directories and public directories are currently managed in this structure. This persona is not limited to requiring versions and can consequently be used for structured data of many types with ease.
+Der **VersionManager** verwaltet versionierte Daten. Das beinhaltet momentan Daten die in [StructuredDataVersions](https://github.com/maidsafe/MaidSafe-Private/blob/master/include/maidsafe/data_types/structured_data_versions.h) definiert werden können. Private Datenverzeichnisse, privat geteilte Verzeichnisse und öffentliche Verzeichnisse werden momentan in dieser Struktur verwaltet. Diese Persona ist nicht limitiert Versionierung zu verlangen und kann daher mit Leichtigkeit für strukturierte Daten von vielen verschienden Typen verwendet werden.
 
-### Container Structure
+### Container Struktur
+Verwendet eine eindeutige ManagerDb
+* Schlüssel: Datenschlüssel + Typ + EinheitenID
+* Wert : StrukturiertesDatenVersions Objekt  (in serieller Reihenfolge erstellt)
 
-Uses a unique ManagerDb
-
-* Key : data key + type + Entity ID
-* Value : StructuredDataVersions object (serialised)
-
-### Messages In
+### Nachrichten Eingang
 * `PutVersion<Data>`
 * * | **MaidManager** =>>>> | [Ac, Fw] **VersionManager** [Sy, Uf] |
 * `DeleteBranchTillFork<Data>`
@@ -177,32 +184,33 @@ Uses a unique ManagerDb
 * `GetBranch<Data>`
 * * |  _MaidNode_ =>>>> |[Ac, Fw] **VersionManager** |
 
-### Messages Out
- [None] All inputs are callbacks
+### Nachrichten Ausgang
+ [Keine] Alle Eingänge sind Rückrufe
 
 ### Node Management Personas
-Node management personas, manage entity personas (nodes).
+Node management personas, verwalten Einheiten personas (nodes).
 
 ### Maid Manager<a id="MaidManager"></a>
-The **MaidManager** function is to manage the MaidNode. This means ensuring the client has an account and at least one registered PmidNode.
+Die **MaidManager** Funktion ist es die MaidNode zu verwalten. Das bedeutet das sichergestellt sein muss der der Client einen Account hat und mindestens eine registrierte PmidNode.
 
-### Container Structure
-Uses the AccountDb
+### Container Struktur
+Benutzt die AccountDb
 
-* Key : Hash of the data key (hashed to protect clients data)
-* Value : Number of copies (int32) : total cost (int32)
+* Schlüssel: Hash vom Datenschlüssel (hashed um die Daten des Client zu schützen)
+* Wert : Anzahl der Kopien (int32) : absoluter Aufwand (int32)
 
-### Header Structure
 
-* Total Data size Stored
-* Available Space
+### Header Struktur
 
-### Messages In
-* `PUT<Data>` A client can store an anonymous MAID packet on the network which creates the account. Then the MaidNode must register a PmidNode and does so with a vault registration packet, which is signed by the MAID and PMID private keys (that the client must have access to). The individual MaidManager will query the PmidManager group on start-up, churn event and client running low on space to ensure the PmidNode has enough offered space. On success, the MaidNode can send the data to the relevant DataManager and retrieve the cost to be paid.  On retrieval of the cost, the intention to record the entry in the database is synchronised with the other MaidManagers. The MergePolicy in this case will add the key to the database and/or increment the number of copies and total cost field.
+* Absolute Datengröße gespeichert
+* Verfügbarer Platz
+
+### Nachrichten Eingang
+* `PUT<Data>` Ein Client kann anonyme SAFE Pakete im Netzwerk speichern was den Account erstellt. Daraufhin muss die SAFENode eine PmidNode registrieren was mit ein Vault Registrierungspaket geschieht, welches von SAFE und PMID privaten Schüsseln  (auf die der Client Zugriff haben muss) signiert werden. Der individuelle SAFEManager wird die PmidManager Gruppe beim Start, Abwanderungsereignis und wenn der Client nur noch wenig Speicherplatz zur Verfügung hat anfragen, um sicherzustellen das die PmidNode genügend Speicherplatz hat. Bei Erfolg kann die SAFENode die Daten zum relevanten DataManager senden und die Kosten für die Bezahlung abrufen. Bei Erhalt der Kosten wird die Intention die Einträge in der Datenbank zu speichern mit den anderen SAFEManagern synchronisiert. Die MergePolicy wird in diesem Fall den Schlüssel zur Datenbank hinzufügen und/oder die Anzahl der Kopien und totale Kostenfeld zu inkrementieren.
 
 * * |  _MaidNode_ ->>>> | [Ac, Fw]**MaidManager** [So]|
 
-* `Delete<Data>` The MaidManager will search the account record of the MAID client account for a corresponding PUT of the data key. On success the MaidManager will reduce the number of PUT chunks of that key. If multiple chunks are stored in the same key the cost is reduced by taking an average of the total cost paid for that key. Delete always returns success as the client only wastes it's own time in trying an attack of that nature.
+* `Delete<Data>` Der MaidManager wird den Accounteintrag des SAFE Client Account nach einem passenden PUT des Datenschlüssel durchsuchen. Bei Erfolg wird der SAFEManager die Anzahl der PUT Teile für diesen Schlüssel reduzieren. Wenn mehrere Teile in diesem Schlüssel gespeichert sind, werden die Kosten reduziert indem ein Durchschnitt der totalen Kosten für diesen Schlüssel genommen wird. Löschen liefert immer einen Erfolg zurück da der Client nur seine eigene Zeit in einer Attacke dieser Art verschwendet.
 * * |  _MaidNode_ =>>>> | [Ac, Fw] **MaidManager** [So] |
 * `PutVersion<Data>`
 * * |  _MaidNode_ =>>>> | [Ac, Fw] **MaidManager** [So] |
@@ -211,7 +219,7 @@ Uses the AccountDb
 * `Register/Unregister vault`
 * * |  _MaidNode_ =>>>> | [Ac, Fw] **MaidManager** [So] |
 
-### Messages Out
+### Nachrichten Ausgang
 * `PUT<Data>`
 * * | **MaidManager** [So] ->>>> | **DataManager** |
 * `Delete<Data>`
@@ -224,55 +232,54 @@ Uses the AccountDb
 * * | **MaidManager** [So] =>>>> | **PmidNode** |
 
 ### Pmid Manager<a id="PmidManager"></a>
-The PAH (Pmid Account Holder) function is to manage the Pmid client. This means ensuring the client has an account and an accurate record of data elements held and any lost (early version of rank).
-### Container Structure
+Die PAH (Pmid Account Halter) Funktion dient der Verwaltung des Pmid Client. Das bedeutet das sichergestellt wird das der Client einen Account hat und einen akuraten Eintrag über Datenelemente die vorhanden und verloren sind (frühre Version von Rang)
 
-Uses the AccountDb
+### Container Struktur
+Nutzu die AccountDb
 
-* Key : Data key
-* Value : Size (int32)
+* Schlüssel : Datenschlüssel
+* Wert : Größe (int32)
 
-### Header Structure
+### Header Struktur
 
-* Total Data size Stored
-* Total Data Size lost
-* Available Space
+* Totale Datengröße gespeichert
+* Totale Datengröße verloren
+* Verfügbarer Platz
 
-### Messages In
+### Nachrichten Eingang
 
-* `Put<Data>` Store data on PmidNode and update stored counts for that PmidNode
+* `Put<Data>` Speichert Daten auf der PmidNode und aktualisiert die gespeichterten Zählerstand für diese PmidNode
 * * | **DataManager** =>>>> | [Ac, Fw] **PmidManager** |
-* `Delete<Data>` Send delete to PmidNode and remove from stored counts for that pmidnode
+* `Delete<Data>` Sendet Löschungen zur PmidNode und entfernt vom gespeicherten Zählerstand für diese PmidNode
 * * | **DataManager** ->>>> | [Ac, Fw] **PmidManager** |
-* `Get<Data>` Return data or error
+* `Get<Data>` Rückgabe von Daten oder Fehlern
 * * | **DataManager** =>>>> | [Ac(1), Fw] **PmidManager** |
-* `Lose<Data>` Send delete to PmidNode and add to lost count
+* `Lose<Data>` Sendet Löschungen zur PmidNode und fügt zum Zählerstand für Verloren hinzu.
 * `GetPMIDHealth`
-* * | **MaidManager** =>>>> | [ **PmidManager** | (no Fw or Ac, answer every call)
-### Messages Out
-* `SendAccount` This is sent to a _PmidNode_ when it rejoins the group. This will be detected by the **PmidManager** on reciept of a churn event. The account in this case is all data the _PmidNode_ should have stored and will not include any deleted or lost data that occurred whilst the _PmidNode_ was off line.
+* * | **MaidManager** =>>>> | [ **PmidManager** | (keine Fw oder Ac, beantwortet jeden Aufruf )
+### Nachrichten Ausgang
+* `SendAccount` Das wird zu einer _PmidNode_ gesendet es der Gruppe erneut beitritt. Das wird vom **PmidManager** bei Empfang eines Abwanderungsereignis erkannt. Der Account ist in diesem Fall alle Daten die _PmidNode_ hätte speichern sollen und wird keine gelöschten oder verlorenen Daten einschliessen die aufgetreten sind während die _PmidNode_ offline war.
 * *   | **PmidManager** [So]-> | **PmidNode**
 
 
 ### Mpid Manager<a id="mpidmanager"></a>
+Die MPAH (Mpid Account Halter) Funktion dient zur Verwaltung des Mpid client. Das bedeutet das sichergestellt wird das der Client einen Account hat und eine Blackliste/Whiteliste wenn sie vom Client benötigt wird. Diese Persona wird ausserdem Nachrichten vorhalten die für einen Mpid Client bestimmt sind der grade offline ist.
 
-The MPAH (Mpid Account Holder) function is to manage the Mpid client. This means ensuring the client has an account and a blacklist or whitelist if required by the client. This persona will also hold messages destined for an Mpid client who is currently off-line.
+### Container Struktur
+Benutzt die AccountDb
 
-### Container Structure
-Uses the AccountDb
+* Schlüssel : MpidName  + SenderMpidName + NachrichtenID
+* Wert : Nachrichteninhalt
 
-* Key : MpidName + SenderMpidName + messageID
-* Value : message contents
+Diese Datenbank sollte nur Einträge enthalten während  _MpidNode_ offline ist.
 
-This database should only hold records while _MpidNode_ is off-line.
-
-### Header Structure
+### Header Struktur
 
 * whitelist
 * blacklist
 
 
-### Messages In
+### Nachrichten Eingang
 
 * `Message`
 * * | _MpidNode_ =>>>> | this**MpidManager** [So]|
@@ -282,23 +289,23 @@ This database should only hold records while _MpidNode_ is off-line.
 * `RemoveFromWhiteList`
 * * | _MpidNode_ ->>>> | this**MpidManager** [Sy]|
 * `WhiteList`
-* * | _MpidNode_ =>>>> | this**MpidManager** [Sy]|(reply with whitelist)
+* * | _MpidNode_ =>>>> | this**MpidManager** [Sy]|(antworte mit whitelist)
 * `AddToBlackList`
 * * | _MpidNode_ ->>>> | this**MpidManager** [Sy]|
 * `RemoveFromBlackList`
 * * | _MpidNode_ ->>>> | this**MpidManager** [Sy]|
 * `BlackList`
-* * | _MpidNode_ =>>>> | this**MpidManager** [Sy]|(reply with blacklist)
+* * | _MpidNode_ =>>>> | this**MpidManager** [Sy]|(antworte mit blacklist)
 
-### Messages Out
-* `Message` On receipt of a message the lists are checked and the message is sent on. If the node is off-line then the message is stored locally, on receipt of a churn event the off-line list is checked for messages and these are sent to the client.
-* * | this**MpidManager** [So] -> | _MpidNode_ | (may come from database)
-* * | this**MpidManager** [So] =>>>> | **MpidManager** [Sy]| (live message from remote _MpidNode_)
+### Nachrichten Ausgang
+* `Message` Bei Erhalt einer Nachricht werden die Listen überprüft und die Nachricht wird weiter gesendet. Wenn die Node offline ist dann wird die die Nachricht lokal gespeichert, bei Empfang eines Abwanderungsereignis wird die offline List auf Nachrichten überprüft und diese werden an den Client gesendet.
+* * | this**MpidManager** [So] -> | _MpidNode_ | (kann von der Datenbank kommen)
+* * | this**MpidManager** [So] =>>>> | **MpidManager** [Sy]| (live Nachricht  von entfernter _MpidNode_)
 
-## Entity personas
+## Einheiten personas
 ### Pmid Node<a id="pmidnode"></a>
 
-### Messages In
+### Nachrichten Eingang
 
 * `Put<Data>`
 * *   | **PmidManager** -> |[Ac, Fw] **PmidNode**
@@ -306,33 +313,33 @@ This database should only hold records while _MpidNode_ is off-line.
 * *   | **PmidManager** -> |[Ac, Fw] **PmidNode**
 * `Get<Data>`
 * *   | **DataManager** => |[Ac, Fw] **PmidNode**
-* `SendAccount` This is sent to a _PmidNode_ when it rejoins the group. This will be detected by the **PmidManager** on reciept of a churn event. The account in this case is all data the _PmidNode_ should have stored and will not include any deleted or lost data that occurred whilst the _PmidNode_ was off line.
+* `SendAccount` Das wird zu einer  _PmidNode_ wenn es der Gruppe wieder beitritt. Das wird vom **PmidManager** bei Empfang eines Abwanderungsereignis erkannt. Der Account ist in diesem Fall alle Daten die der _PmidNode_ hätte speichern sollen und wird keine gelöschten oder verlorenen Daten einschliessen die aufgetreten sind während _PmidNode_ offline war.
 * *   | **PmidManager** -> |[Ac, Fw] **PmidNode**
 
 
-### Messages Out
+### Nachrichten Ausgang
 
-[none]
+[Keine]
 
 ### Maid Node <a id="maidnode"></a>
 
-### Messages In
+### Nachrichten Eingang
 
-[none]
+[Keine]
 
-### Messages Out
+### Nachrichten Ausgang
 
-* `Put<Data>` Returns error_code and PmidHealth
+* `Put<Data>` Liefert Fehlercode und PmidHealth zurück
 * * |  _MaidNode_ [So]=>>>>| **MaidManager** |
-* `Delete<Data>` Returns error_code
+* `Delete<Data>` Liefert Fehlercode zurück
 * * |  _MaidNode_ [So]=>>>>| **MaidManager** |
-* `Get<Data>` Returns error_code and data (if success)
+* `Get<Data>` Liefert Fehlercode zurück und Daten (wenn erfolgreich)
 * * |  _MaidNode_ [So]=>>>>| **DataManager** |
 
 
 ### Mpid Node<a id="mpidnode"></a>
 
-### Messages In
+### Nachrichten Eingang
 
 * `Message`
 * * | _MpidNode_ =>>>> | this**MpidManager** [So]|
@@ -342,98 +349,96 @@ This database should only hold records while _MpidNode_ is off-line.
 * `RemoveFromWhiteList`
 * * | _MpidNode_ ->>>> | this**MpidManager** [Sy]|
 * `WhiteList`
-* * | _MpidNode_ =>>>> | this**MpidManager** [Sy]|(reply with whitelist)
+* * | _MpidNode_ =>>>> | this**MpidManager** [Sy]|(antworte mit whitelist)
 * `AddToBlackList`
 * * | _MpidNode_ ->>>> | this**MpidManager** [Sy]|
 * `RemoveFromBlackList`
 * * | _MpidNode_ ->>>> | this**MpidManager** [Sy]|
 * `BlackList`
-* * | _MpidNode_ =>>>> | this**MpidManager** [Sy]|(reply with blacklist)
+* * | _MpidNode_ =>>>> | this**MpidManager** [Sy]|(antworte mit blacklist)
 
-### Messages Out
-[none]
+### Nachrichten Ausgang
+[Keine]
 
 # <a id="sync"></a>Synchronisation
 
-The network is in a constant state of flux, with nodes appearing and disappearing continually. This forces a state change mechanism that can recognise which nodes are responsible for what data in real time and recognising churn events near a node. Using [MaidSafe-Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) the network can detect node changes in a very short time period. Routing also provides a mechanism that can guarantee with great precision which nodes are responsible for which NAE (including the node querying the network).
+Das Netzwerk befindet sich in einem konstanten Zustand des Wandels, in dem Nodes kontinuirlich erscheinen und wieder verschwinden. Das erzwingt einen Statusveränderungsmechanismus der in der Lage ist in Echtzeit  zu erkennen welche Nodes für welche Daten verantwortlich sind und Abwanderungsereignisse in der Nähe einer Node zu erkennen. Mit Hilfe von [SAFE-Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) kann das Netzwerk Veränderungen der Nodes sehr schnell erkennen. Routing stellt ebenfalls einen Mechanismus zur Verfügung der mit großer Präzision garantieren kann welche Nodes für welche NAE verantwortlich sind (inklusive der Node die das Netzwerk abfragt)
 
-To resolve a data element, whether an `account transfer` or `unresolved action` then the node requires a majority of close nodes to agree on the element. As there can be multiple churn events during a transfer of such data, the node requires to handle this multiple churn event itself. To do this with each churn event the new node and old nodes are handled by checking if the old node had given a data element and replace this node_id with the new node id. If the data element did not contain the new node but should have (i.e. the new node would have been responsible for an unresolved element) then the new node_id is added as having sent the data. To make this a little simpler, all synchronise data has the current node added as having 'seen' the element, this helps with the majority size required. When a node adds itself to unresolved data in this manner it adds itself to the end of the container. This will prevent the node sending this element in a synchronise message.
+Um ein Datenelement aufzulösen, sei es ein `Account transfer` oder eine `ungelöste Aktion`, dann verlangt die Node eine Mehrheit von Nodes in der Nähe die bezogen auf das Element zustimmen. Da es mehrere Abwanderungsereignisse während eines Transfers solcher Daten geben kann, erwartet die Node solch mehrfache Abwanderungsereignisse selbst zu handhaben. Um das mit jedem Abwanderungsereigniss zu machen müssen die alte und die neue Node gehandhabt werden indem überprüft wird ob die alte Node ein Datenelement gegeben hat und ersetzen diese node_id mit der neuen node_id. Wenn das Datenelement die neue Node nicht enthalten hat, es aber sollte (z.B. die neue Node wäre für ungelöste Elemente verantwortlich gewesen) dann wird die neue node_id als Datensender hinzugefügt. Um das ein wenig einfacher zu machen, alle synchronisierten Daten haben die aktuelle Node als ein 'gesehen' Element, das hilft dabei Größe der Mehrheit die nötig ist. Wenn eine Node sich selbst zu ungelösten Daten in dieser Art hinzufügt, dann fügt es sich selbst am Ende des Containers hinzu. Das hindert die Node daran dieses Element in einer synchronisierten Nachricht zu senden.
 
-When a node sends a synchronise message it sends a unique identifier and it's own id with the unresolved data. Each receiving node creates a container of the node_id and entry_id along with the unresolved data. When the size of this container is 0.5 * the close node size +1 then the data is resolved and written to the data store.
+Wenn eine Node eine synchronisierte Nachricht sendet, dann sendet sie einen eindeutigen Identifikator und seine eigene ID mit den ungelösten Daten. Jede empfangene Node erstellt einen Container der node_id und entry_id zusammen mit den ungelösten Daten. Wenn die Größe des Containers 0.5 * die Größe der nächsten Node +1 ist, dann sind die Daten gelöst und werden in den Datenspeicher geschrieben.
 
-There are two types of data which require cumulative data (from a group) to resolve:
+Es gibt zwei Typen von Daten welche kumulative Daten (von einer Gruppe) erforden um gelöst zu werden:
 
-* `synchronise` This is data that has not yet been synchronised (unresolved), but this node has 'seen' itself. This data contains the action required to be taken with the attributes to take that action, this can be thought of as a function (message type) and parameters to be applied.
-* `account transfer`, this type of data has been resolved and stored by the node. It is sent as the database value to be stored.
-
-##Synchronise to Validate Actions
-
-Synchronise is used to ensure all nodes in the same close group responsible for a NAE agree on the data related to that NAE prior to storing (or performing) that related data. Nodes achieve this by creating a container of data to be resolved. For such data an unresolved entry may be added to the container when
-* the message is received from previous persona
-* an unresolved entry is received from similar persona (in a group) for a target the node is responsible for
-
-The unresolved entry associated with data becomes resolved once the number of unresolved entries received for that data (from previous and similar personas) reaches an expected number. A node having resolved an entry may take part in sending to other node(s) deemed responsible for the data, ONLY if the node has received the data from a previous persona.
-
-Using routing to confirm responsibility a **manager node** will check all data held to ensure it is still responsible for the data (via the routing api). The node then checks which data the new node should have (if any). The data is sent to the new node as `unresolved data`.
+* `synchronisieren` Das sind Daten die bisher noch nicht synchronisiert wurden (ungelöst), aber diese Node hat sich selbst `gesehen`. Diese Daten enthalten die Aktionen die mit den Attributen notwendig sind um diese Aktion durchzuführen; dies kann als Funktion (Nachrichtentyp) gesehen werden und Parameter können angewandt werden.
+* `account transfer`, dieser Datentyp ist gelöst und von der Node gespeichert. Es wird als Datenbankwert gesendet der gespeichert wird.
 
 
-This process continues and each time the data is sent a counter is incremented, when this counter reaches a parameter (initially 100) the data is deemed non-resolvable and removed. When data does resolve it is not removed from the list as there could be further nodes to be added to the peer container component (we resolve on a majority and expect a unanimous number of nodes to be added and do not wish to create a new unresolved entry). When there are a complete set of peers who have sent the data (unanimous agreement) then the unresolved entry is removed.
+##Synchroniniseren um Aktionen zu validieren
 
-### Account Transfer
+Synchronisieren wird genutzt um sicherzustellen das alle Node in der selben Gruppe die fuer ein NAE verantwortlich sind sich über die Daten einig sind, in Relation zu der NAE die die Daten vorher gespeichert (oder verarbeitet) hat. Nodes erreichen das indem sie einen Container aus Daten erstellen der gelöst wird. Für solche Daten kann ein ungelöster Eintrag zum Container hinzugefügt werden, wenn :
+* die Nachricht wird von der vorherigen Persona empfangen
+* ein ungelöster Eintrag wird von einer ähnlichen Persona (in der Gruppe) für eine Ziel empfangen für das die Node verantwortlich ist.
 
-Manager personas storing the information for nodes/data usually deliver their functionality based on cumulative decision making, where a group of close nodes co-operate to realise the desired functionality. Obviously, the correct decisions to a large extent depend on how well the group members are synchronised. The dynamic nature of the network, where a node in a group may leave or join, necessitates the demand for implementing efficient mechanisms to ensure each member of any group is synchronised with other group members and hold the most up to date information for any node/data it is responsible for.
+Der ungelöste Eintrag der mit den Daten verbunden ist wird gelöst sobald die Anzahl an ungelösten Einträge die für diese Daten empfangen wurden (von den vorherigen und ähnlichen Personas) eine erwartete Anzahl erreicht. Eine Node die einen Eintrag gelöst hat kann am Senden zu anderen nodes, die als verantwortlich betrachtet werden, beteiligt werden, allerdings NUR wenn die Node die Daten von einer vorherigen Persona erhalten hat.
+Durch die Nutzung von Routing wird Verantwortlichkeit bestätigt, eine **manager node** wird alle vorgehaltenen Daten überprüfen um sicherzustellen das es immer noch für die Daten verantwortlich ist (mit Hilfe der Routing API). Die Node überprüft anschliessend welchen Daten die neue Node haben sollte (wenn überhaupt Daten da sein sollten). Die Daten werden dann als `ungelöste Daten` zur neuen Node gesendet.
 
-As a new node enters a group, it is sent account transfer messages, it's own address is added to an unresolved account transfer record (it is the close group -1 node) to ensure the group size calculations do not change although the group size cannot equal the system group size as this node is replacing a now missing node from that group.
+Diese Prozess geht weiter und jedes Mal wenn Daten gesendet werden, wird ein Zähler inkrementiert. Wenn dieser Zähler einen Parameter erreicht (inital 100) werden die Daten als unlösbar betrachtet und entfernt. Wenn die Daten gelöst werden, werden sie nicht von der Liste entfernt da es weitere Nodes geben könnte die zur Peerkomponente hinzugefügt werden (Wir lösen bei einer Mehrheit und  erwarten einen einstimmige Anzahl an Nodes die hinzugefügt werden und möchten keine neuen ungelösten Einträge erstellen). Wenn es ein komplettes Set von Peers gibt die die Daten gesendet haben (einstimmige Vereinbarung), dann wird der ungelöste Eintrag entfernt.
 
-The account transfer record is a database entry and requires agreement and then writing direct to the database.
+### Account Überführung
 
-In addition unresolved data is provided to this node and again this node add's it's own id to this data, however, it does not synchronise this data back to the close group as all nodes have taken care of this as they picked up this new node in the churn event. The unresolved data should now resolve as per the above process.
+Manager Personas speichern die Informationen für Nodes/Daten liefern deren Funktionalität normalerweise basierend auf kumulativer Entscheidungsfindung, bei der eine Gruppe von nahen Nodes kooperieren um die gewünschte Funktionalität zu erreichen. Augenscheinlich sind richtige Entscheidungen zu einem großen Teil davon abhängig wie gut die Gruppenmitglieder synchronisiert sind. Die dynamische Natur des Netzwerk, in der eine Node innerhalb der Gruppe vielleicht ein oder austritt, macht einen Bedarf nach einem effizieten Mechanismus notwendig um sicherzustellen das jedes Mitglied einer Gruppe mit anderen Gruppenmitgliedern synchronisiert ist and die aktuellsten Daten vorhält für jede Node/Daten für die sie verantwortlich ist.
+
+In dem Moment in dem eine Node einer Gruppe beitritt, werden ihr Account Übertragungsnachrichten gesendet, seine eigene Adresse wird zu den ungelösten Account Übertragungs Einträgen hinzugefügt (es ist die nächste gruppe -1 Node) um sicherzustellen das die Gruppengrößen Berechnung sich nicht verändern, obwohl die Gruppengröße nicht gleich groß sein kann da diese Node ein jetzt fehlende Node in dieser Gruppe ersetzt.
+
+Der Account Übertragungs Eintrag ist ein Datenbankeintrag und verlangt Übereinstimmung und schreibt dann direkt in die Datenbank.
+
+Zusätzlich werden ungelöste Daten dieser Node zur Verfügung gestellt und diese Node fügt abermals seine eigene ID den Daten hinzu. Die Node synchronisiert diese Daten jedoch nicht zurück zur nächsten Gruppe da alle Node das bereits erldigt haben als sie die neue Node beim Abwanderungsevent aufgenommen haben. Die ungelösten Daten sollten jetzt durch den oben genannten Prozess gelöst werden.
 
 
-### Accumulator
 
-When receiving messages from a group of nodes, the network requires authority for the message to be validated. This is done by accumulating messages as they arrive after checking they come from a group that is responsible for sending the data (validated via routing api) and accumulating the messages until we receive at least close group -1 messages if the message comes from a **manager node** group. Messages that come from DNAE nodes accumulate on that single message. These nodes are verifiable as they are connected and will have performed an action to validate they are authorised to send that message.
+### Akkumulator
+
+Wenn Nachrichten von einer Gruppe von Nodes empfangen werden, verlangt das Netzwerk Authorität um die Nachrichtenzu validieren. Dies wird erledigt imdem Nachrichten akkumuliert werden wenn sie ankommen, nachdem überprüft wurde das sie von einer Gruppe kommen die für das Senden der Daten verantwortlich ist (validiert durch die Routing API) und akkumulieren der Nachrichten bis wir mindestens eine Nahe Gruppen -1 Nachricht erhalten, wenn die Nachricht von einer **manager node** Gruppe kommt. Nachrichten die von einer DNAE Node kommen akkumulieren auf dieser einfachen Nachricht. Diese Node sind verifizierbar da sie verbunden sind und eine Aktion durchgeführt haben werden um zu validieren das sie berechtigt sind die Nachricht zu senden.
 
 ### Firewall
 
-When a message has been accumulated it is added to the firewall. This firewall will check any incoming messages and reply with the current error_code (and message if required by that message type). The error_code may be `synchronising` in cases where the accumulating node has accumulated enough messages to ensure they are valid, but cannot make a decision yet on the 'answer' to the message (it may require to synchronise or even send a message to another persona to retrieve further info).
+Wenn eine Nachricht akkumuliert ist, wird sie zur Firewall hinzugefügt. Diese Firewall wird jede eingehende Nachricht überprüfen und mit dem aktuellen Fehlercode antworten (und eine Nachricht senden, wenn das von diesen Nachrichtentyp verlangt wird). Der Fehlercode kann in Fällen `synchronisieren` in denen die akkumulierende Node genug Nachrichten akkumuliert hat um sicherzustellen das sie valide sind , aber noch keine Entscheidung darüber treffen kann wie die Nachricht zu beantworten ist (es kann notwendig sein zu synchronisieren oder sogar eine Nachricht zu einer Persona zu senden um weitere Informationen anzufordern)
 
 ### Caching
 
-Caching is a very important facet of distributed networks. Cache data is likely to be stored in memory as opposed to disk. Currently two caching mechanisms have been defined that vaults aimed to stick with. The following sections present a general discussion, for the detailed implementation description, please have a look at [Caching](https://github.com/maidsafe/MaidSafe-Vault/wiki/Caching) .
+Caching ist ein sehr wichtiger Akspekt eines verteilten Netzwerk. Cachedaten werden wahrscheinlich im Arbeitsspeicher und nicht auf der Festplatte gespeichert. Momentan sind zwei caching Mechanismen definiert bei dem Vaults bleiben werden. Die folgenden Sektionen präsentieren eine generelle Diskussion, für eine detailierte Beschreibung der Implementierung siehe :
+[Caching](https://github.com/maidsafe/MaidSafe-Vault/wiki/Caching) .
 
-### Opportunistic Caching
+### Opportunistisches Caching
 
-Opportunistic caching is always a first in first out (FIFO) mechanism. In response to a `Get` each node in the chain will add any cacheable data (such as self checking or immutable) to it's FIFO. This has many advantages:
+Opportunistisches caching ist immer ein first in first out (FIFO) Mechanismus. Als Antwort auf ein `GET` wird jede Node in der Kette jegliche cachebaren Daten (wie selbst Überprüfung oder unveränderbar) zu seiner FIFI hinzufügen. Das hat viele Vorteile:
 
-* Multiple requests for the same data will speed up automatically.
-* Denial of service attacks become extremely difficult as the data simply surrounds the requester of that data if continually asked for.
-* Important data is faster when it's important and slows downs otherwise, making good use of network resources.
-* Close nodes can become temporary stores of data very easily, allowing many advantages to system designers.
-* If for instance a web site were located in a public share then that site would increase in speed with more viewers, this is a more logical approach than today's web sites which can run the risk of overload and crash.
+* Mehrfache Anfragen für die selben Daten werden automatisch beschleunigt.
+* Denial of service Attacken werden extrem schwierig da die Daten einfach den Anfrager der Daten umzingeln wenn er ununterbrochen danach fragt.
+* Wichtige Daten sind schneller wenn sie wichtig sind und verlangsamt andernfalls, was eine gute Verwendung von Netzwerk Resourcen darstellt.
+* Nahe Nodes können einfach temporäre Speicher von Daten werden was für SystemDesigner viele Vorteile darstellt.
+* Wenn z.B. eine Webseite auf einem öffentliche Share platziert ist, dann wird diese Seite schneller laden wenn mehr Besucher auf sie zugreifen. Dieses Vorgehen ist logischer als das heutige Vorgehen bei dem Webseiten Gefahr laufen überlastet zu werden und zu crashen.
 
-### Deterministic Caching
+### Deterministisches Caching
 
-This type of caching is not yet implemented.
+Diese Art von caching ist noch nicht implementiert.
+Deterministisches Caching erlaubt es dem Netzwerk die Anzahl an Nodes die Daten vorhalten und Pointer zu Daten effektiv zu erweitern wenn auf die Daten von einer großen Anzahl an Nodes oder Usern zugegriffen wird. Das erlaubt es dem Netzwerk mit extrem beliebten Inhalten umzugehen die z.b. eine microblogging Technologie repräsentiert die extrem populäre Accounts hat.
 
-Deterministic caching allows the network to effectively expand the number of nodes holding data and pointers to data when the data is accessed by a large number of nodes or users. This allows the network to cope with extremely popular data sets that may represent a microblogging technology that has extremely popular accounts.
-
-
-In addition to this type of caching the network allows subscription lists, where identities can register to be alerted when a change happens that they wish to track, such as a microblogging site or a popular web site for news etc.
-
+Zusätzlich zu diesem Cachingtyp erlaubt das Netzwerk Subskriptionslisten, in der Identitäten registriert werden können um über eine Veränderung alarmiert zu werden die die User verfolgen möchten, wie z.b. eine microblogging Seite oder eine populäre Newsseite, etc.
 ### NFS Policies
 
-The API to the vault network is via Nfs policies and these are found in the [nfs library](https://github.com/maidsafe/MaidSafe-Network-Filesystem).
+Die API zum Vault Netzwerk erfolgt mittels Nfs Policies and diese können hier gefunden werden [nfs library](https://github.com/maidsafe/MaidSafe-Network-Filesystem).
 
 ### Ranking
 
-Misbehaving nodes require to be recognised by the network and acted on, likewise very helpful and well behaved nodes should command greater respect from other nodes. To achieve this a ranking mechanism is employed. This ranking mechanism in the vault network currently handles nodes that lose or otherwise corrupt data. This can be for many reasons such as:
+Nodes die sich unpassend benehmen müssen vom Netzwerk erkannt und entsprechend behandelt werden, genauso wie sehr hilfreiche und sich angepasste Nodes entsprechend mit größerem Respekt von anderen Nodes behandelt werden sollten. Um dies zu erreichen wird ein Ranking Mechanismus eingesetzt. Dieser Ranking Mechanismus im Vault Netzwerk handhabt momentan Nodes die Daten verlieren oder korrumpieren. Das kann aus vielen verschiedenen Gründen passieren, wie z.b:
 
-* Poor bandwidth capability
-* Slow cpu
-* Infrequent availability (machine mostly off line for any reason)
-* Hard drive corruption
-* Hard drive being tampered with (users deleting system data)
-* And many more
+* Schlechte Bandbreiten Leistungsfähigkeit
+* Langsame CPU
+* Unregelmäßige Verfügbarkeit
+* Festplatten Korruption
+* Festplatte an der sich jemand zu schaffen macht (Benutzer löschen Systemdaten)
+* Und vieles mehr
 
-Rather than measuring each element, which would be very expensive and complex, the network instead measures the amount of data a node can store and compares this with the data it loses. These figures together allow a calculation on the available space and it's worthiness, with a high rate of lost to stored making the vault itself less valuable.
+Anstatt jedes Element einzeln zu messen, was sehr komplex und aufwendig wäre, misst das Netzwerk stattdessen die Anzahl an Daten die eine Node speichern kann und vergleich das mit den Daten die sie verliert. Diese Zahlen zusammen erlauben eine Berechnung über den verfügbaren Platz und seine Wertigkeit, mit einer hohen Rate an verlorenen Daten zu gespeicherten Daten die den Vault weniger wertvollen machen.
