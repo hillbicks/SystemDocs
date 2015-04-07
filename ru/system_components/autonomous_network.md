@@ -1,16 +1,19 @@
-# Resilience - Autonomous network
-The SAFE Network is a resilient and autonomous network. There are many factors that have an impact on a network's performance and its ability to adapt to a changing environment. These factors have to be assessed and handled without the intervention of humans or large server systems.
+# Упругая автономная сеть
 
-The requirements of the resilient SAFE Network are as follows:
+SAFE Network это упругая и автономная сеть. Существует множество факторов, влияющих на производительность сети и возможность адаптироваться к изменяющемуся окружению. Эти факторы должны быть оценены и обработаны без вмешательства человека и серверных систем.
 
-* Cryptographically secured
-* A system of guaranteed Vault identification
-* A peer to peer (p2p) network that is very accurate and can guarantee Vault proximity to any address
-* Ensure home routers are able to allow connections both ways (NAT traversal)
-* A mechanism where users can prove they have provided resources
-* A mechanism of resource measurement and reward
-* Dealing with very high levels of churn (computers going off and on, potentially staying off)
-* The power to remove any administrative requirement
+Требования к упругости SAFE Network следующие:
 
-By meeting all these requirements the SAFE Network is able to support a network that can adapt quickly and automatically to hostile network environments, such as the Internet.
+* Криптографическая защита
+* Система достоверной идентификации хранилища
+* Пиринговая (p2p) сеть, точно гарантирующая близость хранилища к любым адресам
+* Достоверное соединение домашних роутеров в обе стороны (NAT Traversal)
+* Механизм, в котором пользователи могут доказать наличие у них определенной информации
+* Механизм оценивания ресурсов и вознаграждения пользователя
+* Борьба с высоким уровнем текучести (уменьшение количества компьютеров онлайн при флуктуациях сети)
+* Возможность удаления любой администрации
+
+Выполнение всех этих требований дает SAFE Network возможность поддерживать сеть, которая может быстро и автоматически адаптироваться к враждебному окружению, такому как Интернет.
+
+
 

@@ -1,10 +1,11 @@
-# Cryptographically secure
-In the SAFE network Vaults first create a cryptographic [key pair](http://en.wikipedia.org/wiki/Public-key_cryptography) to join the network.
+# Криптографическая защита
 
-As each Vault communicates with any other Vault these keys are used to secure the connection.
+В SAFE Network хранилища для начала создают криптографическую [пару ключей](https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%81_%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8B%D0%BC_%D0%BA%D0%BB%D1%8E%D1%87%D0%BE%D0%BC) чтобы присоединиться к сети.
 
-Unlike traditional secured communications mechanisms that require key exchanges (such as [diffie Hellman](http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)) the SAFE Network provides these keys to Vaults from the [routing](https://github.com/maidsafe/MaidSafe-Routing) layer.
+Эти ключи используются для обеспечения надежности взаимодействия двух хранилищ.
 
-The benefit of this is that even compromised hardware can be traversed in the SAFE Network. This deters [Man In The Middle (MiTM) attacks](http://en.wikipedia.org/wiki/Man-in-the-middle_attack).
+В отличии от традиционных механизмов обеспечения защиты соединений, которые требуют обмен ключем (например [Диффи-Хеллмана](https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB_%D0%94%D0%B8%D1%84%D1%84%D0%B8_%E2%80%94_%D0%A5%D0%B5%D0%BB%D0%BB%D0%BC%D0%B0%D0%BD%D0%B0)), SAFE Network обеспечивает хранилище этими ключами с помощью маршрутизации ([routing](https://github.com/maidsafe/MaidSafe-Routing)).
 
-As each Vault can encrypt messages to and from each Vault it communicates with, security of the whole network is enhanced.
+Польза от этого в том, что даже находящееся под угрозой аппаратное обеспечение может работать в SAFE Network. Это сдержит [MiTM атаку](https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA_%D0%BF%D0%BE%D1%81%D0%B5%D1%80%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5).
+
+Так как каждое хранилище шифрует сообщения от других хранилищ, с которыми оно взаимодействует, надежность и безопасность сети только растут.
