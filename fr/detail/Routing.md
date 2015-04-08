@@ -12,7 +12,7 @@ Routing offers the following features:
 * Modes of operation
 * Reliable direct and group messaging
 * Proximity evaluation
-* Node identification via PKI provided by MaidSafe-Passport
+* Node identification via PKI provided by Passport library
 * Caching mechanism
 * Churn handling
 * Routing table and group matrix
@@ -41,7 +41,7 @@ The initial setting up of the network, which is called zero state, involves two 
 
 ###NAT Traversal
 
-An objective of Routing has been enabling communication between each pair of nodes in the network, regardless of their network configuration settings. Routing in combination with [MaidSafe-RUDP](https://github.com/maidsafe/MaidSafe-RUDP/wiki) performs [hole punching](http://www.brynosaurus.com/pub/net/p2pnat/) to enable direct connection between each pair of nodes.
+An objective of Routing has been enabling communication between each pair of nodes in the network, regardless of their network configuration settings. Routing in combination with [SAFE Network-RUDP](https://github.com/maidsafe/MaidSafe-RUDP/wiki) performs [hole punching](http://www.brynosaurus.com/pub/net/p2pnat/) to enable direct connection between each pair of nodes.
 Hole punching is achievable as long as both nodes are not behind symmetric routers. If both nodes are behind symmetric routers, routing enables communication between two nodes by choosing a third node acting as proxy between the two nodes behind symmetric routers.
 
 
@@ -113,16 +113,18 @@ In a P2P network, joining and leaving are common events. Peer turnover, often re
 
 ###Matrix Change (Churn Event)
 
-In the routing network, data is usually stored at a logical group ID. This means that data is stored at the nodes which are among the first [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest to a given group ID.
+In the routing network, data is usually stored at a logical group ID. This means that data is stored at the nodes which are among the [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest to a given group ID.
 Any churn in the network may result in moving a node near or far from a group ID in that segment of the network. This means that many of the logical groups reconfigure by having new members in the group and losing some old members of the group.
 
 In event of:
 
-1. Node(s) disappearing from a logical group : New node(s) will become closer to the group ID and will become among [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest to the group ID. After this, all group messages sent to the group ID, will be received by new node(s) as well. It is the responsibility of other remaining nodes of that group to quickly replicate data to the new node(s).
-2. Node(s) appearing in the logical group : Some of the group member nodes will move far from the group ID and will not remain under [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) closest to the group ID. Further to this, these Node(s) will not receive any group message destined to the group ID. These Node(s) should delete data which they are no longer responsible for.
+1. Node(s) disappearing from a logical group : Some of the group member nodes will move far from the group ID and will [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) therefore no longer be a part of that close group. These Node(s) will not receive any group message destined to the group ID. These Node(s) will delete data which they are no longer responsible for. 
+2. Node(s) appearing in the logical group : New node(s) appearing closer in the address space to [Parameters::node_group_size](https://github.com/maidsafe/MaidSafe-Routing/blob/master/src/maidsafe/routing/parameters.cc) will replace those from further away. It is the responsibility of other remaining nodes of that group to quickly replicate data to the new node(s).
+
+>>>>>>> upstream/master:en/detail/Routing.md
 
 
-To reliably keep data alive and accessible in this dynamic group, all responsible nodes should replicate data as soon as they become aware of the network churn. Routing provides MatrixChange class to detect such churn quickly and to reliably workout if data replication is required for any new node appearing in the group. Nodes close to a segment of network will notice churn event by observing a change in their group matrix. If group matrix changes on any churn, routing creates MatrixChange object, containing a list of new and old group matrix nodes. This class provides helper function to evaluate any given group ID to work out if node receiving the churn event:
+To reliably keep data alive and accessible in this dynamic group, all responsible nodes should replicate data as soon as they become aware of the network churn. Routing provides MatrixChange class to detect such churn quickly and to reliably workout if data replication is required for any new node appearing in the group. Nodes close to a segment of network experiencing a churn event will observe a change in their groupmatrix. If group matrix changes on any churn, routing creates MatrixChange object, containing a list of new and old group matrix nodes. This class provides helper function to evaluate any given group ID to work out if node receiving the churn event:
 
 * Is still part of the group and responsible for data stored at the group.
 * Is not part of the group any more and needs to delete stored data related to the group.

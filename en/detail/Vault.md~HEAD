@@ -1,8 +1,8 @@
 ## Vault Overview
 
-The MaidSafe Network consists of software processes (nodes), referred to as vaults. These vaults perform many functions on the network and these functional components are referred to as personas. The underlying network, when linked with [MaidSafe-Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki), is an XOR network and as such a node may express closeness or responsibility to any other node or element on the network, if the node is in relative close proximity to the target. In this summary the phrase **NAE** (Network Addressable Element) is used to refer to anything with a network address including data.
+The SAFE Network consists of software processes (nodes), referred to as vaults. These vaults perform many functions on the network and these functional components are referred to as personas. The underlying network, when linked with [Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki), is an XOR network and as such a node may express closeness or responsibility to any other node or element on the network, if the node is in relative close proximity to the target. In this summary the phrase **NAE** (Network Addressable Element) is used to refer to anything with a network address including data.
 
-The vaults rely on [MaidSafe-Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) to calculate responsibilities for NAE via the relevant [API calls](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/routing_api.h) such as
+The vaults rely on [Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) to calculate responsibilities for NAE via the relevant [API calls](https://github.com/maidsafe/MaidSafe-Routing/blob/master/include/maidsafe/routing/routing_api.h) such as
 ```C++
 GroupRangeStatus IsNodeIdInGroupRange(const NodeId& group_id, const NodeId& node_id) const;
 GroupRangeStatus IsNodeIdInGroupRange(const NodeId& group_id) const;
@@ -31,8 +31,8 @@ Churn, duplication of data and ensuring all members of a group agree is handled 
 * =>>>> represents a group message (with callback)
 * => represents a direct message (with callback)
 
-### Maidsafe Identities
-The MaidSafe Network consists of many data types as well as many identity types. These identities are described in [MaidSafe-Passport](https://github.com/maidsafe/MaidSafe-Passport/wiki). The personas are particularly focussed on 4 of these identities and ensures the appropriate entities satisfy the requirements enforced by these identities.
+### SAFE Network Identities
+The SAFE Network consists of many data types as well as many identity types. These identities are described in [Passport](https://github.com/maidsafe/MaidSafe-Passport/wiki). The personas are particularly focussed on 4 of these identities and ensures the appropriate entities satisfy the requirements enforced by these identities.
 
 * MAID (MaidSafe Anonymous ID) - The client identity to manipulate non structured data. A client can have one of these.
 * PMID (Proxy Maidsafe ID) - The client identity to safely store non structured data. A client can have many of these.
@@ -40,7 +40,7 @@ The MaidSafe Network consists of many data types as well as many identity types.
 * MSID (Maidsafe Share ID) - The client identity to manager groups of MPID's to privately share data (structured and non structured). A client can have many of these. This type of identity has no NAE holder for security purposes.
 
 ### Vault Personas
-The personas employed by MaidSafe vaults fall into two distinct categories, namely Data Management and Node Management. These categories define the actions and grouping of the nodes and their knowledge of the surroundings and messages.
+The personas employed by SAFE Network vaults fall into two distinct categories, namely Data Management and Node Management. These categories define the actions and grouping of the nodes and their knowledge of the surroundings and messages.
 * Data Management nodes are responsible for NAE specifically data, usually pointers to data.
 * Node Management personas are responsible for an entity persona (node) and manages the actions and requests by that entity persona.
 
@@ -75,7 +75,7 @@ Storing a piece of data onto the network requires coordination and collaboration
 ##Anatomy of a Manager Persona with Non-Versioned Data
 All personas follow a very similar pattern, they accumulate, firewall, handle and send on messages, and synchronise their results, whereupon agreement they record the result of an operation in a database. The results or values stored per operation differ with differing personas, but little else does.
 
-In practice, it is a priori assumed that nodes on the network are untrustworthy, however, cooperating/collaborating nodes are essential to the continued stability and health of the network. To ensure both conditions are met when receiving from an INAE, the group of nodes, under the guise of a known specific persona, surrounding the target element become responsible for validating the request. Synchronisation between the group allows each to accumulate one another's result to a predetermined number sufficient to satisfy the request. The process inherently detects message tampering or would-be hackers and with a ranking mechanism in place serial offenders are forced into network isolation.
+In practice, it is a priori assumed that nodes on the network are untrustworthy, however, cooperating/collaborating nodes are essential to the continued stability and health of the network. To ensure both conditions are met when receiving from an INAE, the group of nodes, under the guise of a known specific persona, surrounding the target element become responsible for validating the request. Synchronisation between the group allows each to accumulate one another's result to a predetermined number sufficient to satisfy the request. The process inherently detects message tampering, or manipulation of would-be adversaries and with a ranking mechanism in place serial offenders are forced into network isolation.
 
 When receiving from a DNAE each persona accumulates on a single message only. This is possible since a connection exists between the nodes and that both routing and rUDP have confirmed the other nodes identity in a cryptographically secure manner.
 
@@ -124,13 +124,13 @@ Data management personas are responsible for maintaining links between NAE keys 
 The **DataManager** persona manages pointers to non versioned data, such as file contents, network keys as defined in [passport](https://github.com/maidsafe/MaidSafe-Passport/wiki) and any other 'static' data elements.
 
 ### Container Structure
-Uses a unique ManagerDb
+Uses a unique key value store
 
 * Key : data key + type
 * Value : DataManagerValue object (serialised)
 
 ### Messages In
-* `Put<Data>` This message is received from a MaidManager group (of K)and is accumulated. The database is checked for the existence of the key. If it exists then the subscriber count is incremented. If no record exists then each of the Data Managers of this group closes to the NAE being stored selects a connected node as a PmidNode to store on (if the message has a Data Holder hint then the closest of the data managers of this NAE attempts to store there). To store a chunk a `PUT<Data>`(key, content) message is sent to the PmidManagers responsible for the selected PmidNode.
+* `Put<Data>` This message is received from a MaidManager group (of K)and is accumulated. The database is checked for the existence of the key. If it exists then the subscriber count is incremented. If no record exists then each of the Data Managers of this group closest to the NAE being stored selects a connected node as a PmidNode to store on (if the message has a Data Holder hint then the closest of the data managers of this NAE attempts to store there). To store a chunk a `PUT<Data>`(key, content) message is sent to the PmidManagers responsible for the selected PmidNode.
 * * | **MaidManager** ->>>> | [Ac, Fw]**DataManager**[So, Sy]->>>>|
 
 * `Delete<Data>` This message is received from a MaidManagers group (of K)and is accumulated. The database is checked for the existence of the key. If it exists then the subscriber count is decremented. When the count reaches zero (if it ever does) then a Delete<data>(key) is sent to all PmidManagers to delete the data.
@@ -162,7 +162,7 @@ The **VersionManager**, manages versioned data. This currently includes data tha
 
 ### Container Structure
 
-Uses a unique ManagerDb
+Uses a unique Manager key value store
 
 * Key : data key + type + Entity ID
 * Value : StructuredDataVersions object (serialised)
@@ -187,7 +187,7 @@ Node management personas, manage entity personas (nodes).
 The **MaidManager** function is to manage the MaidNode. This means ensuring the client has an account and at least one registered PmidNode.
 
 ### Container Structure
-Uses the AccountDb
+Uses the Account key value store
 
 * Key : Hash of the data key (hashed to protect clients data)
 * Value : Number of copies (int32) : total cost (int32)
@@ -227,7 +227,7 @@ Uses the AccountDb
 The PAH (Pmid Account Holder) function is to manage the Pmid client. This means ensuring the client has an account and an accurate record of data elements held and any lost (early version of rank).
 ### Container Structure
 
-Uses the AccountDb
+Uses the Account key value store
 
 * Key : Data key
 * Value : Size (int32)
@@ -259,7 +259,7 @@ Uses the AccountDb
 The MPAH (Mpid Account Holder) function is to manage the Mpid client. This means ensuring the client has an account and a blacklist or whitelist if required by the client. This persona will also hold messages destined for an Mpid client who is currently off-line.
 
 ### Container Structure
-Uses the AccountDb
+Uses the Account key value store
 
 * Key : MpidName + SenderMpidName + messageID
 * Value : message contents
@@ -355,7 +355,7 @@ This database should only hold records while _MpidNode_ is off-line.
 
 # <a id="sync"></a>Synchronisation
 
-The network is in a constant state of flux, with nodes appearing and disappearing continually. This forces a state change mechanism that can recognise which nodes are responsible for what data in real time and recognising churn events near a node. Using [MaidSafe-Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) the network can detect node changes in a very short time period. Routing also provides a mechanism that can guarantee with great precision which nodes are responsible for which NAE (including the node querying the network).
+The network is in a constant state of flux, with nodes appearing and disappearing continually. This forces a state change mechanism that can recognise which nodes are responsible for what data in real time and recognising churn events near a node. Using [Routing](https://github.com/maidsafe/MaidSafe-Routing/wiki) the network can detect node changes in a very short time period. Routing also provides a mechanism that can guarantee with great precision which nodes are responsible for which NAE (including the node querying the network).
 
 To resolve a data element, whether an `account transfer` or `unresolved action` then the node requires a majority of close nodes to agree on the element. As there can be multiple churn events during a transfer of such data, the node requires to handle this multiple churn event itself. To do this with each churn event the new node and old nodes are handled by checking if the old node had given a data element and replace this node_id with the new node id. If the data element did not contain the new node but should have (i.e. the new node would have been responsible for an unresolved element) then the new node_id is added as having sent the data. To make this a little simpler, all synchronise data has the current node added as having 'seen' the element, this helps with the majority size required. When a node adds itself to unresolved data in this manner it adds itself to the end of the container. This will prevent the node sending this element in a synchronise message.
 
@@ -408,7 +408,7 @@ Opportunistic caching is always a first in first out (FIFO) mechanism. In respon
 
 * Multiple requests for the same data will speed up automatically.
 * Denial of service attacks become extremely difficult as the data simply surrounds the requester of that data if continually asked for.
-* Important data is faster when it's important and slows downs otherwise, making good use of network resources.
+* The network creates more copies of popular data enabling faster access times 
 * Close nodes can become temporary stores of data very easily, allowing many advantages to system designers.
 * If for instance a web site were located in a public share then that site would increase in speed with more viewers, this is a more logical approach than today's web sites which can run the risk of overload and crash.
 
