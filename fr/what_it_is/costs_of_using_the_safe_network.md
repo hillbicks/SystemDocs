@@ -15,7 +15,7 @@ En plus du client MaidSafe, l'utilisateur a aussi besoin de safecoins pour accé
 
 Un utilisateur peut obtenir des safecoins de plusieurs manières:
 
-* En allouant une partie des resources libres de son ordinateur au Réseau SAFE,
+* En allouant une partie des ressources libres de son ordinateur au Réseau SAFE,
 * En créant de nouvelles applications pour le Réseau,
 * En contribuant au code source qui sous-tend le Réseau SAFE.
 
