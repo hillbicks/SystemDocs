@@ -19,4 +19,4 @@ Les transferts de safecoins entre utilisateurs sont gérés automatiquement par 
 
 Puisqu'il peut y avoir plusieurs Transaction Managers pour coordonner différentes transactions de safecoins simultanément, il n'y a pas de limites au nombre de transactions qui peuvent avoir lieu, chacune s'exécutant à la vitesse du Réseau.
 
-Un safecoin est un fragment d'information numérique. La seule donnée historique portée par un safecoin est l'identité de son précèdent et de son actuel propriétaire. Cette information est utilisée à des fins de vérifications. Ceci signifie que les safecoins peuvent être considères comme du cash sous une forme numérique, une monnaie qui ne laisse aucune traçabilité.
+Un safecoin est un fragment d'information numérique. La seule donnée historique portée par un safecoin est l'identité de son précèdent et de son actuel propriétaire. Cette information est utilisée à des fins de vérifications. Ceci signifie que les safecoins peuvent être considérés comme du cash sous une forme numérique, une monnaie qui ne laisse aucune traçabilité.
