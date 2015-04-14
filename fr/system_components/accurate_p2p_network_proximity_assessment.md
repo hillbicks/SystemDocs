@@ -1,5 +1,5 @@
-# Accurate p2p network proximity assessment
+# Évaluation précise de la proximité dans les réseaux p2p
 
-To ensure quick and accurate transfers of data between Vaults it is vital for the SAFE Network to be able to identify other Vaults that are in the same proximity. The network needs to be able to monitor the status of Vaults and data at all times, with all decisions on the network being made only in consensus with other Vaults.
+Pour assurer un transfert rapide et précis des données entre les Vaults, il est vital que le Réseau SAFE soit capable d'identifier les autres Vaults qui sont proches (au sens [XOR](http://en.wikipedia.org/wiki/Exclusive_or)). Le Réseau doit pouvoir contrôler le statut des Vaults et de données en permanence, sachant que toutes les décisions sur le Réseau sont prises avec le consensus de plusieurs Vaults.
 
-To do this, Vaults use an enhanced distributed hash table (DHT) to manage the identification and confirmation of Vaults in the same network area. Being optimised for efficiency and accuracy enables the network to globally reconfigure very rapidly (between 20ms and 5 seconds).
+Pour cela, les Vaults utilisent une version améliorée de table de hachage distribuée (DHT), pour gérer l'identification et la validation des Vaults qui sont dans la même région du Réseau (encore une fois au sens XOR). En optimisant sa fiabilité et son efficacité, le Réseau peut se reconfigurer intégralement très rapidement (entre 20 millisecondes et 5 secondes).

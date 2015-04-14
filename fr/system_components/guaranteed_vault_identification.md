@@ -1,14 +1,14 @@
-# Guaranteed Vault identification
-Vault identification is essential if Vaults are to be responsible in a measured way for resource management.
+# Garantie d'identification des Vaults
+L'identification des Vaults est essentielle dès lors que les Vaults sont responsables dans une grande mesure de la gestion des ressources du Réseau.
 
-Without identification any Vault could impersonate another. There are known methods to identify digital identities, such as a certificate authority (such as Verisign) or in some cases a web of trust. As this network has no servers, no human involvement and is completely trust less, these options are not suitable.
+Sans méthode d'indentification une Vault pourrait se faire passer pour n'importe quelle autre. Il y a plusieurs méthodes connues pour valider des identités numériques, par exemple en faisant appel à des autorités de certification (comme Verisign), ou alors dans certains cas par des réseaux de confiance. Comme le Réseau SAFE n'a pas de serveurs, ne requiert aucune intervention humaine et est complètement trustless, ces options ne sont pas adaptées.
 
-The Vault identification process involves creating two key pairs. One key pair is a revocation key and is used only to create and invalidate a real key.
+Le processus d'identification des Vaults implique la création de 2 paires de clés cryptographiques. Une paire de clés est une paire dite de révocation, et n'est utilisée que pour créer ou invalider la paire de clés réelle.
 
-The real key pair is created and the public key is signed by the revocation private key and this packet (public key plus signature) is stored on the network as a Vault Identification key type. This Hash is then used as the Vault identity.
+La paire de clés réelle est créée et la clé publique est signée par la clé de révocation privée. Ce paquet (clé public + signature) est stocké sur le Réseau avec le type Clé d'Identification de Vault. Ce hash est ensuite utilisé comme identifiant de la Vault.
 
-The SAFE Network can retrieve this identification packet on request from any Vault. The only way to alter this packet is by a message signed by the same ID as the one that signed the packet.
+Le Réseau SAFE peut retrouver le paquet d'identification de n'importe quelle Vault. La seule manière d'altérer ce paquet est par un message signé par le même identifiant que celui qui a signé le paquet.
 
-This process allows Vaults to identify themselves by advertising the hash of the identification packet that they created and stored.
+Ce processus permet donc aux Vaults de s'identifier elles-mêmes en publiant le hash du paquet d'identification qu'elles ont créé et qu'elles stockent.
 
-As only the creator has the private key paired with the public key contained in the identification packet then we can assume this is the correct Vault. All messages are encrypted with this ID, so fraudulent Vaults would not be able to decrypt such messages, including connect requests which are required to join the network.
+Puisque seul le créateur possède la clé privée et la clé publique contenus dans le paquet d'identification, alors on peut considérer que c'est bien la bonne Vault. Tous les messages sont cryptes avec cet ID, par conséquent des Vaults malveillantes ne pourront pas décrypter ces messages, et donc ne pourront pas non plus avoir accès aux requêtes de connexion au Réseau.

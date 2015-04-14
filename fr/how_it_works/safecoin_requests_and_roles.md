@@ -1,8 +1,8 @@
 # Les requêtes Safecoin et leurs rôles
 
-Il existe différents types de requêtes Safecoin.
-* PUT - Utilisée pour mettre des safecoins (données) dans un lieu spécifié
-* GET - Utilisée pour obtenir des safecoins (données) à partir d'un lieu spécifié
+Il existe différents types de requêtes Safecoin:
+* PUT - Utilisée pour mettre des safecoins (données) dans un lieu spécifié,
+* GET - Utilisée pour obtenir des safecoins (données) à partir d'un lieu spécifié,
 * EXCHANGE - Utilisée pour échanger des safecoins (données) entre deux lieux spécifiés.
 
 Les safecoins sont un autre type de données, et ils disposent donc de requêtes PUT et GET qui leur sont définies sur le réseau. Par contre, à l'inverse des autres données, ils ne disposent pas de requête DELETE. 
