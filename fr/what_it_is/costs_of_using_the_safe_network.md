@@ -1,17 +1,18 @@
 #Accéder au Réseau SAFE
-Le client Maidsafe est l'application utilisée pour se connecter et accéder au Réseau SAFE. Au lancement du client MaidSafe, vos identifiants de connexion vous sont demandés:
+
+Le client SAFE est l'application utilisée pour se connecter et accéder au Réseau SAFE. Au lancement du client SAFE, vos identifiants de connexion vous sont demandés:
 
 * Mot clé
 * Code PIN
 * Mot de passe
 
-A l'aide de ces informations, le Réseau SAFE identifie l'utilisateur et décrypte son _atlas de données_, qui lui donne accès à toutes ses données encryptées.
+A l'aide de ces informations, le Réseau SAFE identifie l'utilisateur et décrypte son repertoir de données, qui lui donne accès à toutes ses données encryptées.
 
-Le client MaidSafe est un programme léger, multi plates-formes, dont la faible empreinte n'affecte pas les performances de l'ordinateur sur lequel il est installé. Une fois identifié avec le client MaidSafe, aucun autre mot de passe ou clé ne vous seront demandées pour avoir accès à des applications ou d'autres données partagées sur le Réseau SAFE.
+Le client SAFE est un programme léger, multi plates-formes, dont la faible empreinte n'affecte pas les performances de l'ordinateur sur lequel il est installé. Une fois identifié avec le client SAFE, aucun autre mot de passe ou clé ne vous seront demandées pour avoir accès à des applications ou d'autres données partagées sur le Réseau SAFE.
 
-A aucun moment les mots de passe et identifiants de connexion ne sont stockées, ni par le client MaidSafe, ni par le réseau. Cela signifie qu'aucune information vous concernant ne reste en mémoire sur l'ordinateur ou est installé le client MaidSafe.
+A aucun moment les mots de passe et identifiants de connexion ne sont stockées, ni par le client SAFE, ni par le réseau. Cela signifie qu'aucune information vous concernant ne reste en mémoire sur l'ordinateur ou est installé le client SAFE.
 
-En plus du client MaidSafe, l'utilisateur a aussi besoin de safecoins pour accéder au Réseau SAFE. Les safecoins forment la monnaie ou les jetons du Réseau SAFE.
+En plus du client SAFE, l'utilisateur a aussi besoin de safecoins pour accéder au Réseau SAFE. Les safecoins forment la monnaie ou les jetons du Réseau SAFE.
 
 Un utilisateur peut obtenir des safecoins de plusieurs manières:
 

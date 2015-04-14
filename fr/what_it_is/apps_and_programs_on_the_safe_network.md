@@ -1,19 +1,19 @@
-#Apps and programs on the SAFE Network
+#Applications et programmes sur le Réseau SAFE
 
-The SAFE Network is also a platform for apps and programs that can be accessed by the network users.
+Le Réseau SAFE est également une plateforme pour les applications et programmes que les utilisateurs peuvent accéder depuis Réseau.
 
-Here are some examples of the type of apps that can be used on the SAFE Network.
+Voici quelques exemples de types d'applications qui peuvent être mises en place sur le Réseau SAFE:
 
-* Cloud storage
-* Encrypted messaging
-* Web sites
+* Stockage dans le Cloud
+* Service de messagerie cryptée
+* Sites web
 * VoIP
-* Social networks
-* Document processing of any data provided by any program
-* Distributed databases
-* Document or contract signing
-* Any existing service that runs on the Internet
+* Réseaux sociaux
+* Traitement de texte, ou tout autre gestionnaire de données
+* Base de données distribuées
+* Signature de documents ou contrats
+* Tout autre service fonctionnant actuellement sur Internet
 
-The apps and programs contain cryptographically secured key pairs and can use these to automatically sign requests for session management or membership of any network service.
+Les applications et programmes contiennent chacun une paire de clés cryptographiques sécurisées, qui peuvent être employées pour signer automatiquement chaque requête, pour la gestion de sessions ou l'adhésion a n'importe quel service réseau. 
 
-For example, a website with membership can present a join button and clicking that would automatically sign an authority and allow access in the future.
+Par exemple, un site web avec un compte utilisateur peut présenter un bouton d'inscription, qui, s'il est cliquée, signera automatiquement une autorisation et donnera accès pour toutes les connections futures.
