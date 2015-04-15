@@ -1,10 +1,10 @@
-# Measurement and reward
-Vaults are rewarded for supplying resources by being awarded safecoins at a rate proportional to the Vault's rank. As a result users are not locked to a particular Vault.
+# Rang et récompense
+Les Vaults sont récompensées pour les ressources qu'elles fournissent au Réseau en recevant des safecoins, à un taux qui dépend pour une part de leur rang. 
 
-Users do not require to have their account managed, even in a secured manner.
+Les utilisateurs n'ont pas besoin que leur compte soit géré, même de manière sécurisée. 
 
-As the SAFE Network creates safecoins, users may use these to purchase network resources in an anonymous manner. This uses an exchange or purchasing mechanism.
+Lorsque le Réseau SAFE crée des safecoins, les utilisateurs peuvent les utiliser pour acheter des ressources réseau de manière anonyme, en passant par un marché de change ou en utilisant un mécanisme d'achat.
 
-Rank is an internal measure of the Vault's stored versus lost data. This is used to manage network authority in addition to the authority a Vault has in relation to its closeness to an address.
+Le rang est une mesure interne de la Vault, qui évalue la quantité de données stockées vs la quantité de données perdues. Il est utilisé pour gérer les autorisations sur le Réseau, et les droits dont la Vault dispose en relation aux adresses qui lui sont proches.
 
-This rank is used to regulate the safecoin earning rate of Vaults. This rate may decrease on oversupply of resources and increase during increased demand for resources.
+Ce rang régule aussi le taux de récolte de safecoins des Vaults. Ce taux diminuera si l'offre en ressources est trop abondante, et à l'inverse augmenter si la demande est plus forte.
