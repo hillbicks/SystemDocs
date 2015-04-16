@@ -1,48 +1,45 @@
-# Vaults
-Vaults are created on a user's computer when they install the MaidSafe client and join the SAFE Network.
+#Les Vaults
+Les Vaults sont créées sur les ordinateurs des utilisateurs au moment de l'installation du client SAFE et de l’inscription au Réseau SAFE.
 
-The Vault on the user's computer can not be seen by the user. Instead the user sees a virtual mounted drive that provides access to their distributed data.
+L'utilisateur ne peut pas voir la Vault qui est installée sur sa machine. A la place, il voit un nouveau disque virtuel monté sur son système, qui lui donne accès à ses données sur le Réseau.
 
-When a user creates or alters files on their virtual drive, the file goes through several processes to ensure the file is secure and makes best use of the SAFE Network resources.
+Lorsqu'un utilisateur crée ou modifie un fichier sur ce disque virtuel, ce fichier passe par plusieurs processus pour s'assurer que celui-ci est sécurisé et qu'il utilise au mieux les ressources du Réseau.
 
-## Vault persona
-Vaults can have a different data handling persona. Each persona serves a different role in the SAFE Network.
-* **Client managers**<br/>
-Client manager Vaults receives the chunks of self encrypted data from the user's Vault.
-* **Data managers**<br/>
-These Vaults manage the chunks of data from the Client manager Vaults. They also monitor the status of the SAFE Network.
-* **Data holders**<br/>
-Data holder Vaults are used to hold the chunks of data.
-* **Data holder managers**<br/>
-Data holder managers monitor the Data holder Vaults. They report to the Data manager if any of the chunks are corrupted or changed. They also report when a Data holder has gone offline.
-* **Vault managers**<br/>
-The Vault manager keeps the software updated and the Vault running; restarting it on any error.
-* **Transaction managers**<br/>
-The Transaction manager helps to manage safecoin tranfers.
+## Les personas des Vaults
+Les Vaults peuvent avoir différentes personas, chacune d'elles ayant un rôle différent dans le fonctionnement du Réseau. Ces personas peuvent être groupées en 4 catégories:
+* **Client Managers (gestionnaire de client)**<br/>
+Ce groupe de personas est chargé du routage de nœuds particuliers sur le Réseau: ceux qui sont le plus proche du nœud du client. Ils savent qu'ils reçoivent une connexion d'un client lorsque celle-ci n'apparait pas dans leur table de routage. Les MaidManagers (le groupe qui s'occupe d'un compte Maid) et les MpidManagers (le groupe qui s'occupe des noms publics et des fichiers partages pour les clients publics) sont des exemples de personas de ce groupe.
+* **NAE Manager **<br/>
+Network Addressable Element manager, ou gestionnaire d'éléments adressables par le Réseau. Les NAE Managers sont mis en route lorsque l'adresse du nom d'un élément adressable est proche de leur propre adresse. Les DataManagers (chargés de surveiller les pointeurs de données) et les VersionManagers (responsables de l'annuaire et des autres 'mutating nodes' directement adressable) en sont des exemples.
+* **Node Manager (gestionnaire de nœuds réseau)**<br/>
+Pour chaque nœud du Réseau, c'est le groupe qui l'entoure directement. Un nœud sait pour quels autres nœuds il est NodeManager car ces derniers apparaissent dans sa table de routage. Les PmidsManagers (groupe chargé de contrôler les nœuds qui stockent des données) représentent un exemple de Node Managers.
+* **Managed node (nœuds gérés)**<br/>
+C'est un nœud de routage parmi un groupe de Node Managers. Ex: PmidNode (nœud qui détient un élément de donnée).
 
-## Data on the SAFE Network
+Il est impératif que ces groupes de personas obtiennent l'autorisation d'agir dans chacun de ces rôles, sans quoi un nœud pourrait déclarer appartenir à n'importe quel groupe et exécuter n'importe quelle fonction. Cette autorisation est obtenue après que chaque persona envoie son type de personas dans un message au groupe suivant. Celui-ci accumule alors les messages, vérifie et valide les signatures du groupe tout entier.
 
-There are 2 mechanisms utilised by the network that authorise an End User to carry out certain actions via the Client. Authority is obtained by group consensus whenever a Client is putting (storing) new data. Alternatively, [cryptographic signatures](http://en.wikipedia.org/wiki/Digital_signature) are used if the Client is amending already stored data (a version) or sending safecoin, for example.
+## Les donnees sur le Réseau SAFE
 
-** Group Consensus**<br/>
-When an End User attempts to put a new piece of data, the file is encrypted and broken up into chunks as part of the self encryption process, it is passed to a close group of Client managers. This close group are comprised of the closest vault IDs to the users vault ID in terms of [XOR](http://en.wikipedia.org/wiki/Exclusive_or) distance. This is distance measured in the mathematical sense as opposed to the geographical sense. At least twenty eight of the thirty two Client managers much reach consensus before any network operations are carried out.
+Le Réseau utilise 2 mécanismes pour autoriser un utilisateur à faire certaines actions à travers le Client SAFE. Une autorisation est obtenue par le consensus d'un groupe chaque fois que le Client met/stocke une nouvelle donnée sur le Réseau. Alternativement, des [signatures cyrptographiques](http://en.wikipedia.org/wiki/Digital_signature) sont utilisées si le client modifie des données déjà stockées, ou envoie des safecoins par exemple.
 
-The Client managers then pass the chunks to thirty two Data managers, chosen by the network as their IDs are closest to the IDs of the data chunk, so the chunk ID also determines it's location on the network.
+** Consensus de Groupe**<br/>
+Lorsqu'un utilisateur poste une nouvelle donnée, le fichier est crypte et divise en plusieurs fragments lors du processus d'auto-cryptage (self-encryption). Puis il est passé à un groupe fermé de Client Managers. Ce groupe fermé est composé des Vaults dont l'ID est le plus proche de la Vault de l'utilisateur au sens [XOR](http://en.wikipedia.org/wiki/Exclusive_or). Cette distance est une grandeur mathématique et non pas par une mesure géographique. Au moins 8 des 32 Client Mangers doivent atteindre un consensus pour que toute opération sur le réseau soit poursuivie.
 
-The network utilises a Scatter/Gather approach, based on [Rabin’s Information Dispersal Algorithm](http://people.seas.harvard.edu/~salil/rabin2011-slides/rabin2011-mitzenmacher.pdf), enabling small data loss (up to 4 pieces) without the requirement to retransmit data
+Les Clients Managers passent alors les fragments à 32 Data Managers, choisis par le Réseau comme ayant l'ID le plus proche des IDs des fragments ; il apparait donc que l'ID d'un fragment détermine sa localisation sur le Réseau.
 
-Once consensus is reached, the Data manager passes the chunks to thirty two Data holder managers, who in turn pass the chunks for storage with Data holders. If a Data holder manager reports that a Data holder has gone offline, the Data manager decides, based on rankings assigned to Vaults, into which other Vault to put the chunk of data.
+Le Réseau utilise une approche Scatter/Gather, basée sur le [Rabin’s Information Dispersal Algorithm](http://people.seas.harvard.edu/~salil/rabin2011-slides/rabin2011-mitzenmacher.pdf), qui permet de supporter une petite perte d'information (jusqu'à 4 fragments) sans avoir besoin de relancer la transmission.
 
-This way the chunks of data from the original file are constantly being monitored and supported to ensure the original data can be accessed and decrypted by the original user.
+Lorsque le consensus est atteint, le Data Manager passe les fragments à 32 Data Holder Managers, qui à leur tour les transmettent à des Data Holders pour qu'ils les stockent. Si un Data Holder Manager se rend compte que l'un de ses Data Holders est hors-ligne, le Data Manager décide, en consultant le rang des Vaults, dans laquelle il placera le fragment de donnée. 
 
-Any movement of data chunks can only be made if there is a consensus (28 of 32) from the surrounding Vaults. The Vaults cannot act in isolation.
+De cette manière les fragments du fichier original sont en permanence contrôlés pour s'assurer que leur utilisateur puisse y avoir accès au fichier et le décrypter.
 
-All communications on the SAFE Network are carried out through close groups of 32 nodes. This prevents a rogue node(s) from behaving maliciously. It is not possible for a user to choose their own node ID, or to decide where their data is stored, this is calculated by the network. Every time a node disconnects from the network and reconnects, it is assigned a totally new and random ID.
+Un mouvement de fragments sur le Réseau ne peut être effectué que s'il y a un consensus (28 sur 32) des Vaults l'entourant. Une Vault ne peut jamais agir isolément.
 
-[Click here to see a short video on how Vaults work](https://www.youtube.com/watch?v=txvKSeCaEP0)
+Toutes les communications sur le Réseau SAFE sont prises en charge par des groupes fermés de 32 nœuds. Ceci empêche un nœud rebelle d'agir avec malveillance. Un utilisateur ne peut pas choisir l'ID de son propre nœud, ni décider où ses données sont stockées; tout cela est déterminé par le Réseau. Chaque fois qu'un nœud se déconnecte puis se reconnecte au Réseau, celui-ci lui assigne un tout nouvel ID aléatoirement.
 
-** Cryptographic Signatures**<br/>
-When End Users are making changes to existing data, such as changing the content of a file, or sending another End User safecoin, the network does not use group consensus as this layer of complexity and increased network load is not required. 
+[Cette vidéo résume le fonctionnement des Vaults](https://www.youtube.com/watch?v=txvKSeCaEP0)
 
-Cryptographic signatures mathematically validate the owner of any piece of data and can prove this beyond any doubt, provided the End User has kept their private key safe. If the End User is the owner of any piece of data and can prove this, by digitally signing their request with their private key, the network permits them access to change the data. 
+** Signatures Cryptographiques**<br/>
+Lorsqu'un utilisateur change une donnée déjà stockée sur le Réseau, par exemple en modifiant le contenu d'un fichier, ou en envoyant des safecoins à un autre utilisateur, le réseau n'utilise pas le mécanisme de consensus de groupe, car il n'est pas nécessaire dans ce cas, et s'en passer permet d'économiser des ressources Réseau.
 
+Les signatures cryptographiques valident mathématiquement le propriétaire d'une donnée et peut le prouver avec certitude, à partir du moment bien sûr où l'utilisateur garde sa clé privée en sécurité. Si l'utilisateur est le propriétaire d'une donnée et peut le démontrer en signant numériquement sa demande avec sa clé privée, alors le Réseau lui autorise l’accès à sa donnée pour modification.

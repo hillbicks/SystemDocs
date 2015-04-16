@@ -1,8 +1,8 @@
-# Routers with connections both ways
-The SAFE Network allows for communication between Vaults.
+# Gestion des Routeurs
+Le Réseau SAFE permet la communication entre Vaults.
 
-Many home connections are made using routers which supply private addresses that cannot appear on the Internet. A commonly used mechanism is to make use of [STUN](http://en.wikipedia.org/wiki/STUN) servers.
+Beaucoup de connexions Internet de particuliers passent à l'heure actuelle par un routeur, qui fournit des adresses privées qui ne doivent pas apparaître sur Internet. Cela est pris en charge, par exemple, par des serveurs [STUN](http://en.wikipedia.org/wiki/STUN).
 
-This mechanism is not acceptable in a decentralised network. In the SAFE Network, RUDP is used in a mechanism that emulates a decentralised STUN server, with the distributed hash table (DHT) providing connection information to negotiating Vaults.
+Mais cette méthode ne peut pas être employée pour un réseau décentralisé. Dans le Réseau SAFE, RUDP est utilisé dans un processus qui émule un serveur STUN décentralisé, la table de hachage distribuée (DHT) fournissant les informations de connexion aux Vaults.
 
-The SAFE Network can handle router connections without the user having to adjust their connection to the network through their router.
+Le Réseau SAFE peut ainsi prendre en charge les connexions des utilisateurs sans que ceux-ci aient besoin de configurer spécifiquement leur routeur.

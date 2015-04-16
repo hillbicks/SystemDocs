@@ -1,10 +1,10 @@
 # Qu'est-ce que c'est ?
 
-Le Réseau SAFE est un service de gestion de données sécuritaire et entièrement décentralisé. Le réseau est constitué à partir des ressources informatiques inutilisées fournies par les utilisateurs du réseau.
+Le Réseau SAFE est un service de gestion de données sécurisé et entièrement décentralisé. Le Réseau est constitué à partir des ressources informatiques inutilisées fournies par les utilisateurs du réseau.
 
 Chaque utilisateur du Réseau SAFE offre une petite partie de ses ressources informatiques; stockage du disque dur, puissance du processeur et bande passante. Cette ressource locale est appelée une Vault. Chaque Vault est sécurisée de manieère cryptographique et se connecte à d'autres Vaults à travers le réseau.
 
-Les données de l'utilisateur sont encryptées et brisées en morceaux. Ces morceaux sont ensuite distribués dans d'autres Vaults du réseau. À aucun moment n'y a-t-il une des autres Vaults qui savent quoi que ce soit sur les données qu'ils ont été chargées de stocker, mis à part des informations anonymes sur des adresses du réseau.
+Les données de l'utilisateur sont encryptées et brisées en fragments. Ces fragments sont ensuite distribués dans d'autres Vaults du réseau. À aucun moment n'y a-t-il une des autres Vaults qui savent quoi que ce soit sur les données qu'ils ont été chargées de stocker, mis à part des informations anonymes sur des adresses du réseau.
 
 Le résultat  de l'encryption et de la distribution de l'information sur l'ensemble du réseau est une expérience de gestion de données et de communication hautement sécurisé et privé pour tous les utilisateurs.
 

@@ -1,10 +1,10 @@
-# Wallet
-The SAFE Network wallet is a place that holds the credits and the credit change history for an account.
+# Portefeuille
+Le portefeuille du Réseau SAFE est l'endroit où sont stockes les crédits et l'historique des mouvements des safecoins d'un compte utilisateur.
 
-When a user joins the SAFE Network, they automatically have a wallet. As a reward for providing resources for the SAFE Network, they receive safecoins. These safecoins are stored in the user's wallet.
+Lorsqu'un utilisateur rejoint le Réseau SAFE, il lui est automatiquement remis un portefeuille. En récompense des ressources qu'il fournit au Réseau, l'utilisateur reçoit des safecoins. Ces safecoins sont stockés dans le portefeuille de l'utilisateur.
 
-These safecoins can then be used to buy more resources, applications, or traded for other digital currencies or cash through an exchange service.
+Les safecoins peuvent alors être utilisés pour acheter des ressources, des applications, ou échangés contre d'autres monnaies virtuelles ou pour des monnaies traditionnelles, au travers de plateformes d'échange de devises.
 
-A user can view the contents of their wallet through the MaidSafe client.
+Une des fonctionnalités du client SAFE est de permettre à l'utilisateur de consulter le contenu de son portefeuille.
 
-When safecoins are transferred from one wallet to another, the transfer is a process of signing over ownership (with the private key) to the other user. The SAFE Network confirms the transfer via the Transaction managers and coin holders, who all require collaboration and agreement that the transaction is valid.
+Les safecoins sont transférés d'un portefeuille à l'autre via un processus de signature numérique (avec la clé privée de l'utilisateur) qui cède la propriété des safecoins vers l'autre utilisateur. Le Réseau SAFE valide le transfert via les Transaction Managers mais aussi le avec détenteur des safecoins, qui doivent ensemble impérativement collaborer et se mettre d'accord pour que la transaction soit acceptée.

@@ -1,18 +1,18 @@
-# Security - Self encryption
-Security of a user's data is critical in the SAFE Network and this is, in part, provided by the self encryption process. The SAFE Network requires that data be unrecognisable as data and resistant to decryption, even in the event of an encryption algorithm being compromised.
+# Sécurité - auto-cryptage
+La sécurité des données de chaque utilisateur est un aspect critique du Réseau SAFE et est en parti assuré par le processus d'auto-cryptage (self encryption). Le Réseau impose que toute donnée soit non reconnaissable et résistante au décryptage, même dans le cas où l'algorithme de cryptage lui-même serait compromis.
 
-Self encryption is used to mix up and encrypt data before it is sent out to the SAFE Network. This process is automatic and happens instantaneously.
+L'auto-cryptage est utilisé pour mélanger et crypter les données avant même qu'elles soient envoyées sur le Réseau SAFE. Ce processus est automatique et instantané.
 
-As data is saved to a user's virtual hard-drive, it is broken up into a minimum of three chunks, [hashed](http://en.wikipedia.org/wiki/Hash_function) and then encrypted. To further obfuscate the data, every chunk is passed through an [XOR](http://en.wikipedia.org/wiki/Exclusive_or) function using the hashes of other chunks.
-Each chunk is then broken in thirty two pieces and key value pairs are added to a table on the users computer called a data map. The data map contains the locations of each chunk that makes up the file. The data map, with hashes before and after encryption, is used when retrieving and decoding the user's data, as the encryption process is non reversible.
+Lorsque la donnée est sauvée sur le disque dur virtuel de l'utilisateur, celle-ci est divisée en un minimum de 3 fragments, qui sont [hachés](http://fr.wikipedia.org/wiki/Fonction_de_hachage) et cryptés. Pour brouiller encore la donnée, chaque fragment passe par une fonction [XOR](http://fr.wikipedia.org/wiki/Fonction_OU_exclusif) en employant  les hashs des autres fragments.
+Ceux-ci sont alors coupés, et une association clé-éléments est créée pour chacun dans une table sur l'ordinateur de l'utilisateur, appelée data map. Cette data map contient la localisation de chaque fragment qui constitue le fichier initial. La data map est utilisée avec les hashs crées avant et après le cryptage pour retrouver et décoder la donnée de l'utilisateur. C'est la seule méthode pour retrouver la donnée puisque le cryptage est non réversible.
 
-This entire process takes place on the client so that data is always encrypted on the network and only users with the correct credentials can decrypt the file. This also means that passwords can never be stolen from the network as they never pass beyond the users computer.
-For additional security the data map is also run through the self encryption process.
+Tout ce processus à lieu sur le client de l'utilisateur, et de cette manière la donnée est toujours déjà cryptée lorsqu'elle est envoyée sur le Réseau. Seul l'utilisateur avec les autorisations appropriées peut décrypter le fichier. Ce système garantit que les mots de passes ne soient jamais être capturés sur le Réseau, puisque ceux-ci ne quittent jamais l'ordinateur de l'utilisateur. Et pour encore accroitre la protection, la data map subit également une phase d'auto-cryptage.
 
-The SAFE Network uses [data deduplication](http://en.wikipedia.org/wiki/Data_deduplication) to ensure that space is used efficiently when storing multiple copies of data which have been uniquely encrypted. The network is able to distinguish identical pieces of data by comparing the hashes of each chunk. As is described in [2.2.2](http://maidsafe.net/SystemDocs/system_components/guaranteed_vault_identification.html), vaults also use hashes to identify themselves.
+Le Réseau SAFE utilises un système de [déduplication](http://fr.wikipedia.org/wiki/D%C3%A9duplication) pour augmenter l'efficacité du stockage des données, qui fonctionne alors même que plusieurs copies de la même donnée sont cryptées chacune de manière unique : le Réseau est capable de distinguer les fragments de données identiques en comparant leurs hashs. Les Vaults elles aussi utilisent un hash pour s'identifier sur le Réseau, comme expliqué au [2.2.2](./guaranteed_vault_identification.html)
 
-[Click here to see a video explaining the self encryption process](https://www.youtube.com/watch?v=Jnvwv4z17b4)
 
-Here is an overview of the self encryption process.
+[Ici se trouve une vidéo qui explique le mécanisme d'auto-cryptage](https://www.youtube.com/watch?v=Jnvwv4z17b4)
+
+Voici un résumé du processus d'auto-cryptage.
 
 ![Self encryption figure](./img/self-encryption.png)

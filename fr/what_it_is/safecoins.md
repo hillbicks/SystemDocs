@@ -1,31 +1,22 @@
 # Safecoins
-Safecoins are the currency of the SAFE Network. They are a token-based scheme that is only used inside the SAFE Network.
-Safecoin's distribution is handled entirely by the network on
-a per use basis and approximately 4.3 billion coins will be produced during the network's life.
 
-While consuming data is free of charge, many of the services will require safecoins, such as buying additional storage space, or access to network applications. All safecoins are saved in a user's wallet.
+Les safecoins forment la monnaie du Réseau SAFE. Ce système à base de jeton n'est utilisé qu’à l'intérieur du Réseau.
+La distribution des safecoins est entièrement prise en charge par le Réseau, sur la base de leur utilisation, et environ 4.3 milliards de safecoins seront produits durant toute la vie du Réseau.
 
-Safecoin can be obtained through (a) farming,(b) assisting with the maintenance of the underlying code, (c) creating applications or (d) by purchasing them.
+Alors que l'accès aux données du Réseau est gratuit et ne requiert pas de safecoins, beaucoup des services demanderont des safecoins, par exemple pour acquérir de l'espace de stockage supplémentaire, ou pour utiliser certaines applications.
 
-a) Farming is a process whereby users provide resource
-(storage space, CPU and bandwidth) to the network. When each user creates their credentials, they will set up a safecoin wallet via their SAFE Network client and this wallet identity
-will be cryptographically linked to their account. The network will allocate safecoins to a user based on how much resource they provide.
+Il est possible d'obtenir des safecoins en (a) les "cultivant" (l'opération est appelée "farming"), (b) en contribuant au code qui sous-tend le Réseau, (c) en créant des applications, ou (d) en les achetant directement.
 
-b) It is also possible for core developers to earn safecoin
-by fixing bugs and developing new features
-for the underlying network.
+a) le farming est un processus  par lequel l'utilisateur fournit une partie des ressources de sa machine au Réseau (espace de stockage, temps processeur et bande passante). Lorsque qu'un utilisateur crée un compte sur le Réseau, il configurera un portefeuille de safecoins via le Client SAFE. Ce portefeuille sera lié  cryptographiquement à son compte. Le Réseau allouera ensuite des safecoins a l'utilisateur en fonction des ressources que celui-ci fournit.
 
-c) People or companies building applications on the SAFE Network will also be able to earn safecoins. As they create and release new applications, they will code their SAFE wallet address into their application. Based on how much the
-application is used, the network will pay safecoins to the safecoin wallet address of the app creator. This provides a built in revenue stream for app developers, one that is directly proportional to how successful their application is.
+b) Certains développeurs, appelés Core Developers,  pourront acquérir des safecoins en corrigeant des bugs et en développant de nouvelles fonctionnalités pour l'infrastructure du Réseau.
 
-d) It will also be possible to buy safecoin. It is anticipated that these purchases will be made from decentralised peer to peer exchanges that will be built by third party developers. These exchanges will serve as platforms, enabling a buyer and seller to trade directly.
+c) Les personnes ou entreprises qui développent des applications pour le Réseau SAFE peuvent également gagner des safecoins. Lorsqu'ils créent et publient une nouvelle application, ils y inscrivent l'adresse de leur portefeuille. Le Réseau versera ensuite des safecoins a cette adresse, en fonction du taux d'utilisation de l'application. Ce système permet d'établir une source de revenus pour les développeurs qui est directement proportionnelle au succès de leurs applications.
 
-Transfers of safecoins between users is managed automatically by Transaction managers. The Transaction managers are Vault personas whose priority is to ensure that safecoins are digitally signed and are never deleted or corrupted.
+d) Il sera enfin possible d'acheter des safecoins. Il est prévu que ces opérations soient prises en charge par des plateformes d'échanges peer-to-peer décentralisées, mises au point par des développeurs tiers. Ces plateformes permettront aux vendeurs et acheteurs d'échanger leur safecoins directement.
 
-As there can be multiple Transaction managers coordinating different safecoin transactions at the same time, an unrestricted number of transactions can take place at network speed.
+Les transferts de safecoins entre utilisateurs sont gérés automatiquement par les Transaction Managers. Le Transaction Manager est l'une des personas incarnées par les Vaults, dont la priorité est de s'assurer que les safecoins sont signes numériquement, ne sont pas effaces ou corrompus.
 
-A safecoin is a piece of digital information. The only historical data held with a safecoin is the current and previous owner's details. These details are used for verification purposes. This means that safecoins can be thought of as digital cash, leaving no audit trail.
+Puisqu'il peut y avoir plusieurs Transaction Managers pour coordonner différentes transactions de safecoins simultanément, il n'y a pas de limites au nombre de transactions qui peuvent avoir lieu, chacune s'exécutant à la vitesse du Réseau.
 
-
-
-
+Un safecoin est un fragment d'information numérique. La seule donnée historique portée par un safecoin est l'identité de son précèdent et de son actuel propriétaire. Cette information est utilisée à des fins de vérifications. Ceci signifie que les safecoins peuvent être considérés comme du cash sous une forme numérique, une monnaie qui ne laisse aucune traçabilité.

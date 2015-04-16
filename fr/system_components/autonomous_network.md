@@ -1,16 +1,15 @@
-# Resilience - Autonomous network
-The SAFE Network is a resilient and autonomous network. There are many factors that have an impact on a network's performance and its ability to adapt to a changing environment. These factors have to be assessed and handled without the intervention of humans or large server systems.
+# Résilience et réseaux autonomes
+Le Réseau SAFE est un réseau résilient et autonome. Plusieurs facteurs influent les performances du Réseau et sa capacité à s'adapter à un environnement changeant. Ces facteurs doivent être évalues et pris en charge sans intervention humaine ou alors de plus grand systèmes de serveurs.
 
-The requirements of the resilient SAFE Network are as follows:
+Pour assurer cette résilience, le Réseau SAFE doit satisfaire les spécifications suivantes:
 
-* Cryptographically secured
-* A system of guaranteed Vault identification
-* A peer to peer (p2p) network that is very accurate and can guarantee Vault proximity to any address
-* Ensure home routers are able to allow connections both ways (NAT traversal)
-* A mechanism where users can prove they have provided resources
-* A mechanism of resource measurement and reward
-* Dealing with very high levels of churn (computers going off and on, potentially staying off)
-* The power to remove any administrative requirement
+* Être Sécurisé cryptographiquement,
+* Garantir l'identification des Vaults,
+* Fournir un réseau peer-to-peer (p2p) très fiable et précis et qui peut garantir qu'une adresse quelconque se trouve toujours à proximité  d'une Vault,
+* S’assurer que les routeurs des utilisateurs peuvent laisser passer les connections montantes et descendantes (NAT traversal),
+* Fournir un mécanisme par lequel les utilisateurs peuvent prouver quelles ressources ils fournissent au Réseau,
+* Comprendre un mécanisme de mesure des ressources et de récompense,
+* Être capable de faire face à un très haut taux de brassage (aussi appelé churn: des ordinateurs se connectant et déconnectant du réseau, et pouvant rester déconnectés),
+* Et enfin être capable d’ôter tout besoin d'administration extérieur.
 
-By meeting all these requirements the SAFE Network is able to support a network that can adapt quickly and automatically to hostile network environments, such as the Internet.
-
+Le Réseau SAFE répond a toutes ces spécifications, et peut donc s'adapter rapidement et automatiquement aux environnements réseaux hostiles, tel qu'Internet.

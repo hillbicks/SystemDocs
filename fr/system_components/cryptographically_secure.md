@@ -1,10 +1,10 @@
-# Cryptographically secure
-In the SAFE network Vaults first create a cryptographic [key pair](http://en.wikipedia.org/wiki/Public-key_cryptography) to join the network.
+# Sécurité cryptographique
+Au sein du Réseau SAFE, les Vaults créent tout d'abord une [paire de clés de chiffrement](http://en.wikipedia.org/wiki/Public-key_cryptography) pour rejoindre le Réseau.
 
-As each Vault communicates with any other Vault these keys are used to secure the connection.
+Lorsque chaque Vault communique avec une autre, ces clés sont utilisées pour sécuriser la connexion.
 
-Unlike traditional secured communications mechanisms that require key exchanges (such as [diffie Hellman](http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)) the SAFE Network provides these keys to Vaults from the [routing](https://github.com/maidsafe/MaidSafe-Routing) layer.
+A la différence des mécanismes de communication sécurisés traditionnels, qui nécessitent l'échange des clés (Ex: [diffie Hellman](http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)) le Réseau SAFE fournit ces clés depuis la couche de [routage](https://github.com/maidsafe/MaidSafe-Routing).
 
-The benefit of this is that even compromised hardware can be traversed in the SAFE Network. This deters [Man In The Middle (MiTM) attacks](http://en.wikipedia.org/wiki/Man-in-the-middle_attack).
+Le bénéfice est que même si un ordinateur est compromis, il peut être traversé sans risques par le Réseau, et dissuade ainsi les éventuelles attaques du type [Man In The Middle (MiTM)](http://en.wikipedia.org/wiki/Man-in-the-middle_attack).
 
-As each Vault can encrypt messages to and from each Vault it communicates with, security of the whole network is enhanced.
+La sécurité du Réseau est améliorée, puisque chaque Vault crypte tous les messages en provenance et en direction des Vaults avec lesquelles elle communique.

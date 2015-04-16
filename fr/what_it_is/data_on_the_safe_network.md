@@ -1,7 +1,7 @@
-#Data on the SAFE Network
+#Les données sur le Réseau SAFE
 
-As a user saves their data or interacts with applications, their data is broken up, encrypted, and then distributed randomly throughout the network to other Vaults. It is not possible to identify which chunks fit together to comprise a file. These Vaults are independent and autonomous, each storing a small part of the encrypted data.
+Chaque fois qu'un utilisateur enregistre des données ou interagit avec des applications, ses données sont divisées en fragments, qui sont alors encryptés, puis distribués au hasard sur le réseau, dans les Vaults des autres utilisateurs. Il est impossible d'identifier quels fragments forment ensemble un même fichier. Les Vaults sont indépendantes et autonomes, chacune ne stockant qu'une petite partie des données encryptées.
 
-When the user needs to access their data they simply log into the SAFE Network and retrieve their data. At no point does the user’s password or login details get sent out into the network. Each piece of data is encrypted using the data itself and can only be decrypted using the user’s credentials. No data is stored or cached locally and can only be accessed by users with the appropriate login details. This means that there is no synchronisation required whenever a user needs to access their data.
+Lorsqu'un utilisateur a besoin d'accéder à ses données, il lui suffit de se connecter au Réseau SAFE pour les récupérer. A aucun moment ses informations d'identifications ne sont transmises sur le réseau. Chaque fragment de donnée est encrypté en utilisant la donnée elle-même, et ne peut être décrypté qu'à l'aide des identifiants de l'utilisateur. Il n'y a par conséquent aucune synchronisation nécessaire lorsqu'un utilisateur accède à ses données.
 
-As new users join the SAFE Network, they each provide additional resources, directly or by paying for others to provide the required resources. This means that as the network grows, so does its capacity to store and manage data.
+Chaque nouvel utilisateur du Réseau SAFE apporte des ressources supplémentaires, soit directement, soit en payant d'autres utilisateurs. Ainsi les capacités de stockage et de gestion du réseau augmentent à mesure que le réseau grandit.

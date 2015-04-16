@@ -1,10 +1,10 @@
-# Network churn
-Network churn is a term to describe Vaults going online and offline frequently and without notice. This is a situation that favours a quickly reconfiguring network.
+# Brassage du Réseau (Network churn)
+Le brassage est un terme qui décrit le phénomène par lequel des Vaults se connectent et se déconnectent de manière fréquente et imprévue. C'est une situation qui favorise la reconfiguration rapide du Réseau.
 
-A Vault's distance from an address is a measure of that Vaults authority to make decisions on that address in a particular circumstance.
+La distance d'une Vault à une adresse est la mesure de l'autorité de cette Vaults à prendre, dans des circonstances précises, des décisions sur cette adresse.
 
-In terms of data loss, the replicated copies of data are spread across the network in a random and uniform manner. This should also geographically disperse the data copies for increased redundancy.
+En termes de perte de données, les copies répliquées de données sont dispersées sur le Réseau de manière aléatoire et uniforme. Par la même cette dispersion est aussi géographique et accroit la redondance des données.
 
-In terms of security, network churn prevents attacks as the point of access is constantly moving.
+En termes de sécurité, le brassage du Réseau décourage les attaques puisque les points d'accès changent constamment.
 
-As the network re-configures quickly on network churn events, the shape of the network alters around any data.
+Puisque le Réseau se reconfigure de manière rapide par ce phénomène de brassage, la structure du Réseau change constamment, mais pas les données qu'il stocke.

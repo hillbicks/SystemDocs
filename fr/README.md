@@ -1,6 +1,6 @@
 # Description du Réseau SAFE
 
-Ce livre a été écrit pour tous ceux qui veulent en savoir plus sur le **Réseau SAFE (Secure Access For Everyone)** de MaidSafe. Ce livre explique les détails et les avantages d'utiliser le réseau SAFE. Les domaines suivants sont couverts:
+Ce livre a été écrit pour tous ceux qui veulent en savoir plus sur le **Réseau SAFE (Secure Access For Everyone)** de SAFE. Ce livre explique les détails et les avantages d'utiliser le réseau SAFE. Les domaines suivants sont couverts:
 
 * **Qu’est ce que c’est**<br />
 Fournit une vue d'ensemble des composants qui constituent le Réseau SAFE.

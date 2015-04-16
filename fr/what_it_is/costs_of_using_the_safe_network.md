@@ -1,22 +1,23 @@
-#Accessing the SAFE Network
-The MaidSafe client is a program used to log in to and access the SAFE Network. After starting the MaidSafe client you are asked to provide login details.
+#Accéder au Réseau SAFE
 
-* Keyword
-* PIN
-* Password
+Le client SAFE est l'application utilisée pour se connecter et accéder au Réseau SAFE. Au lancement du client SAFE, vos identifiants de connexion vous sont demandés:
 
-With these details the SAFE Network authenticates the user on the SAFE Network and decrypts their data atlas, which provides them with access to all their encrypted data.
+* Mot clé
+* Code PIN
+* Mot de passe
 
-The MaidSafe client is a small, cross-platform and non-resource intensive program that does not impact your computer's performance. After you have been authenticated through the MaidSafe client you do not have to enter further passwords or keys to access other shared data or apps on the SAFE Network.
+A l'aide de ces informations, le Réseau SAFE identifie l'utilisateur et décrypte son repertoir de données, qui lui donne accès à toutes ses données encryptées.
 
-No passwords or log in details are cached by the MaidSafe client or stored on the network. This means that no details about you or your access security is left on the PC you have used to access the SAFE Network. You can log in to the SAFE Network from another PC that has the MaidSafe client installed.
+Le client SAFE est un programme léger, multi plates-formes, dont la faible empreinte n'affecte pas les performances de l'ordinateur sur lequel il est installé. Une fois identifié avec le client SAFE, aucun autre mot de passe ou clé ne vous seront demandées pour avoir accès à des applications ou d'autres données partagées sur le Réseau SAFE.
 
-As well as the MaidSafe client, users also require safecoins to access the SAFE Network. Safecoins are the token-based currency of the SAFE Network.
+A aucun moment les mots de passe et identifiants de connexion ne sont stockées, ni par le client SAFE, ni par le réseau. Cela signifie qu'aucune information vous concernant ne reste en mémoire sur l'ordinateur ou est installé le client SAFE.
 
-To earn safecoins users can do the following:
+En plus du client SAFE, l'utilisateur a aussi besoin de safecoins pour accéder au Réseau SAFE. Les safecoins forment la monnaie ou les jetons du Réseau SAFE.
 
-* Donating spare computer resources to the network
-* Creating network applications
-* Contributing to the underlying SAFE Network codebase.
+Un utilisateur peut obtenir des safecoins de plusieurs manières:
 
-It is anticipated that soon after public launch, it will also be possible to buy safecoins from decentralised exchanges that will exist on the SAFE Network.
+* En allouant une partie des ressources libres de son ordinateur au Réseau SAFE,
+* En créant de nouvelles applications pour le Réseau,
+* En contribuant au code source qui sous-tend le Réseau SAFE.
+
+Il est prévu que, peu après le lancement public du Réseau, il soit également possible d'acquérir des safecoins auprès des plateformes d'échanges décentralisées qui seront mises en place sur le Réseau SAFE.
