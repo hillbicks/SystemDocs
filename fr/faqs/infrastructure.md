@@ -1,50 +1,48 @@
 # Infrastructure
 
-These FAQs relate to questions about the components and processes that make the network function.
+Cette FAQ presente les questions relatives aux composants et processus qui assurent le fonctionnement du Reseau.
 
 
-### Does the SAFE Network require continuous Internet connection from all participants?
+### Le Reseau SAFE requiert-il une connexion permanente a Internet de tous les participants ?
 
-No, the SAFE Network will rate each connection type and adjust for the resources it provides, in order to account for unavailability (through powering off or device failure).
+Non, le Reseau evaluera chaque type de connexion et s'ajustera les ressource qu'il fournit, pour prendre en compte les temps d'indisponibilite (lorsqu'une machine defaille ou est eteinte).
 
-It's not a problem to be disconnected for shorter periods, however. If your node is unavailable for longer periods it will negatively impact on the service you receive from the network.
+Il n'est pas problematique d'etre deconnecte pour de courtes periodes. Par contre l'etre pour de plus longues periodes affectera negativement les services que vous recevez du Reseau.
 
-### What does decentralised mean in the SAFE Network?
+### Que signifie 'decentralise' pour le Reseau SAFE ?
 
-The SAFE Network, and in particular the MaidSafe approach is that decentralised means fully decentralised. This term is used extensively in the tech community. For the SAFE Network decentralised means the following:
+Le Reseau SAFE, et en particulier l'approche de MaidSafe est que 'decentralise' signifie 'totalement decentralise'. Ce terme est utilise de maniere generalise dans la communaute informatique. Pour le Reseau SAFE, cela signifie:
 
-1. No servers at all
-2. No information from any server infrastructure (no DNS, no time servers...etc...)
-3. No connection to any server based networks
-4. No centralised data structures across nodes
-5. No controlling party (or parties)
-6. Zero control by humans for administration of data access
-6. Fully inclusive (no ability to ban people or apply barriers to basic network access)
-7. Borderless network; no borders or controls over network reach
+1. Aucun serveur
+2. Aucune information heritee de l'infrastructure des serveurs (pas de DNS, de time servers, etc.)
+3. Aucune connexion a des reseaux bases sur des serveurs
+4. Aucune centralisation de donnees parmi les noeuds
+5. Aucun controle par un ou des tiers
+6. Aucun controle humain pour l'administration des donnees
+7. Aucun moyen d'entraver l'acces au Resau
+8. Aucunes frontiere: pas de controle ou de frontieres sur la portee du Reseau.
 
-###Is your storage capacity limited?
+###Est-ce que votre capacite de stockage est limitee?
 
-After the network reaches critical mass, the storage capacity of each user will only be limited by the number of safecoins they have, or are willing to use to store their data.
+Lorsque le Reseau aura atteint sa masse critique, la capacite de stockage de chaque utilisateur ne dependra que du nombre de safecoin dont il dispose et qu'il veut utiliser pour stocker ses donnees.
 
-These safecoins can be earned by providing resource, or bought. The SAFE Network uses a process of deduplication [http://en.wikipedia.org/wiki/D...](http://en.wikipedia.org/wiki/Data_deduplication) to enable the most efficient use of network storage space. As the network is comprised of all the resources of the networks users, the infrastructure costs are a fraction of any existing server centric storage providers.
+Ces safecoins peuvent etre percus en fournissant des ressources au Reseau, ou achetees. Le Reseau SAFE utilse un processus de [deduplication](http://fr.wikipedia.org/wiki/D%C3%A9duplication) pour utiliser au mieux l'espace disponible. Puisque le Reseau est constitue par les ressources des utilisateurs, les couts d'infrastructure ne represente qu'une infime partie des couts generees par la maintenance de serveurs centraux.
 
+###Qui paie pour le stockage?
 
-###Who pays for the storage?
+Les utilisateurs (Fermiers) fournissent une partie inutilisee de leurs ressources au Reseau et c'est sur ces ressources que les donnees du Reseau sont stockeed. Les utilisateurs qui contribuent au REseau SAFE en rendant disponible une partie de leur espace disque sont recoivent en recompenses des safecoins.
 
-Users (Farmers) provide their spare computing resource to the network and it is this resource on which the networks data is hosted. Users who contribute disk space to the SAFE Network are rewarded with safecoins by the network.
+###Pour combien de temps mes donnees sont-elles stockees?
 
-###How long is my data stored for?
+Toutes les donnees stockees sur le Reseau SAFE le sont pour toujours, a moins que l'utilisateur a qui elles appartiennent decident de les effacer. Les donnees qui sont stockees depuis longtemps mais non consultees seront archivees.
 
-All data is stored on the SAFE Network forever unless the user decides to delete it. Data that has been held for a long time, but not accessed, will be moved into archive.
+###Comment vous assurez vous qu'aucune donnee n'est perdue lorsqu'un utilisateur se deconnecte?
 
-###How do you ensure that no pieces of data are lost after a user goes offline?
+Le Reseau SAFE maintient pour toute donnee automatiquement un minimum de 4 copies disponibles. Lorsqu'un utilisateur eteint sa machin, leur Vault Managers (le groupe responsable de controler les adresses des noeuds du Reseau) informe le Reseau et tous les fragments de donnees stockes par la Vault et les Data Managers de la machine sont repliques ailleurs. Ce processus est tres rapide, autours de 20 millisecondes.
 
-The SAFE Network automatically maintains a minimum of four live copies of any piece of data at any time. As a users turns off their computer, their vault managers (the group responsible for looking after network nodes) notify the network and all the data chunks being held by that data manager are recreated elsewhere. This process happens very quickly, in around 20 milliseconds.
+###Avez-vous la capacite de decentraliser des sites web comme Youtube?
 
-###Could you decentralise websites like YouTube?
-
-Yes, you can decentralise any applications or webs service that exist on the Internet today.
-
+Oui, il est possible de decentraliser n'importe qu'elle application ou service web qui existe actuellement sur Internet.
 
 ###How does the SAFE Network deal with Sybil attacks?
 

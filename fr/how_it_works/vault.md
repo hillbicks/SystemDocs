@@ -23,7 +23,7 @@ Il est impératif que ces groupes de personas obtiennent l'autorisation d'agir d
 Le Réseau utilise 2 mécanismes pour autoriser un utilisateur à faire certaines actions à travers le Client SAFE. Une autorisation est obtenue par le consensus d'un groupe chaque fois que le Client met/stocke une nouvelle donnée sur le Réseau. Alternativement, des [signatures cyrptographiques](http://en.wikipedia.org/wiki/Digital_signature) sont utilisées si le client modifie des données déjà stockées, ou envoie des safecoins par exemple.
 
 ** Consensus de Groupe**<br/>
-Lorsqu'un utilisateur poste une nouvelle donnée, le fichier est crypte et divise en plusieurs fragments lors du processus d'auto-cryptage (self-encryption). Puis il est passé à un groupe fermé de Client Managers. Ce groupe fermé est composé des Vaults dont l'ID est le plus proche de la Vault de l'utilisateur au sens [XOR](http://en.wikipedia.org/wiki/Exclusive_or). Cette distance est une grandeur mathématique et non pas par une mesure géographique. Au moins 8 des 32 Client Mangers doivent atteindre un consensus pour que toute opération sur le réseau soit poursuivie.
+Lorsqu'un utilisateur poste une nouvelle donnée, le fichier est crypte et divise en plusieurs fragments lors du processus d'auto-cryptage (self-encryption). Puis il est passé à un groupe mitoyen de Client Managers. Ce groupe mitoyen est composé des Vaults dont l'ID est le plus proche de la Vault de l'utilisateur au sens [XOR](http://en.wikipedia.org/wiki/Exclusive_or). Cette distance est une grandeur mathématique et non pas par une mesure géographique. Au moins 8 des 32 Client Mangers doivent atteindre un consensus pour que toute opération sur le réseau soit poursuivie.
 
 Les Clients Managers passent alors les fragments à 32 Data Managers, choisis par le Réseau comme ayant l'ID le plus proche des IDs des fragments ; il apparait donc que l'ID d'un fragment détermine sa localisation sur le Réseau.
 
@@ -35,7 +35,7 @@ De cette manière les fragments du fichier original sont en permanence contrôl�
 
 Un mouvement de fragments sur le Réseau ne peut être effectué que s'il y a un consensus (28 sur 32) des Vaults l'entourant. Une Vault ne peut jamais agir isolément.
 
-Toutes les communications sur le Réseau SAFE sont prises en charge par des groupes fermés de 32 nœuds. Ceci empêche un nœud rebelle d'agir avec malveillance. Un utilisateur ne peut pas choisir l'ID de son propre nœud, ni décider où ses données sont stockées; tout cela est déterminé par le Réseau. Chaque fois qu'un nœud se déconnecte puis se reconnecte au Réseau, celui-ci lui assigne un tout nouvel ID aléatoirement.
+Toutes les communications sur le Réseau SAFE sont prises en charge par des groupes mitoyens de 32 nœuds. Ceci empêche un nœud rebelle d'agir avec malveillance. Un utilisateur ne peut pas choisir l'ID de son propre nœud, ni décider où ses données sont stockées; tout cela est déterminé par le Réseau. Chaque fois qu'un nœud se déconnecte puis se reconnecte au Réseau, celui-ci lui assigne un tout nouvel ID aléatoirement.
 
 [Cette vidéo résume le fonctionnement des Vaults](https://www.youtube.com/watch?v=txvKSeCaEP0)
 

@@ -1,12 +1,7 @@
-# An End User
+# Utilisateurs
 
-An End User is a participant on the network who utilises the client side software to use applications created by App Builders. While they may only be 
-End Users, they may also belong to any, or all of the other user groups.
+Un utilisateur est un participant du Réseau qui se sert des programmes créés par des Développeurs d'Applications. Il peut également appartenir à une ou plusieurs des autres catégories.
 
-An End User may decide not to become a Farmer, for example, as they have no additional resource to offer the network (they maybe running their own 
-computer near capacity), or they use a mobile device, such as a phone or a tablet, as their primary method of network access. While it is planned that 
-mobile devices will be able to earn safecoin, some manufacturers force disconnection of data after the screen has switched off, making them suboptimal 
-farming devices. 
+Un utilisateur peut par exemple décider de ne pas devenir un fermier, dans le cas où il n'a pas de ressources à fournir au Réseau (si sa machine est déjà aux limites de ses capacités), ou alors si il a principalement accès au Réseau depuis un téléphone mobile ou une tablette. Même s'il est prévu qu'à terme les appareils mobiles soient capables de gagner des safecoins, il y a encore quelques obstacles: certains constructeurs interrompent les transferts de données lorsque l'écran de l'appareil est éteint, ce qui n'est pas adapté au farming.
 
-Creating accounts and consuming data, such as a publicly shared pages, are free on the SAFE Network, however, using applications will require safecoin. 
-End Users who are not Farmers, Core Developers or App Builders will need to acquire safecoin from decentralised exchanges. 
+La création et la consommation de donnes, telles que des pages partagées publiquement, est gratuite sur le Réseau SAFE. Par contre, l'utilisation d'applications nécessitera des safecoins. Les utilisateurs qui ne sont pas des fermiers, des Core Developers ou des Développeurs d'application auront alors besoin d'acquérir des safecoins au travers de plateformes d'échanges décentralisées.

@@ -1,18 +1,17 @@
 # General
 
-### Why the name MaidSafe?
+### Pourquoi le nom MaidSafe?
 
-It’s an acronym: Massive Array of Internet Disks, Secure Access For Everyone.
+C'est l'acronyme de: Massive Array of Internet Disks, Secure Access For Everyone.
 
+### A qui appartient le Réseau SAFE?
 
-### Who owns the SAFE Network?
+A nous tous! Le Réseau SAFE est une ressource open source disponible pour tous les utilisateurs d'Internet. Le Réseau est complètement anonyme, sécurisé et vise à se passer de toute intervention humain de toute sorte pour fonctionner; il ne peut pas être contrôlé ni 'possédé'. C'est quelque chose auquel nous croyons beaucoup, et nous avons écrit un [article de blog](http://blog.maidsafe.net/2014/02/07/owning-the-network/) pour nous en expliquer.
 
-We all do! The SAFE Network is an Open Source resource there for all users of the Internet. The network is completely anonymous, secure and aims to repel human intervention of any kind; it cannot be controlled or 'owned'. We feel very strongly about this and have written a [blog post](http://blog.maidsafe.net/2014/02/07/owning-the-network/) on the subject.
+###Un réseau distribué autonome ne devraient pas nécessiter de brevets pour se protéger, n'est-ce-pas?
 
-###A truly autonomous distributed network shouldn't need patents to protect it, right?
+Nos brevets existent uniquement dans un but défensif, pour protéger MaidSafe et les développeurs qui utilisent la plateforme. MaidSafe ne possède aucun des brevets, mais a seulement l'autorisation de les utiliser, sans royalties ni limites de temps. La Fondation MaidSafe, enregistre comme œuvre de bienfaisance, est l'entité qui possède les brevets.
 
-Our patents exist in a purely defensive capacity, to protect MaidSafe and the developers that use the platform. MaidSafe do not own the patents, they only have the rights to use them, royalty free and in perpetuity. The MaidSafe Foundation, a registered charity, actually own the patents.
+###La technologie du Réseau SAFE n'a rien de nouveau; Est-ce que vous vous servez de Bitcoin pour faire parler et alimenter votre marketing?
 
-###MaidSafe technology is nothing new; are you just throwing up marketing hype around it then mentioning Bitcoin?
-
-Our papers, patents and design documents describe crypto currencies being crucial to a distributed network (otherwise identity leaks are inevitable). They're all available online with early design specifications (such as Perpetual Coin) and were published in 2006, as were many of our initial patents.
+Nos articles, brevets et documents de conception expliquent pourquoi une monnaie cryptographique est indispensable a tout réseau distribue (sans quoi les fuites d'identité sont inévitables). Ils sont tous disponibles en ligne ainsi que les spécifications originales (comme les Perpetual Coin) et ont été publiés en 2006, ainsi que bon nombre de nos brevets initiaux.

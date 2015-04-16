@@ -1,28 +1,19 @@
-### Can ISP's thwart the SAFE network
+### Est-ce que les fournisseurs d'accès Internet peuvent entraver le Réseau SAFE?
 
-The network uses encrypted [UDP](http://en.wikipedia.org/wiki/User_Datagram_Protocol) payloads to move data around the network. So UDP with unreadable content and hard to distinguish from regular Internet traffic. This will make it extremely difficult for ISP's to detect SAFE network traffic and therefore stop it. Furthermore, all nodes connect on different random ports, so port filtering (a way of controlling access) will not work.
+Le Réseau utilise des paquets [UDP](http://fr.wikipedia.org/wiki/User_Datagram_Protocol) cryptes pour tous les mouvements de données dans le réseau. Donc de l'UDP, mais avec un contenu illisible et difficile à distinguer du trafic Internet habituel. Cela rend le trafic du Réseau SAFE par les fournisseurs d'accès très difficile à détecter et donc à stopper. De plus, tous les nœuds se connectent à des ports différents, aléatoirement choisis, ce qui rend le blocage des ports inopérants.
 
-###Is there any way to compromise or disrupt MaidSafe, such as setting up a very large number of computers with poor upload speeds but huge hard drives?
+###Y-a-t-il un moyen de corrompre ou de perturber le Réseau SAFE, par exemple en connectant un nombre très important d'ordinateurs avec énormément de stockage, mais une très faible vitesse d'upload?
 
-The number of computers would have to massively outnumber the network nodes. When a node joins, its ID is altered by existing nodes and put at a random location. You would have to add a significant number of nodes and be extremely lucky in getting 4 close to each other in the address space. Even then the damage may be limited to a single chunk group.
+Il faudrait que le nombre d'ordinateurs soit très largement en surnombre par rapport aux nœuds du Réseau. Lorsqu'un nœud rejoint le Réseau, son ID est modifié par les nœuds existants et range dans un endroit choisi au hasard. Il faudrait alors ajouter un nombre très significatif de nœuds et être extrêmement chanceux pour placer 4 nœuds proches les uns des autres dans l'espace des adresses. Et même alors, le dommage cause se limiterait à un unique fragment de donnée.
 
-###How does the network deal with data redundancy, to ensure whatever data is shared remains accessible?
+###Comment le Réseau fait-il face aux redondances de données, pour s'assurer que n'importe quelle donnée partagée reste accessible ?
 
-Each file is encrypted and split into chunks during our encryption process (Self Encryption). The network keeps and maintains 4 copies of each encrypted chunk and moves these fragments around the network as nodes become unavailable, either through failure or power down. In order to cope with this churn, the network is able to reconfigure globally extremely quickly (as fast as 20 milliseconds). These steps ensure data is always available, provided the user retrieving the data has an Internet connection and the correct credentials.
+Chaque fichier est crypté et divisé en fragments lors du processus de cryptage (auto-cryptage). Le Réseau conserve et maintient 4 copies de chaque fragments et déplacent ceux-ci dans le Réseau lorsque des nœuds deviennent indisponibles (soit par défaillance, soit par déconnexion). Pour faire face à ce brassage, le Réseau est capable de se reconfigurer entièrement extrêmement rapidement (jusqu'a 20 millisecondes). Ces mécanismes garantissent que la donnée est toujours disponible, à partir du moment où l'utilisateur dispose d'une connexion Internet et fournit ses identifiants.
 
-###How you deal with the latency inherit in a distributed network like SAFE?
+###Comment gérer la latence inhérente à un réseau distribue comme le Réseau SAFE?
 
-Multiple things facilitate the solution here. Firstly, not one person stores a chunk of data, there are multiple copies of a chunk kept at any given time with a minimum of 4. Furthermore, the network also ranks nodes, for example, if a vault node fails to retrieve a piece of data then a new node replaces it as the holder and the original node gets deranked. If the issue persists, this node will get de-ranked to a point where in future it will not be asked to store any more data. So the network ends up determining which node is effective for storing data. Finally, if a piece of data you’re requesting becomes popular and is retrieved often, it will be cached in more nodes, making the retrieval times even faster. All this will ensure that popular data gets retrieved more quickly
+Plusieurs procédés apportent la solution ici. Premièrement, un fragment de donnée n'est pas stocke par un seul nœud, mais plusieurs copies (au minimum 4) sont maintenues disponibles en permanence. Deuxièmement, le Réseau attribue un rang aux nœuds. Par exemple, si une Vault ne parvient pas à fournir une donnée qu'elle était censée détenir, alors un nouveau nœud la remplace comme détenteur de la donnée, et le rang du premier est abaisse. Si le problème se reproduit, ce nœud verra son rang abaissé jusqu'au point où il ne lui sera plus demande de stocker aucune donnée. C'est donc le Réseau qui détermine quel nœud est efficace pour le stockage. Troisièmement enfin, si la donnée que vous demandez devient populaire et est souvent demandée, elle sera mise en cache dans plus de nœuds, ce qui rendra sa récupération encore plus rapide. Toutes ces méthodes garantissent que les données les plus demandées seront retrouvées plus rapidement.
 
-###Why would a distributed network be more secure than a traditional server with the same encryption that you use within SAFE?
+###Pourquoi est-ce qu'un réseau distribué serait plus sécurisé qu'un serveur traditionnel employant les mêmes méthodes de cryptage que le Réseau SAFE ?
 
-This is where physical security plays a big part. Firstly, giving full control of a file to one entity lets them either decrypt it and read it’s content or delete your data. Conversely, decentralisation spreads the data providing multiple sources for each file. Furthermore, actions in the network are also a made based on group consensus, so just one node wanting to do something doesn't enable the task to be completed. Only by majority group agreement are tasks carried out. This makes SAFE extremely robust as the effort to get a group of close nodes together in this network is extremely unlikely.
-
-
-
-
-
-
-
-
-
+C'est là où la sécurité physique joue un rôle crucial. Premièrement, donner le contrôle total d'un fichier a une entité lui permet ou bien d'essayer de le décrypter et de le lire, ou bien de l'effacer. A l'inverse, la décentralisation disperse l'information et multiplie les sources pour chaque fichier. En outre, les actions sur le Réseau sont basées sur des consensus de groupes, ce qui signifie qu'il ne suffit pas à un nœud de vouloir faire quelque chose qu’il parvienne à ses fins. Seule l'accord de la majorité du groupe permet à la tâche d'être accomplie à terme. Cela rend le Réseau SAFE extrêmement robuste, car l'effort nécessaire pour rassembler un groupe mitoyen de nœuds dans ce Réseau a une infime chance d'aboutir.

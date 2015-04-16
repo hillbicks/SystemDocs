@@ -1,13 +1,13 @@
-# A Farmer
+# Fermiers
 
-As a user of the SAFE Network, a Farmer installs the MaidSafe client and provides unused computer resources to the network such as storage, CPU processing, and bandwidth.
+En tant qu'il est un utilisateur du Réseau, le Fermier installe le Client SAFE et fournit les ressources inutilisées de son ordinateur au Réseau comme de l'espace disque, du temps processeur de son CPU, et de la bande passante.
 
-These resources are used to securely and anonymously comprise the SAFE Network, replacing data centres that constitute the current centralised Internet. This is done using the local Vault on the Farmer's computer, which is installed as part of the download process and configured using the MaidSafe client.
+Ces ressources sont utilisées pour constituer de manière sécurisée, anonyme et décentralisée le Réseau SAFE, en remplaçant les data centers qui forment l'Internet centralisée actuel. Ceci est réalisé par l’intermédiaire des Vaults installées sur l'ordinateur des Fermiers, lors de l'installation et la configuration du Client SAFE.
 
-When the resources provided exceed the network average the Farmer earns safecoins in exchange for providing these resources. This is indicated to the Farmer by a notification from the Maidsafe client.
+Lorsque les ressources fournies dépassent la moyenne du Réseau, le Fermier reçoit des safecoins. Le Client SAFE avertit le Fermier par une notification lorsque c'est le cas.
 
-The safecoins earned are credited to the Farmers account and can then be used by the Farmer, for example, by exchanging them for additional storage.
+Les safecoins gagnés ainsi sont crédités au portefeuille du Fermier, qui peut par exemple les utiliser en échange d'espace de stockage supplémentaire sur le Réseau.
 
-The Farmer can also run apps and programs which have been designed for use on the SAFE Network.
+Un Fermier peut aussi faire fonctionner les applications et programmes qui ont été réalisées pour le Réseau SAFE.
 
-[Click here for more information about how a Farmer earns safecoins ](https://www.youtube.com/watch?v=qpyT6VpdBMQ)
+[Cliquez ici pour plus d'information sur la manière dont les Fermiers gagnent des safecoins](https://www.youtube.com/watch?v=qpyT6VpdBMQ)
