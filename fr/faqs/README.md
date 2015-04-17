@@ -1,7 +1,7 @@
 # FAQs
 
-This section contains questions and answers gathered from and discussed by the community. These can be found on [maidsafe.org](https://www.maidsafe.org) in the [FAQ](https://maidsafe.org/c/faq) section. These answers will be updated as further research and analysis is carried out.
+Cette section rassemble les réponses aux questions posées et discutées par la communauté. Elles sont sur le forum [forum.safenetwork.io](https://forum.safenetwork.io/), dans la catégorie [FAQ](https://forum.safenetwork.io/c/faq). Les réponses seront mises à jour régulièrement.
 
-Please use [maidsafe.org](https://www.maidsafe.org)  as a place to meet, discuss and question the community in general, as this forum is actively monitored.
+Vous pouvez rejoindre le forum [forum.safenetwork.io](https://www.maidsafe.org) pour discuter, rencontrer et poser vos questions à la communauté très active du Réseau SAFE.
 
-The list is not exhaustive, so if there is anything you want to know write to us at [info@maidsafe.net](mailto:info@maidsafe.net).
+Comme la liste des questions n'est pas exhaustive, si vous avez des questions supplémentaires vous pouvez nous joindre à l'adresse suivante : [info@maidsafe.net](mailto:info@maidsafe.net).

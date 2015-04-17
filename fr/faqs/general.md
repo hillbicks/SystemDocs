@@ -1,12 +1,12 @@
 # General
 
-### Pourquoi le nom MaidSafe?
+### D'où vient le nom MaidSafe?
 
 C'est l'acronyme de: Massive Array of Internet Disks, Secure Access For Everyone.
 
 ### A qui appartient le Réseau SAFE?
 
-A nous tous! Le Réseau SAFE est une ressource open source disponible pour tous les utilisateurs d'Internet. Le Réseau est complètement anonyme, sécurisé et vise à se passer de toute intervention humain de toute sorte pour fonctionner; il ne peut pas être contrôlé ni 'possédé'. C'est quelque chose auquel nous croyons beaucoup, et nous avons écrit un [article de blog](http://blog.maidsafe.net/2014/02/07/owning-the-network/) pour nous en expliquer.
+A nous tous! Le Réseau SAFE est un projet open source disponible pour tous les utilisateurs d'Internet. Le Réseau est complètement anonyme, sécurisé et vise à se passer de toute intervention humain pour fonctionner; il ne peut pas être contrôlé ni 'possédé'. C'est quelque chose auquel nous croyons beaucoup, et nous avons écrit un [article de blog](http://blog.maidsafe.net/2014/02/07/owning-the-network/) pour nous en expliquer.
 
 ###Un réseau distribué autonome ne devraient pas nécessiter de brevets pour se protéger, n'est-ce-pas?
 

@@ -10,7 +10,7 @@ Il faudrait que le nombre d'ordinateurs soit très largement en surnombre par ra
 
 Chaque fichier est crypté et divisé en fragments lors du processus de cryptage (auto-cryptage). Le Réseau conserve et maintient 4 copies de chaque fragments et déplacent ceux-ci dans le Réseau lorsque des nœuds deviennent indisponibles (soit par défaillance, soit par déconnexion). Pour faire face à ce brassage, le Réseau est capable de se reconfigurer entièrement extrêmement rapidement (jusqu'a 20 millisecondes). Ces mécanismes garantissent que la donnée est toujours disponible, à partir du moment où l'utilisateur dispose d'une connexion Internet et fournit ses identifiants.
 
-###Comment gérer la latence inhérente à un réseau distribue comme le Réseau SAFE?
+###Comment gérer la latence inhérente à un réseau distribué comme le Réseau SAFE?
 
 Plusieurs procédés apportent la solution ici. Premièrement, un fragment de donnée n'est pas stocke par un seul nœud, mais plusieurs copies (au minimum 4) sont maintenues disponibles en permanence. Deuxièmement, le Réseau attribue un rang aux nœuds. Par exemple, si une Vault ne parvient pas à fournir une donnée qu'elle était censée détenir, alors un nouveau nœud la remplace comme détenteur de la donnée, et le rang du premier est abaisse. Si le problème se reproduit, ce nœud verra son rang abaissé jusqu'au point où il ne lui sera plus demande de stocker aucune donnée. C'est donc le Réseau qui détermine quel nœud est efficace pour le stockage. Troisièmement enfin, si la donnée que vous demandez devient populaire et est souvent demandée, elle sera mise en cache dans plus de nœuds, ce qui rendra sa récupération encore plus rapide. Toutes ces méthodes garantissent que les données les plus demandées seront retrouvées plus rapidement.
 
