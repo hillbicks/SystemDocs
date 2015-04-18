@@ -1,4 +1,4 @@
-# Qu'est-ce que c'est ?
+#Ce qu'est le Reseau SAFE
 
 Le Réseau SAFE est un service de gestion de données sécurisé et entièrement décentralisé. Le Réseau est constitué à partir des ressources informatiques inutilisées fournies par ses utilisateurs.
 

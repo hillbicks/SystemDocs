@@ -1,4 +1,4 @@
-# Auto-authentification performente
+# Auto-authentification
 
 Le Réseau SAFE supporte le mécanisme d'auto-authentification (Self authentication). Celui-ci permet aux utilisateurs de créer un compte et de se loguer sur le Réseau SAFE depuis n'importe quel ordinateur, sans avoir besoin d'un tiers et sans qu'un tiers en ai connaissance.
 

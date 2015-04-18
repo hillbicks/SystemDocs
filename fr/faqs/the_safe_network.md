@@ -1,53 +1,52 @@
-# Le Reseau SAFE
+# Le Réseau SAFE
 
-Ces questions fournissent des details supplementaires a propos du Reseau SAFE.
+Ces questions fournissent des détails supplémentaires à propos du Réseau SAFE.
 
 
-###Quelles programmes de recherche et de validation ont ete menes pour s'assurer que le Reseau SAFE puisse delivrer ce qu'il promet?
+###Quels programmes de recherche et de validation ont été menés pour s'assurer que le Réseau SAFE puisse délivrer ce qu'il promet?
  
-Dans un systeme aussi radicalement different des autres, la validation technique est extremement importante. La technologie de MaidSafe a ete soumis au systeme d'evaluation  par les pairs (peer review), et des articles ont ete publies et presentes lors du Wireless World Research Forum et dans l'IEEE Computer Society. Pendant le developpement, MaidSafe a collabore avec les meilleures Universites technique d'Ecosse; Stirling, Strathclyde, St Ansrews et L'Universite d'Abertay.
+Dans un système aussi radicalement différent des autres, la validation technique est extrêmement importante. La technologie de MaidSafe a été soumis au système d'évaluation  par les pairs (peer review), et des articles ont été publiés et présentés lors du Wireless World Research Forum et dans l'IEEE Computer Society. Pendant le développement, MaidSafe a collabore avec les meilleures Universités techniques d'Ecosse; Stirling, Strathclyde, St Andrews et l'Université d'Abertay.
 
-En outre, le fondateur de MaidSafe, David Irvine, a presente la technologie a la Google Scalability conference et a la British Computer Society, lors de la 50th Anniversary Christmas lecture.
+En outre, le fondateur de MaidSafe, David Irvine, a présenté la technologie à la Google Scalability conference et à la British Computer Society, lors de la 50th Anniversary Christmas lecture.
 
-Un reseau test entierement decentralise est actuellement en fonctionnement, avec 200 noeuds repartis sur 3 continents.
+Un réseau test entièrement décentralisé est actuellement en fonctionnement, avec 200 nœuds repartis sur 3 continents.
 
-###Le web comme il est constitue a l'heure actuelle n'a pas besoin de 'gardien'. Votre systeme ne devrait-il pas etre concu de la meme maniere ?
+###Le web comme il est constitué à l'heure actuelle n'a pas besoin de 'gardien'. Votre système ne devrait-il pas être conçu de la même manière ?
 
-Nous sommes d'accord qu'Internet ne devrait jamais avoir besoin de gardien, et nous n'avons pas l'intention d'en etre un. C'est pour cela que tout notre code est open source, et que nous en avons transfere la propriete a toutes les personnes de cette planete. Le Reseau SAFE est aussi completement libere de l'intervention humains (la partie la plus faible et corruptible de tout systeme), s'appuyant completement sur les mathematiques et la logique.
+Nous sommes d'accord qu'Internet ne devrait jamais avoir besoin de gardien, et nous n'avons pas l'intention d'en devenir un. C'est pour cela que tout notre code est open source, et que nous en avons transféré la propriété à toutes les personnes à travers le monde. Le Réseau SAFE est aussi complétement libéré de l'intervention humaine (la partie la plus faible et corruptible de tout système), s'appuyant complétement sur les mathématiques et la logique.
 
-###Quels sont les benefices de l'utilisation du Reseau SAFE ?
+###Quels sont les bénéfices de l'utilisation du Réseau SAFE ?
 
-Il sont nombreux; pour les utilisateurs les voici :
-* Communication privees et securisees
-* Stockage fiable et securise de toutes les donnees
-* L'utilisateur a un controle total sur ses donnees et ses informations personnelles
-* l'acces aux sites web sera plus rapide a mesure qu'ils gagnent en popularite.
+Ils sont nombreux; pour les utilisateurs les voici :
+* Communication privées et sécurisées
+* Stockage fiable et sécurisé de toutes les données
+* L'utilisateur a un contrôle total sur ses données et ses informations personnelles
+* l'accès aux sites web sera plus rapide à mesure qu'ils gagnent en popularité.
 
-###Ou puis-je telecharger le logiciel du Reseau SAFE?
+###Ou puis-je télécharger le logiciel du Réseau SAFE?
 
-Le lancement en beta est prevu courant 2015, et a partir de ce moment les utilisateurs pourront commencer a fournir des ressources au Reseau (donc a gagner des safecoins), et a utiliser les applications du Reseau.
+Le lancement en beta est prévu courant 2015, et à partir de ce moment les utilisateurs pourront commencer à fournir des ressources au Réseau (donc à gagner des safecoins), et pourront utiliser les applications du Réseau.
 
-Quand le Reseau sera lance, vous n'aurez besoin que de  telecharger un simple  logiciel, et nous diront aux utilisateurs comment proceder a l'aide des forums, blogs et media sociaux.
+Quand le Réseau sera lancé, vous n'aurez besoin que de  télécharger un simple  logiciel, et nous dirons aux utilisateurs comment procéder a l'aide des forums, blogs et media sociaux.
 
-###Pour un fragment de fichier donne, ou est stockee l'information qui decrit qui le detient? 
+###Pour un fragment de fichier donnée, ou est stockée l'information décrivant qui le détient? 
 
-Lorsque les utilisateurs sauvent leurs donnees ou utilisent une application, leur donnees sont divisees, cryptees et distribuees au hasard dans les Vaults a travers tout le Reseau. Ce processus est irreversible et par consequent, pendant le processus de fragmentation et de cryptage, une data map est etablie pour chaque fichier, qui enregistre l'identite de chaque fragment qui permettra de reconstituer le fichier original.
+Lorsque les utilisateurs sauvent leurs fichiers ou utilisent une application, leurs données sont divisées, cryptées et distribuées au hasard dans les Vaults à travers tout le Réseau. Ce processus est irréversible et par conséquent, pendant le processus de fragmentation et de cryptage, une data map est établie pour chaque fichier, qui enregistre l'identité de chaque fragment qui permettra de reconstituer le fichier original.
 
-Cette data map est traitee comme n'importe quelle autre fichier sur le Reseau, et est donc aussi soumis a la fragmentation et au cryptage, puis disseminee aleatoirement sur le Reseau. Seule la combinaison du code PIN, du mot-cle et du mot de passe permettent de reconstrure le fichier  et de le rendre lisible.
+Cette data map est traitée comme n'importe quelle autre fichier sur le Réseau, et est donc aussi soumis à la fragmentation et au cryptage, puis disséminée aléatoirement sur le Réseau. Seule la combinaison du code PIN, du mot-clé et du mot de passe permettent de reconstruire le fichier  et de le rendre lisible.
 
-###Quel langage est utilise pour programmer des Applications pour le Reseau SAFE?
+###Quel langage est utilisé pour programmer des Applications pour le Réseau SAFE?
 
-Les APIs et librairies sont ecrites en C++. Toutefois, les Developpeurs d'Application nesont pas restreint sur le langage, car c'est un objectif de MaidSafe que de rendre le Resau le plus accessible possible.
+Les APIs et librairies sont écrites en C++. Toutefois, les Développeurs d'Applications ne sont pas restreints à un seul langage: rendre le Réseau le plus accessible possible est aussi un objectif de MaidSafe.
 
-Toute personne pourra ecrire son propre wrapper pour supporter un nouveau langage.
+Toute personne pourra écrire son propre wrapper pour supporter un nouveau langage.
 
-###Can SAFE Network clients host on different operating systems access the same vaults?
+###Est-ce que des clients SAFE sur différents systèmes d'exploitation ont accès aux mêmes Vaults?
 
-Yes, the SAFE Network and client are completely supported cross-platform.
+Oui, Le Réseau SAFE et le client SAFE sont entièrement cross-platform.
 
+###Quel équipement sera nécessaire pour se consacrer au farming?
 
-###What kind of equipment will be required for dedicated farming?
+A ce stade nous ne savons pas quel type d'équipements fournir les meilleurs performances. C'est seulement en les testant en conditions réelles quand le Réseau sera en marche que nous le saurons définitivement. Les algorithmes de farming dans le Réseau ont été conçus pour favoriser les petites configurations, et pour éviter un phénomène que l'on retrouve dans la communauté de mineurs de bitcoins : la centralisation des ressources.
 
-At this point we don’t know what type of equipment will offer the most efficient farming and only through testing of the live network will we know definitively. The farming algorithms within the network are designed to favour small commodity devices to avoid some of the centralising aspects experienced within the Bitcoin mining community.
-
-Farming is discussed quite frequently on our forum [forum.safenetwork.io](https://forum.safenetwork.io/) and many of the community members are experimenting with single board computers that are powerful, yet have very low power consumption, well suited to being left on 24/7.
+Le Farming est un sujet fréquemment aborde sur le forum [forum.safenetwork.io](https://forum.safenetwork.io/) et beaucoup de membres de la communauté expérimentent des ordinatrices mono-cartes qui sont puissants mais avec une très faible consommation électrique, particulièrement adaptée a fonctionner en permanence.

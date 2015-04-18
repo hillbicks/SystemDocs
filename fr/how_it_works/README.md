@@ -1,4 +1,4 @@
-# Comment ça marche
+# Comment le Réseau fonctionne
 
 Lorsqu'un utilisateur télécharge et installe le client SAFE, une Vault est créée et configurée sur son ordinateur.
 

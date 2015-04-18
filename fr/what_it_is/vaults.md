@@ -1,4 +1,4 @@
-# Vaults
+# Les Vaults
 
 Le Réseau SAFE est composé de programmes appelés Vaults (que l'on peut traduire par coffre-fort). Chaque Vault est localisée sur le disque dur de l'ordinateur d'un utilisateur et remplit plusieurs fonctions pour le Réseau, qui varient et s'adaptent en fonction des besoins de ce dernier. Une de ses principales fonctions est le stockage et le cryptage des données qui lui sont transmises par les autres Vaults du Réseau.
 

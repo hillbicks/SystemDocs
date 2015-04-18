@@ -1,4 +1,4 @@
-# Portefeuille
+# Les Portefeuilles
 Le portefeuille du Réseau SAFE est l'endroit où sont stockes les crédits et l'historique des mouvements des safecoins d'un compte utilisateur.
 
 Lorsqu'un utilisateur rejoint le Réseau SAFE, il lui est automatiquement remis un portefeuille. En récompense des ressources qu'il fournit au Réseau, l'utilisateur reçoit des safecoins. Ces safecoins sont stockés dans le portefeuille de l'utilisateur.

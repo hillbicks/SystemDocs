@@ -1,4 +1,4 @@
-#Safecoins
+#Les Safecoins
 
 Les safecoins peuvent être gagnés, échangés ou achetés. La valeur des safecoins sera déterminée par le marché, selon l'offre et la demande.
 

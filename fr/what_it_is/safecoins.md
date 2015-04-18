@@ -1,4 +1,4 @@
-# Safecoins
+# Les Safecoins
 
 Les safecoins forment la monnaie du Réseau SAFE. Ce système à base de jeton n'est utilisé qu’à l'intérieur du Réseau.
 La distribution des safecoins est entièrement prise en charge par le Réseau, sur la base de leur utilisation, et environ 4.3 milliards de safecoins seront produits durant toute la vie du Réseau.

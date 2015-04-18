@@ -1,4 +1,4 @@
-# General
+# Général
 
 ### D'où vient le nom MaidSafe?
 

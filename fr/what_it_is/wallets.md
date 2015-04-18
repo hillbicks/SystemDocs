@@ -1,4 +1,4 @@
-# Portefeuilles
+# Les Portefeuilles
 
 Les portefeuilles sont les emplacements virtuels où sont stockés les safecoins. Le portefeuille d'un utilisateur contient la liste des safecoins en sa possession. Le solde de son portefeuille augmente en proportion des ressources qu'il fournit au Réseau, que ce soit de l'espace de stockage supplémentaire, ou alors de nouvelles applications, pour un Développeur d’Applications.
 
