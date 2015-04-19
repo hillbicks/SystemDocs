@@ -1,8 +1,8 @@
 # Comment l'utiliser
 
-Cette section presente le role des differents acteurs du Reseau, et la maniere dont ils le construisent et interagissent avec lui. Pour cela les acteurs peuvent prendre un ou plusieurs des roles suivants:
+Cette section présente le rôle des différents acteurs du Réseau, et la manière dont ils le construisent et interagissent avec lui. Pour cela les acteurs peuvent prendre un ou plusieurs des rôles suivants:
 
 * Fermier
 * Utilisateur
-* Developpeur d'Application
+* Développeur d'Application
 * Core Developer

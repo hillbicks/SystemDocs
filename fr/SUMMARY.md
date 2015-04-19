@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [Ce qu'est le Reseau SAFE](what_it_is/README.md)
+* [Ce qu'est le Réseau SAFE](what_it_is/README.md)
    * [Les données sur le Réseau SAFE](what_it_is/data_on_the_safe_network.md)
    * [Applications et programmes sur le Réseau SAFE](what_it_is/apps_and_programs_on_the_safe_network.md)
    * [Accéder au Réseau SAFE](what_it_is/costs_of_using_the_safe_network.md)
@@ -26,7 +26,7 @@
    * [Les Portefeuilles](how_it_works/wallet.md)
    * [Sécuriser le Réseau SAFE](attacks/README.md)
        * [Un FAI simule un réseau](attacks/isp_simulates_network.md)
-       * [Attaque par une Vault malveillante](attacks/dishonest_vault_attack.md)
+       * [Attaque par une Vault malhonnête](attacks/dishonest_vault_attack.md)
        * [Paradoxe des anniversaires/attaque Sybil](attacks/birthday_paradoxsybil_attack.md)
        * [Stocker de mauvaises données](attacks/store_bad_data.md)
 * [Comment l'utiliser](how_to_use_it/README.md)

@@ -2,7 +2,7 @@
 
 ##Description de l'attaque
 
-Un fournisseur d'accès Internet (FAI) crée ou simule un faux réseau. Sur ce réseau le FAI satisfait les requêtes de données demandées par l'utilisateur, mais ne stocke pas les données que l'utilisateur veut sauver sure le Réseau.
+Un fournisseur d'accès Internet (FAI) crée ou simule un faux réseau. Sur ce réseau le FAI satisfait les requêtes de données demandées par l'utilisateur, mais ne stocke pas les données que l'utilisateur veut sauver sur le Réseau.
 
 ##Objectif de l'attaque
 
@@ -10,7 +10,7 @@ Le but et de forcer l'utilisateur à perdre des données qui peuvent lui être i
 
 ##Comment le Réseau empêche l'attaque
 
-Dans ce cas le programme de d’amorçage (bootstrap) du client SAFE ou de la Vault ne sera pas capable de se connecter aux Vaults d'amorçages listées dans le cache du client. Ce fichier contient les adresses IP, ports et clés publiques de telles Vaults.
+Dans ce cas le programme d’amorçage (bootstrap) du client SAFE ou de la Vault ne sera pas capable de se connecter aux Vaults d'amorçages listées dans le cache du client. Ce fichier contient les adresses IP, ports et clés publiques de telles Vaults.
 
 Puisque la session bootstrap est cryptée avec la clé publique de ces Vaults d'amorçages, l'essai de connexion échouera. Le client SAFE détecte donc que le réseau qu'on lui présenté n'est pas valide.
 

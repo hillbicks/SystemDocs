@@ -1,4 +1,4 @@
-# Attaque par une Vault malveillante
+# Attaque par une Vault malhonnête
 
 ##Description de l'attaque
 
@@ -6,11 +6,11 @@ Dans cette attaque, une Vault déclare offrir une capacité de stockage supérie
 
 ##Objectif de l'attaque
 
-Le but est de gagner la capacité de rejoindre des régions particulières du Réseau SAFE et d'établir de nouvelles règles en changeant son comportement habituel, de manière similaire à une "50% attack", que l'on retrouve fréquemment chez les monnaies cryptographiques.
+Le but est de gagner la capacité de rejoindre des régions particulières du Réseau SAFE et d'établir de nouvelles règles en changeant son comportement habituel, de manière similaire à une "50% attack", que l'on retrouve fréquemment dans le domaine des monnaies cryptographiques.
 
 Des attaques de ce type conduites à grande échelle pourraient causer des dommages considérables au Réseau SAFE, comme le vol, le double spending de safecoins, ou la suppression de données.
 
-Le but pourrait être plus simplement de détruire la confiance des utilisateurs envers le Réseau.
+Le but pourrait être plus simplement de sapper la confiance des utilisateurs envers le Réseau.
 
 ##Comment le Réseau empêche l'attaque
 

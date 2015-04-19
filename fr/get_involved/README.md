@@ -1,6 +1,6 @@
 # Contribuer
 
-Les liens suivants fournissent des informations (la plupart en Anglais) sur les directions à suivre pour contribuer au projet.
+Les liens suivants fournissent des informations (la plupart en Anglais) sur lam marche à suivre pour contribuer au projet.
 
 * [MaidSafe.net](http://maidsafe.net)<br/>
 L'équipe qui coordonne le développement et le lancement du Réseau SAFE.
@@ -14,7 +14,7 @@ Comprends un grands nombre de vidéos à propos du Réseau SAFE et de son foncti
 
 ### Core Developer et Développeurs d'Application
 
-Les liens suivants fournissent des informations à destination des Développeurs d'Applications et les Core Developers
+Les liens suivants fournissent des informations à destination des Développeurs d'Applications et des Core Developers
 
 * [GitHub](https://github.com/orgs/maidsafe)<br/>
 Tous les repositories GitHub du Réseau SAFE.
@@ -23,13 +23,13 @@ Tous les repositories GitHub du Réseau SAFE.
 Le repository GitHub qui explique en détail les librairies open sources.
 
 * [Developer task list](https://maidsafe.atlassian.net/secure/Dashboard.jspa)<br />
-La liste des bugs et des taches en cours dans le développement du Réseau SAFE.
+La liste des bugs et des tâches en cours dans le développement du Réseau SAFE.
 
 * [forum.safenetwork.io](https://forum.safenetwork.io/)<br />
 Un forum pris en charge par la communauté qui permet de poser des questions, de débattre et de rechercher plus d'informations concernant tous les aspects du Réseau SAFE.
 
 ###White papers
-Ci-dessous se trouvent plusieurs papiers expliquant de manières approfondie les différents composants du Réseau SAFE.
+Ci-dessous se trouvent plusieurs papiers expliquant de manière approfondie les différents composants du Réseau SAFE.
 
 * [Autonomous Network](https://github.com/maidsafe/MaidSafe/wiki/unpublished_papers/AutonomousNetwork.pdf?raw=true)
 * [Distributed File System ](https://github.com/maidsafe/MaidSafe/wiki/unpublished_papers/MaidSafeDistributedFileSystem.pdf?raw=true)
