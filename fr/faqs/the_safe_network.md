@@ -1,57 +1,52 @@
-# The SAFE Network
+# Le Réseau SAFE
 
-These FAQs relate to additional details about the SAFE Network.
-
-
-### What kind of research and validation has been carried out to affirm the SAFE Network will live up to the claims?
-
-With such a radical solution, validation is extremely important. MaidSafe's technology has been peer reviewed with papers published and presented at the Wireless World Research Forum and the IEEE Computer Society. During development, MaidSafe has engaged with Scotland's leading technical Universities; Stirling, Strathclyde, St Andrews and the University of Abertay.
-
-Furthermore, MaidSafe's founder, David Irvine, has showcased the company's technology at the Google Scalability conference and at the British Computer Society's (Scotland) 50th Anniversary Christmas lecture.
-
-A fully decentralised test network is now up and running, with 200 nodes spread across three continents.
-
-###The web as it is needs no gatekeeper, shouldn't your system be designed this way as well?
-
-We agree that the Internet should never have a gatekeeper and we don't intend to start, that is why all our code is Open Source and we have transferred ownership to all the people of the world. The SAFE Network is also completely free from human intervention (the weakest and most corruptible part of any system), relying totally on maths and logic.
+Ces questions fournissent des détails supplémentaires à propos du Réseau SAFE.
 
 
-###What are the benefits of using the Safe Network?
+###Quels programmes de recherche et de validation ont été menés pour s'assurer que le Réseau SAFE puisse délivrer ce qu'il promet?
+ 
+Dans un système aussi radicalement différent des autres, la validation technique est extrêmement importante. La technologie de MaidSafe a été soumis au système d'évaluation  par les pairs (peer review), et des articles ont été publiés et présentés lors du Wireless World Research Forum et dans l'IEEE Computer Society. Pendant le développement, MaidSafe a collabore avec les meilleures Universités techniques d'Ecosse; Stirling, Strathclyde, St Andrews et l'Université d'Abertay.
 
-The benefits of using the SAFE Network are numerous and for end users these are as follows:
-* Private and secure communications
-* Secure storage of all data
-* Being control of your own data and personal information
-* Websites that go faster the more popular they get
+En outre, le fondateur de MaidSafe, David Irvine, a présenté la technologie à la Google Scalability conference et à la British Computer Society, lors de la 50th Anniversary Christmas lecture.
 
+Un réseau test entièrement décentralisé est actuellement en fonctionnement, avec 200 nœuds repartis sur 3 continents.
 
-###Where can I download the SAFE Network software?
+###Le web comme il est constitué à l'heure actuelle n'a pas besoin de 'gardien'. Votre système ne devrait-il pas être conçu de la même manière ?
 
-We plan beta launch at the end of this year/early 2015, at which point users will be able to start providing resource (earning safecoins) to the network and start using SAFE applications.
+Nous sommes d'accord qu'Internet ne devrait jamais avoir besoin de gardien, et nous n'avons pas l'intention d'en devenir un. C'est pour cela que tout notre code est open source, et que nous en avons transféré la propriété à toutes les personnes à travers le monde. Le Réseau SAFE est aussi complétement libéré de l'intervention humaine (la partie la plus faible et corruptible de tout système), s'appuyant complétement sur les mathématiques et la logique.
 
-When the network is launched a simple software download is all you require and we will inform users where to go nearer the time using our forum, blog and social media channels.
+###Quels sont les bénéfices de l'utilisation du Réseau SAFE ?
 
+Ils sont nombreux; pour les utilisateurs les voici :
+* Communication privées et sécurisées
+* Stockage fiable et sécurisé de toutes les données
+* L'utilisateur a un contrôle total sur ses données et ses informations personnelles
+* l'accès aux sites web sera plus rapide à mesure qu'ils gagnent en popularité.
 
-###Where is the information of who has which chunks of a given file stored?
+###Ou puis-je télécharger le logiciel du Réseau SAFE?
 
-As a user saves their data, or interacts with applications, their data is broken up, encrypted and then distributed randomly throughout the network to other vaults. This process is irreversible and therefore during the chunking and encryption process a data map is created for each file recording the identity of each of the files chunks that enable the file to be reconstituted.
+Le lancement en beta est prévu courant 2015, et à partir de ce moment les utilisateurs pourront commencer à fournir des ressources au Réseau (donc à gagner des safecoins), et pourront utiliser les applications du Réseau.
 
-This data map is treated as any file on the network and is also run through the chunking and encryption process and then stored as encrypted chunks, spread randomly throughout the network. Only the correct combination of PIN, username and password will enable a file(s) to become readable.
+Quand le Réseau sera lancé, vous n'aurez besoin que de  télécharger un simple  logiciel, et nous dirons aux utilisateurs comment procéder a l'aide des forums, blogs et media sociaux.
 
-###What language are the SAFE Network apps written in?
+###Pour un fragment de fichier donnée, ou est stockée l'information décrivant qui le détient? 
 
-The API / libraries are written in C++, however, application developers will not be restricted as it is MaidSafe’s intention to make the network as accessible as possible.
+Lorsque les utilisateurs sauvent leurs fichiers ou utilisent une application, leurs données sont divisées, cryptées et distribuées au hasard dans les Vaults à travers tout le Réseau. Ce processus est irréversible et par conséquent, pendant le processus de fragmentation et de cryptage, une data map est établie pour chaque fichier, qui enregistre l'identité de chaque fragment qui permettra de reconstituer le fichier original.
 
-Anyone will be able to write their own wrappers to add support for a new language.
+Cette data map est traitée comme n'importe quelle autre fichier sur le Réseau, et est donc aussi soumis à la fragmentation et au cryptage, puis disséminée aléatoirement sur le Réseau. Seule la combinaison du code PIN, du mot-clé et du mot de passe permettent de reconstruire le fichier  et de le rendre lisible.
 
+###Quel langage est utilisé pour programmer des Applications pour le Réseau SAFE?
 
-###Can MaidSafe clients host on different operating systems access the same vaults?
+Les APIs et librairies sont écrites en C++. Toutefois, les Développeurs d'Applications ne sont pas restreints à un seul langage: rendre le Réseau le plus accessible possible est aussi un objectif de MaidSafe.
 
-Yes, the SAFE Network and client are completely supported cross-platform.
+Toute personne pourra écrire son propre wrapper pour supporter un nouveau langage.
 
+###Est-ce que des clients SAFE sur différents systèmes d'exploitation ont accès aux mêmes Vaults?
 
-###What kind of equipment will be required for dedicated farming?
+Oui, Le Réseau SAFE et le client SAFE sont entièrement cross-platform.
 
-At this point we don’t know what type of equipment will offer the most efficient farming and only through testing of the live network will we know definitively. The farming algorithms within the network are designed to favour small commodity devices to avoid some of the centralising aspects experienced within the Bitcoin mining community.
+###Quel équipement sera nécessaire pour se consacrer au farming?
 
-Farming is discussed quite frequently on our forum [www.maidsafe.org](http://www.maidsafe.org) and many of the community members are experimenting with single board computers that are powerful, yet have very low power consumption, well suited to being left on 24/7.
+A ce stade nous ne savons pas quel type d'équipements fournir les meilleurs performances. C'est seulement en les testant en conditions réelles quand le Réseau sera en marche que nous le saurons définitivement. Les algorithmes de farming dans le Réseau ont été conçus pour favoriser les petites configurations, et pour éviter un phénomène que l'on retrouve dans la communauté de mineurs de bitcoins : la centralisation des ressources.
+
+Le Farming est un sujet fréquemment aborde sur le forum [forum.safenetwork.io](https://forum.safenetwork.io/) et beaucoup de membres de la communauté expérimentent des ordinatrices mono-cartes qui sont puissants mais avec une très faible consommation électrique, particulièrement adaptée a fonctionner en permanence.

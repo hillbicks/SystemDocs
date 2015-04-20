@@ -1,10 +1,8 @@
-# How to use it
+# Comment l'utiliser
 
-This section explains the role of different users and how they interact with, and build, the SAFE Network. To do this, users may take on one or more of the following roles:
+Cette section présente le rôle des différents acteurs du Réseau, et la manière dont ils le construisent et interagissent avec lui. Pour cela les acteurs peuvent prendre un ou plusieurs des rôles suivants:
 
-* A Farmer
-* An End User
-* An App Builder
-* A Core Developer
-
-
+* Fermier
+* Utilisateur
+* Développeur d'Application
+* Core Developer

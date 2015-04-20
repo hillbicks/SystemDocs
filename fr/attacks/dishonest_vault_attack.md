@@ -1,19 +1,19 @@
-# Dishonest Vault attack
+# Attaque par une Vault malhonnête
 
-##Attack description
+##Description de l'attaque
 
-In this attack, a Vault falsely claims to offer a higher storage capacity than it actually has available.
+Dans cette attaque, une Vault déclare offrir une capacité de stockage supérieure à celle dont elle dispose en réalité.
 
-##Attack purpose
+##Objectif de l'attaque
 
-The purpose of this attack is to gain the ability to join particular areas of the SAFE Network and to create fake rules affecting it's behaviour, similar to the "50% attack" often seen in cryptographic currencies.
+Le but est de gagner la capacité de rejoindre des régions particulières du Réseau SAFE et d'établir de nouvelles règles en changeant son comportement habituel, de manière similaire à une "50% attack", que l'on retrouve fréquemment dans le domaine des monnaies cryptographiques.
 
-In large scale attacks of this kind, considerable damage to the SAFE Network would be possible including theft or double spend of safecoins, or the deletion of data.
+Des attaques de ce type conduites à grande échelle pourraient causer des dommages considérables au Réseau SAFE, comme le vol, le double spending de safecoins, ou la suppression de données.
 
-The goal of this may be simply to destroy user trust in the SAFE Network.
+Le but pourrait être plus simplement de sapper la confiance des utilisateurs envers le Réseau.
 
-##Attack avoidance
+##Comment le Réseau empêche l'attaque
 
-The SAFE Network requires a quorum level of legitimate Vaults to be instructed in order for a request to be accepted, which mitigates the risk of this attack.
+Le Réseau impose un consensus de Vaults légitimes pour qu'une requête soit acceptée, ce qui limite le risque d'une telle attaque.
 
-A botnet or other group of malicious Vaults would require to make up around 75% of the whole SAFE Network to achieve false quorum over invalid requests, making a successful attack of this type very unlikely.
+Un botnet ou un groupe de Vaults malveillantes devraient constituer autour de 75% de tout le Réseau SAFE pour arriver à un quorum et faire accepter une requête invalide, ce qui rend le succès d'une telle attaque improbable.

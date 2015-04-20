@@ -1,84 +1,80 @@
 # Infrastructure
 
-These FAQs relate to questions about the components and processes that make the network function.
+Cette FAQ présente les questions relatives aux composants et processus qui assurent le fonctionnement du Réseau.
 
 
-### Does the SAFE Network require continuous Internet connection from all participants?
+### Le Réseau SAFE requiert-il une connexion permanente à Internet de tous les participants ?
 
-No, the SAFE Network will rate each connection type and adjust for the resources it provides, in order to account for unavailability (through powering off or device failure).
+Non, le Réseau évalue chaque type de connexion et ajuste les ressources qu'il fournit, pour prendre en compte les temps d'indisponibilité (lorsqu'une machine défaille ou est éteinte).
 
-It's not a problem to be disconnected for shorter periods, however. If your node is unavailable for longer periods it will negatively impact on the service you receive from the network.
+Il n'est pas problématique d'être déconnecté pour de courtes périodes. Par contre l'être pendant longtemps affectera négativement les services que vous recevrez du Réseau.
 
-### What does decentralised mean in the SAFE Network?
+### Que signifie 'décentralisé' pour le Réseau SAFE ?
 
-The SAFE Network, and in particular the MaidSafe approach is that decentralised means fully decentralised. This term is used extensively in the tech community. For the SAFE Network decentralised means the following:
+Le Réseau SAFE, et en particulier l'approche de MaidSafe est que 'décentralisé' signifie 'totalement décentralisé'. Ce terme est utilisé de manière généralisée dans la communauté informatique. Pour le Réseau SAFE, cela signifie:
 
-1. No servers at all
-2. No information from any server infrastructure (no DNS, no time servers...etc...)
-3. No connection to any server based networks
-4. No centralised data structures across nodes
-5. No controlling party (or parties)
-6. Zero control by humans for administration of data access
-6. Fully inclusive (no ability to ban people or apply barriers to basic network access)
-7. Borderless network; no borders or controls over network reach
+1. Aucun serveur
+2. Aucune information héritée de l'infrastructure des serveurs (pas de DNS, de time servers, etc.)
+3. Aucune connexion a des réseaux bases sur des serveurs
+4. Aucune centralisation de données parmi les nœuds
+5. Aucun contrôle par un ou des tiers
+6. Aucun contrôle humain pour l'administration des données
+7. Aucun moyen d'entraver l'accès au Réseau
+8. Aucunes frontières: pas de contrôle ou de frontières sur la portée du Réseau.
 
-###Is your storage capacity limited?
+###Est-ce que votre capacité de stockage est limitée?
 
-After the network reaches critical mass, the storage capacity of each user will only be limited by the number of safecoins they have, or are willing to use to store their data.
+Lorsque le Réseau aura atteint sa masse critique, la capacité de stockage de chaque utilisateur ne dépendra que du nombre de safecoin dont il dispose et qu'il veut utiliser pour stocker ses données.
 
-These safecoins can be earned by providing resource, or bought. The SAFE Network uses a process of deduplication [http://en.wikipedia.org/wiki/D...](http://en.wikipedia.org/wiki/Data_deduplication) to enable the most efficient use of network storage space. As the network is comprised of all the resources of the networks users, the infrastructure costs are a fraction of any existing server centric storage providers.
+Ces safecoins peuvent être perçus en fournissant des ressources au Réseau, ou achetées. Le Réseau SAFE utilise un processus de [déduplication](http://fr.wikipedia.org/wiki/D%C3%A9duplication) pour utiliser au mieux l'espace disponible. Puisque le Réseau est constitué par les ressources des utilisateurs, les coûts d'infrastructure ne représentent qu'une infime partie des couts générés par la maintenance de serveurs centraux.
 
+###Qui paie pour le stockage?
 
-###Who pays for the storage?
+Les utilisateurs (Fermiers) fournissent une partie inutilisée de leurs ressources au Réseau et c'est sur ces ressources que les données du Réseau sont stockées. Les utilisateurs qui contribuent au Réseau SAFE en rendant disponible une partie de leur espace disque reçoivent en récompense des safecoins.
 
-Users (Farmers) provide their spare computing resource to the network and it is this resource on which the networks data is hosted. Users who contribute disk space to the SAFE Network are rewarded with safecoins by the network.
+###Pour combien de temps mes données sont-elles stockées?
 
-###How long is my data stored for?
+Toutes les données stockées sur le Réseau SAFE le sont pour toujours, à moins que l'utilisateur à qui elles appartiennent décide de les effacer. Les données qui sont stockées depuis longtemps mais non consultées seront archivées.
 
-All data is stored on the SAFE Network forever unless the user decides to delete it. Data that has been held for a long time, but not accessed, will be moved into archive.
+###Comment vous assurez-vous qu'aucune donnée n'est perdue lorsqu'un utilisateur se déconnecte?
 
-###How do you ensure that no pieces of data are lost after a user goes offline?
+Le Réseau SAFE maintient pour toute donnée automatiquement un minimum de 4 copies disponibles. Lorsqu'un utilisateur éteint sa machine, leur Vault Managers (le groupe responsable de contrôler les adresses des nœuds du Réseau) informe le Réseau et tous les fragments de données stockés par la Vault et les Data Managers de la machine sont répliqués ailleurs. Ce processus est très rapide, autours de 20 millisecondes.
 
-The SAFE Network automatically maintains a minimum of four live copies of any piece of data at any time. As a users turns off their computer, their vault managers (the group responsible for looking after network nodes) notify the network and all the data chunks being held by that data manager are recreated elsewhere. This process happens very quickly, in around 20 milliseconds.
+###Avez-vous la capacité de décentraliser des sites web comme YouTube?
 
-###Could you decentralise websites like YouTube?
+Oui, il est possible de décentraliser n'importe qu'elle application ou service web qui existe actuellement sur Internet. 
 
-Yes, you can decentralise any applications or webs service that exist on the Internet today.
+###Comment le Réseau SAFE réagit-il face aux attaques Sybil?
 
+Le Réseau SAFE exige que toutes les requêtes soient traitées par au moins 2 groupes de Vault. Le client SAFE passe une requête à ses 4 Data Managers, qui vérifient la validité de celle-ci avec la signature du client. Elle est ensuite transmise à un autre groupe de Vault prédéterminé qui vérifient également la requête à partir de sa signature.
 
-###How does the SAFE Network deal with Sybil attacks?
+En sélectionnant de manière déterministe le second groupe de Data Managers, une telle attaque ne peut plus être engagée contre le Réseau SAFE, car il est impossible de contrôler une Vault simplement en l'entourant.
 
-The SAFE Network requires all requests be processed by at least two groups of Vaults.
-The MaidSafe client passes a request to its four Data managers, who verify the request based on the client’s signature. The request in then passed to a deterministically selected group of four other Vaults which also verify the request based on its signature.
+Pour contourner cela l'attaquant devrait être capable d'entourer une Vault désignée dans le Réseau. Ceci est impossible, car il faudrait pour cela pouvoir générer plusieurs valeurs, qui, hachées avec SHA-512 donneraient un hash proche d'un point particulier.
 
-By deterministically selecting the second group of Data managers, this attack no longer holds true for the SAFE Network, since it is not possible for the attacker to gain control over a Vault by simply surrounding it.
+###Comment le Réseau SAFE gère-t-il la redondance de donnée pour garantir que chaque donnée reste accessible?
 
-To circumvent this, the attacker would require the ability to surround specific Vaults in the SAFE Network. This cannot be achieved, as it would require being able to effectively generate different values which, when hashed with SHA-512, result in close hashes around one particular point.
-
-###How does the SAFE Network deal with data redundancy to ensure whatever data is shared remain accessible?
-
-Each file is encrypted and split into chunks during our encryption process (Self Encryption). The network keeps and maintains four copies of each encrypted chunk and moves these fragments around the network as nodes become unavailable, either through failure or power down. In order to cope with the churn, the network is able to reconfigure globally extremely quickly (20 milliseconds). The chunks are spread globally for increased robustness.
-
-The SAFE Network is completely autonomous and all these operations are handled by the system and completely without our knowledge.
+Lors du processus d'auto-cryptage, chaque fichier est crypte puis divise en fragments. Le Réseau conserve et maintient 4 copies cryptées de chaque fragment, et déplacent ceux-ci à mesure que des nœuds du Réseau deviennent indisponibles (si les machines sont éteintes ou défaillent). Afin de faire face à ce brassage, le Réseau est capable de se reconfigurer intégralement de manière extrêmement rapide (environ 20 millisecondes). Les fragments sont distribués de manière globale pour accroitre la robustesse.
 
 
-###How is data stored and retrieved?
+Le Réseau SAFE est totalement autonome, et toutes ces opérations sont prises en charge par le système à l'insu de tous ses utilisateurs.
 
-Data is stored and retrieved using the self encryption process. Self encryption is used to mix up and encrypt data before it is sent out to the SAFE Network. This process is automatic and happens instantaneously. As data is saved to a user’s virtual hard-drive it is broken up into at least three chunks. A data map is created and for each chunk a hash, (a unique digital finger print) is created and written to the data map. For additional security the data map is also run through this self encryption process.
+###Comment les données sont-elles stockées et récupérées?
 
-Each chunk is then encrypted to create random, non-repeating data. Finally, combined with the original hashes, the chunks are further encrypted. The output of each chunk is then added to the data map.
+Elles sont stockées et retrouvées grâce au processus d'auto-cryptage (self encryption). Il est utilisé pour mélanger et crypter les données avant même qu'elles soient envoyées sur le Réseau. Ce processus est automatique et instantané. Lorsqu’une donnée est sauvée sur le disque virtuel de l'utilisateur elle est divisée en au moins 3 fragments. Une data map est créée pour chacun des fragments et un hash (une empreinte digitale unique) est générée et inscrite dans la data map. Pour augmenter encore la sécurité, la data map elle-même est passée par ce processus d'auto-cryptage.
 
-The data map, with hashes before and after encryption, is used when retrieving and decoding the user’s data, as the encryption process is non reversible. The data is decrypted and reconstituted with the users PIN, keyword and password.
+Chaque fragment est ensuite crypté pour créer une donnée aléatoire et non-reproductible. Enfin, ils sont cryptés une nouvelle fois avec le premier hash. Le nouveau hash qui en résulte est aussi inscrit dans la data map. 
 
-###When files are split into chunks, the network takes a hash (a digital fingerprint) of each. Can the original hash be traced back to a user?
+Il faut que la data map contienne ces hash avant et après cryptage pour récupérer et décoder la donne de l'utilisateur, puisque le processus de cryptage n'est pas réversible. La donnée est décryptée puis reconstituée grâce aux identifiants de l'utilisateur (PIN, mot-clé, mot de passe).
 
-In short, no. Chunks are not linked to a specific user on the network and anonymity (and security as arguably they are the same thing) is at the very heart of the network. At a very high level, there are a number of features that provide anonymity.
+###Lorsque les fichiers sont divises en fragments, le Réseau crée un hash (empreinte digitale) pour chacun d'eux. Est-ce que l'analyse de ce hash peut permettre de remonter jusqu'à l'utilisateur?
 
-* RUDP (Reliable UDP) encrypts every message hop to hop as they traverse the network
-* The routing layer scrubs IP addresses after hop1
-* The storage and retrieval of data is carried out using an identifier known only to the network that is not linked to a person or public name
-* There is no server login and therefore no central point of knowledge or attack
-* Passwords are not stored or transmitted on the network
-* All messages are encrypted and the identifier of the sender/receiver is not what the user logs in as, the identifier is stored inside an encrypted packet
+Non. Les fragments ne sont pas liés a un utilisateur spécifique du Réseau, et l'anonymat (et donc la sécurité puisque l'un ne va pas sans l'autre) est au cœur du fonctionnement du Réseau. Il y a plusieurs fonctionnalités qui la garantissent, résumées ci-dessous:
 
 
+* RUDP (Reliable UDP) crypte chaque message de point en point lorsqu'ils traversent le Réseau.
+* La couche de routage efface l'adresse IP après le premier saut.
+* Le stockage et la récupération des données utilise un identifiant connu seulement du Réseau, et qui n'est pas lie à une personne ou un nom public.
+* Il n'y a pas de login à un serveur, et donc aucun point central de connaissance à attaquer.
+* Les mots de passe ne sont ni stockes par ni transmis au Réseau.
+* Tous les messages sont encryptes et l'identifiant de l'émetteur/receveur n'est pas celui avec lequel l'utilisateur se connecte; l'identifiant est stocké à l'intérieur d'un paquet crypte.

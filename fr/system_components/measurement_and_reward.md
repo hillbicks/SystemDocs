@@ -7,4 +7,4 @@ Lorsque le Réseau SAFE crée des safecoins, les utilisateurs peuvent les utilis
 
 Le rang est une mesure interne de la Vault, qui évalue la quantité de données stockées vs la quantité de données perdues. Il est utilisé pour gérer les autorisations sur le Réseau, et les droits dont la Vault dispose en relation aux adresses qui lui sont proches.
 
-Ce rang régule aussi le taux de récolte de safecoins des Vaults. Ce taux diminuera si l'offre en ressources est trop abondante, et à l'inverse augmenter si la demande est plus forte.
+Ce rang régule aussi le taux de récolte de safecoins des Vaults. Ce taux diminuera si l'offre en ressources est trop abondante, et à l'inverse augmentera si la demande est plus forte.
