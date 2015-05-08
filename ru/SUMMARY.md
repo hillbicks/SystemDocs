@@ -21,7 +21,7 @@
        * [Отсутствие администраторов](system_components/remove_administration.md)
    * [Эффективность - самоидентификация](system_components/self_authentication.md)
    * [Хранилища](how_it_works/vault.md)
-   * [(nt finshd) Safecoins](how_it_works/safecoin.md)
+   * [Safecoins](how_it_works/safecoin.md)
    * [Safecoin requests and roles](how_it_works/safecoin_requests_and_roles.md)
    * [Wallet](how_it_works/wallet.md)
    * [Securing the SAFE Network](attacks/README.md)
