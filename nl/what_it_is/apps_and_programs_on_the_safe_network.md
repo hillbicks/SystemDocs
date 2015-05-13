@@ -1,19 +1,19 @@
-#Apps and programs on the SAFE Network
+#Apps en programma's op het SAFE Network 
 
-The SAFE Network is also a platform for apps and programs that can be accessed by the network users.
+Het SAFE Network is ook een platform voor apps en programma's die kunnen worden benaderd door de netwerkgebruikers. 
 
-Here are some examples of the type of apps that can be used on the SAFE Network.
+Hier zijn enkele voorbeelden van de soorten apps die kan worden gebruikt op het SAFE Network. 
 
-* Cloud storage
-* Encrypted messaging
-* Web sites
-* VoIP
-* Social networks
-* Document processing of any data provided by any program
-* Distributed databases
-* Document or contract signing
-* Any existing service that runs on the Internet
+* cloud opslag 
+* Gecodeerde messaging 
+* websites 
+* VoIP 
+* Sociale netwerken 
+* Document verwerking van alle gegevens die door elk programma 
+* Distributed databases 
+* Document of een contract ondertekenen 
+* Alle bestaande diensten op het huidige internet 
 
-The apps and programs contain cryptographically secured key pairs and can use these to automatically sign requests for session management or membership of any network service.
+De apps en programma's bevatten cryptografisch beveiligd key pairs en kan deze gebruiken om automatisch aanmeldingen aanvragen voor sessie beheer of het lidmaatschap van een netwerk service. 
 
-For example, a website with membership can present a join button and clicking that would automatically sign an authority and allow access in the future.
+Zo kan je bijvoorbeeld op een website met een lidmaatschap op een join knop klikken die automatisch een autoriteit zou ondertekenen en de toegang in de toekomst mogelijk maakt.
